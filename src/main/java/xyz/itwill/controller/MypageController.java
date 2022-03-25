@@ -1,15 +1,33 @@
 package xyz.itwill.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import xyz.itwill.service.ProductService;
 
 @Controller
 public class MypageController {
+	@Autowired
+	private ProductService productService;
+	
 	
 	@RequestMapping("/mypage_list")
 	public String MypageMain() {
 		return "mypage/mypage_list";
 	}
+	
+//	@RequestMapping(value = "/mypage_list", method = RequestMethod.GET)
+//	public String sellProductList(@RequestParam String status ,Model model) {
+//		model.addAttribute("productStatusList", productService.getStatusProductList(status));
+//		
+//		return "mypage/mypage_list";
+//	}
+	
 	
 	@RequestMapping("/mypage_exchange")
 	public String MypageExchange() {

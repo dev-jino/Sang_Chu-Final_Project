@@ -24,8 +24,17 @@
 		update product set status=9 where idx=#{idx}
 	</update>
 	
+	<select id="selectProduct">
+		select * from product where idx=#{idx}
+	</select>
+	
 	<!-- 상품 상태별 검색(최신 날짜 순으로 정렬) -->
-	<select id="selectStatusProduct">
+	<select id="selectStatusProductList" resultType="Product">
 		select * from product where status=#{status} order by regDate desc
+	</select>
+	
+	<!-- 전체 상품 검색(최신 날짜 순으로 정렬) -->
+	<select id="selectProductList" resultType="Product">
+		select * from product order by regDate desc
 	</select>
 </mapper>
