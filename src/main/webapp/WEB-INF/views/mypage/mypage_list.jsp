@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>판매중인상품</title>
+<title>거래중인 상품</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 	<div id="__next">
@@ -20,7 +22,7 @@
 							<div class="my_profile_left">
 								<div class="my_profile_info">
 									<div class="my_profile_image">
-										<img src="<%=request.getContextPath()%>/img/site/user.png">
+										<img src="<c:url value="/img/site/user.png"/>">
 									</div>
 									<div class="my_profile_nick">n16587153</div>
 									<div class="my_profile_shop_created">
@@ -30,9 +32,9 @@
 								</div>
 								<div class="my_profile_nav">
 									<ul>
-										<li><a href="<%=request.getContextPath()%>/mypage_main"><span>거래내역</span></a></li>
-										<li><a href="<%=request.getContextPath()%>/mypage_qna"><span>내 Q&A</span></a></li>
-										<li><a href="<%=request.getContextPath()%>/mypage_info_update"><span>회원정보수정</span></a></li>
+										<li><a href="<c:url value="/mypage_list"/>"><span>거래내역</span></a></li>
+										<li><a href="<c:url value="/mypage_qna"/>"><span>내 Q&A</span></a></li>
+										<li><a href="<c:url value="/mypage_info_update"/>"><span>회원정보수정</span></a></li>
 									</ul>
 								</div>
 							</div>
@@ -41,12 +43,12 @@
 								<div class="tab_content">
 									<div class="my_profile_item_menu">
 										<ul>
-											<%-- li의 class를 active로 놓으면 밑줄 --%>
-											<li class="active"><a class="active" href="<%=request.getContextPath()%>/mypage_main">판매 상품</a></li>
-											<li class=""><a class="" href="<%=request.getContextPath()%>/mypage_buy_list">구매 상품</a></li>
-											<li class=""><a class="" id="scrollMain" href="<%=request.getContextPath()%>/mypage_ing_list">거래 중</a></li>
-											<li class=""><a class="" href="<%=request.getContextPath()%>/mypage_end_list">거래 완료</a></li>
-											<li class=""><a class="" href="<%=request.getContextPath()%>/mypage_wish_list">찜 상품</a></li>
+											<%-- a의 class를 active로 놓으면 밑줄 --%>
+											<li ><a href="<c:url value="/mypage_list"/>" id="list1" onclick="activeList1();">판매 상품</a></li>
+											<li ><a href="<c:url value="/mypage_list"/>" id="list2" onclick="activeList2();">구매 상품</a></li>
+											<li ><a href="<c:url value="/mypage_list"/>" id="list3" onclick="activeList3();">거래 중</a></li>
+											<li ><a href="<c:url value="/mypage_list"/>" id="list4" onclick="activeList4();">거래 완료</a></li>
+											<li ><a href="<c:url value="/mypage_list"/>" id="list5" onclick="activeList5();">찜 상품</a></li>
 										</ul>
 									</div>
 									<div class="cat_box">
@@ -68,7 +70,6 @@
 										</div>
 									</div>
 									<div class="tab_content">
-										<p>어쩌구
 										<div class="default_message">
 										</div>
 									</div>
@@ -80,5 +81,29 @@
 			</div>
 		</section>
 	</div>
+
+	<script type="text/javascript">
+	
+	
+	function activeList1() {
+		$("#list1").attr('class','active');
+	};
+	function activeList2() {
+		$("#list2").attr('class','active');
+	};
+// 	function activeList3() {
+// 		$("#list3").attr('class','active');
+// 	};
+	$("#list3").click(function() {		
+		$("#list3").attr('class','active');
+	});
+	function activeList4() {
+		$("#list4").attr('class','active');
+	};
+	function activeList5() {
+		$("#list5").attr('class','active');
+	};
+	
+	</script>
 </body>
 </html>

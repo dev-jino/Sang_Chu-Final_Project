@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <title>상추슈퍼 - 중고거래는 상추슈퍼~!</title>
 <section class="header_top">
 	<div class="header_logo header_logo_s">
@@ -11,8 +12,8 @@
 		<!-- 비로그인시 -->
 		
 		<div class="btn_box">
-			<a class="btn_login_box" href="<%=request.getContextPath()%>/login"><button class="login_btn">로그인</button></a>
-			<a class="btn_signup_box" href="<%=request.getContextPath()%>/join"><button class="signup_btn">회원가입</button></a>
+			<a class="btn_login_box" href="<c:url value="/login"/>"><button class="login_btn">로그인</button></a>
+			<a class="btn_signup_box" href="<c:url value="/join"/>"><button class="signup_btn">회원가입</button></a>
 			<div class="notification_box"><a href="msearch.html"></a></div>
 			
 			
@@ -46,9 +47,9 @@
 		<div>
 			<div class="gnb_my_lyr test_type hide" id="myinfo">
 				<ul class="gnb_my_list">
-					<li class="gnb_my_list_first"><a style="display:block;" href="<%=request.getContextPath()%>/mypage_main">마이 페이지</a></li>
-					<li><a style="display:block;" href="<%=request.getContextPath()%>/mypage_pay">결제관리</a></li>
-					<li><a style="display:block;" href="<%=request.getContextPath()%>/admin_member">관리자 페이지</a></li>
+					<li class="gnb_my_list_first"><a style="display:block;" href="<c:url value="/mypage_list"/>">마이 페이지</a></li>
+					<li><a style="display:block;" href="<c:url value="/mypage_pay"/>">결제관리</a></li>
+					<li><a style="display:block;" href="<c:url value="/admin_member"/>">관리자 페이지</a></li>
 					<li class="gnb_my_list_last">로그아웃</li>
 				</ul>
 			</div>
@@ -101,7 +102,7 @@
 				-->
 			<ul class="header_ul">
 				<li><a href="#">전체상품</a></li>
-				<li><a href="<%=request.getContextPath()%>/product_list">가구·가전</a></li>
+				<li><a href="<c:url value="/product_list"/>">가구·가전</a></li>
 				<li><a href="#">생활·식품</a></li>
 				<li><a href="#">게임·취미</a></li>
 				<li><a href="#">의류·잡화</a></li>
@@ -115,7 +116,7 @@
 		-->
 		</div>
 		<div class="sellimg_sub_box header_wrapper_sub">
-			<div class="selling_bot" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/sale';">
+			<div class="selling_bot" style="cursor: pointer;" onclick="location.href='<c:url value="/sale';"/>">
 				<img src="img/site/camera.png" alt="판매하기 이미지" class="selling_bot_img">
 				<span class="selling_bot_text">
 					판매하기
