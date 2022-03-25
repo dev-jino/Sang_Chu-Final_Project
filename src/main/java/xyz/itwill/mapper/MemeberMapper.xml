@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="xyz.itwill.mapper.MemberMapper">
 	<insert id="insertMember">
-		insert into member values(#{id},#{name},#{nicname},#{password},#{phone},#{account},#{pay_pw},#{coin},#{status})
+		insert into member values(#{id},#{name},#{nicname},#{password},#{phone},#{account},#{payPw},#{coin},#{status})
 	</insert>
 	
 	<update id="updateMember">
@@ -28,11 +28,11 @@
 	</delete>
 	
 	<select id="selectMember" resultType="Member">
-		select*from member where id=#{id}
+		select * from member where id=#{id}
 	</select>
 	
 	<select id="selectMemberList" resultType="Member">
-		select*from member order by id
+		select * from member order by id
 	</select>
 	
 </mapper>

@@ -20,10 +20,10 @@ public class Member {
 	private String password;
 	private String phone;
 	private String account;
-	private String pay_pw;
+	private String payPw;
 	private int coin;
 	private int status;
-	
+
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
@@ -76,12 +76,12 @@ public class Member {
 		this.account = account;
 	}
 
-	public String getPay_pw() {
-		return pay_pw;
+	public String getPayPw() {
+		return payPw;
 	}
 
-	public void setPay_pw(String pay_pw) {
-		this.pay_pw = pay_pw;
+	public void setPayPw(String payPw) {
+		this.payPw = payPw;
 	}
 
 	public int getCoin() {
@@ -101,5 +101,5 @@ public class Member {
 	}
 	
 	
-
 }
+	
