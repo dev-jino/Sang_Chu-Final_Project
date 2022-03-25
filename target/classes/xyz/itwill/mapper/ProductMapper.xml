@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.itwill.mapper.ProductMapper">
+	<insert id="insertProduct">
+		<selectKey resultType="int" keyProperty="num" order="BEFORE">
+			select product_idx.nextval from dual
+		</selectKey>
+		insert into product values(#{num},#{memberId},#{category1},#{category2},#{title},#{price},#{content},#{img},#{img1},#{img2},#{img3},#{img4},#{img5},sysdate,1)
+	</insert>
+	
+	<!-- 사용자의 상품 수정 -->
+	<update id="updateUserProduct">
+		update product set category1=#{category1}, category2=#{category2}, title=#{title}, price=#{price}, content=#{content}, img=#{img}, img1=#{img1}, img2=#{img2}, img3=#{img3}, img4=#{img4}, img5=#{img5} where memberId=#{memberId}
+	</update>
+	
+	<!-- 관리자의 상품 수정(상태변경까지 가능) -->
+	<update id="updateAdminProduct">
+		update product set category1=#{category1}, category2=#{category2}, title=#{title}, price=#{price}, content=#{content}, img=#{img}, img1=#{img1}, img2=#{img2}, img3=#{img3}, img4=#{img4}, img5=#{img5}, status=#{status} where memberId=#{memberId}
+	</update>
+	
+	
+	<!-- 상품 삭제(상품 상태를 9(삭제상품)로 변경) -->
+	<update id="deleteAdminProduct">
+		update product set status=9 where idx=#{idx}
+	</update>
+	
+	<!-- 상품 상태별 검색(최신 날짜 순으로 정렬) -->
+	<select id="selectStatusProduct">
+		select * from product where status=#{status} order by regDate desc
+	</select>
+</mapper>
