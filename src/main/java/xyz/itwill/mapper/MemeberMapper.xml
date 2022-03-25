@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.itwill.mapper.MemberMapper">
+	<insert id="insertMember">
+		insert into member values(#{id},#{name},#{nicname},#{password},#{phone},#{account},#{pay_pw},#{coin},#{status})
+	</insert>
+	
+	<update id="updateMember">
+	update member
+	<set>
+		<if test="password!=null and password!=''">
+			password=#{password},
+		</if>
+		<if test="name!=null and name!=''">
+				name=#{name},
+			</if>
+		
+		
+		<if test="status!=null and status!='0'">
+				status=#{status}
+			</if>	
+	</set>
+	where id=#{id}
+	</update>
+	
+	<delete id="deleteMember">
+		delete from member where id=#{id}
+	</delete>
+	
+	<select id="selectMember" resultType="Member">
+		select*from member where id=#{id}
+	</select>
+	
+	<select id="selectMemberList" resultType="Member">
+		select*from member order by id
+	</select>
+	
+</mapper>
