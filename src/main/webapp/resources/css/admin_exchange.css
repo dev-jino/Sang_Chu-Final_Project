@@ -1,0 +1,38 @@
+.admin_exchange_table {
+	width: 100%;
+	text-align: center;
+}
+
+.admin_exchange_th {
+	border: 1px solid #e8ebed;
+	padding: 5px;
+	background: #eee;
+	border-bottom: 2px solid #00a000;
+	font-weight: bold;
+}
+
+.admin_exchange_td {
+	border: 1px solid #e8ebed;
+	padding: 5px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 14px;
+}
+
+.admin_exchange_tr {
+	background-color: #FFFFFF;
+	color: #555555;
+}
+
+.admin_exchange_td button {
+	border: 1px solid #00a000;
+    background: none;
+    color: #00a000;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.admin_exchange_td button:hover {
+	background: #00a000;
+	color: white;
+}

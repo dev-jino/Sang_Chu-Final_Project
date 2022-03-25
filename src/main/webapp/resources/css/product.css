@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#tool {
+    float: left;
+ 	width: 33.3%;
+   	box-sizing: border-box;
+}          
+
+.main_col_3 {
+	width: 100%;
+	margin: 10px auto;
+}
+
+.main {
+	min-height: 843px;
+}

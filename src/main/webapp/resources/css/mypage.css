@@ -1,0 +1,34 @@
+.item_list_area {
+	min-height: 900px;
+}
+
+#info_update_left_main {
+	margin-left: 0px;
+}
+
+.comunity_content_title_area_policy #comunity_content_title_area_policy_span{
+	margin: 15px;
+    position: absolute;
+    top: 185px;
+}
+
+#info_update_btn {
+	border: 1px solid #00a000;
+	color: #00a000;
+}
+
+#mypage_pay_price span {
+	color: #00a000;
+}
+
+.wallet_withdraw .withdraw_top .sub_btn button {
+	background-color: #00a000;
+}
+
+.wallet_withdraw .withdraw_detail .withdraw_info ul li .info_price {
+	color: #00a000;
+}
+
+.wallet_withdraw .withdraw_footer .withdraw_btn button {
+	background-color: #00a000;
+}

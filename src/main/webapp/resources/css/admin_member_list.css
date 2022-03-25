@@ -1,0 +1,41 @@
+.admin_member_table {
+	width: 100%;
+}
+
+.admin_member_th {
+	border: 1px solid #e8ebed;
+	padding: 5px;
+	background: #eee;
+	border-bottom: 2px solid #00a000;
+	font-weight: bold;
+}
+
+.admin_member_td {
+	border: 1px solid #e8ebed;
+	padding: 5px;
+	text-align: center;
+	font-size: 14px;
+}
+
+.admin_member_tr {
+	background-color: #FFFFFF;
+	color: #555555;
+}
+
+.comunity_content_title_area_policy {
+    height: 60px;
+}
+
+.comunity_content_title_area_policy .comunity_title_img {
+    margin: 15px 0 15px 15px;
+}
+
+.comunity_content_title_area_policy span{
+	margin: 15px;
+    position: absolute;
+    top: 230px;
+}
+
+#page_num {
+	text-align: center;
+}

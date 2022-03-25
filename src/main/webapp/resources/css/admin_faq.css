@@ -1,0 +1,104 @@
+.faq_list_table {
+	width: 100%;
+	border: 1px solid #e8ebed;
+}
+
+.faq_list_th {
+	border: 1px solid #e8ebed;
+	padding: 5px;
+	background: #eee;
+	border-bottom: 2px solid #00a000;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+.faq_list_td {
+	border: 1px solid #e8ebed;
+	padding: 5px;
+	text-align: center;
+	font-size: 14px;
+	vertical-align: middle;
+}
+
+.write_btn_div {
+	float: right;
+}
+
+.write_btn_div button {
+	border: 1px solid #00a000;
+    background: none;
+    color: #00a000;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.write_btn_div button:hover {
+	background: #00a000;
+	color: white;
+}
+
+#page_num {
+	text-align: center;
+}
+
+.item_list_min {
+	min-height: 900px;
+}
+
+.inquiry_table .label {
+    width: 120px;
+}
+
+.inquiry_table .field {
+	height: 80px;
+	width: 595.5px;
+}
+
+.inquiry_table .field input {
+	padding: 8px 9px 8px 9px;
+	width: 93%;
+	margin: 20px 20px 20px 20px;
+}
+
+.inquiry_table .label_content {
+	height: 300px;
+}
+
+.inquiry_table .field_content {
+	height: 300px;
+}
+
+.inquiry_table .field_content textarea {
+	width: 535px;
+	height: 260px;
+	margin: 20px 0px 20px 20px;
+	overflow: scroll;
+	overflow-x: hidden;
+	padding: 10px 13px 10px 13px;
+}
+
+.faq_detail_td, .faq_detail_tr {
+	border: 1px solid #e8ebed;
+	font-size: 14px;
+    vertical-align: middle;
+}
+
+.faq_detail_th {
+	background-color: #f5f6f7;
+}
+
+.faq_detail_table {
+	width: 740px;
+}
+
+.faq_detail_tr {
+	line-height: 50px;
+}
+
+.faq_detail_td {
+	text-align: center;
+}
+
+.table_td_content {
+	padding: 10px 13px 10px 13px;
+}

@@ -1,0 +1,18 @@
+#qatext {
+	height: 150px;
+}
+
+#write_notice {
+	float:right;
+	color: #757575;
+	font-size: 18px;
+}
+
+#numbering2 a {
+	position: relative;
+	top: 10px;
+}
+
+#qnabtn5 {
+	background-color: #00a000;
+}

@@ -1,0 +1,28 @@
+#preview {
+    margin: 0 auto;
+    float: left;
+    position: relative;
+	top: -5.5px;
+    right: 20px;
+}
+
+#preview1 {
+    margin: 0 auto;
+    float: left;
+    position: relative;
+	top: -5.5px;
+    right: 20px;
+}
+
+#preview2 {
+    margin: 0 auto;
+    float: left;
+    position: relative;
+	top: -5.5px;
+    right: 20px;
+}
+
+.admin_notice_table {
+	width: 100%;
+	border: 1px solid #e8ebed;
+}
