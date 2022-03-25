@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.itwill.mapper.CoinMapper">
+
+	<!-- 코인을 현금으로 환전 신청 -->
+	<insert id="insertCoin">
+		<selectKey resultType="int" keyProperty="num" order="BEFORE">
+			select coin_idx.nextval from dual
+		</selectKey>
+		insert into coin values(#{num}, #{memberId}, #{exCoin}, 1)
+	</insert>
+	
+	<update id=""></update>
+	
+	<!-- 해당 회원의 코인량 검색 -->
+	<select id="selectCoin" resultType="Coin">
+		select * from coin where memberId=#{memberId}
+	</select>
+	
+</mapper>
