@@ -32,4 +32,17 @@
 	<select id="selectMemberList" resultType="Member">
 		select * from Member order by id 
 	</select>
+	
+	
+	<!-- 마이페이지 결제비밀번호 수정 -->
+	<update id="mypagePaypwUpdate">
+		update member set pay_pw=#{payPw} where id=#{id}
+	</update>
+	
+	<!-- 마이페이지 다른 계좌로 변경 -->
+	<update id="mypageAddAccount">
+		update member set account=#{account} where id=#{id}
+	</update>
+	
+	
 </mapper>

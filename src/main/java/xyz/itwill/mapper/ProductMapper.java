@@ -10,6 +10,6 @@ public interface ProductMapper {
 	int updateAdminProduct(Product product);
 	int deleteAdminProduct(int idx);
 	Product selectProduct(int idx);
-	List<Product> selectStatusProductList(String status);
+	List<Product> selectStatusProductList(int status);
 	List<Product> selectProductList();
 }

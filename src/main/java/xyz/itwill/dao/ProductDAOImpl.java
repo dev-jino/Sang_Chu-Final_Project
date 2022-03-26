@@ -45,7 +45,7 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@Override
-	public List<Product> selectStatusProductList(String status) {
+	public List<Product> selectStatusProductList(int status) {
 		return sqlSession.getMapper(ProductMapper.class).selectStatusProductList(status);
 	}
 	

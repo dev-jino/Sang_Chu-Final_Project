@@ -21,12 +21,14 @@ public class MypageController {
 		return "mypage/mypage_list";
 	}
 	
-//	@RequestMapping(value = "/mypage_list", method = RequestMethod.GET)
-//	public String sellProductList(@RequestParam String status ,Model model) {
+	@RequestMapping(value = "/mypage_list", method = RequestMethod.GET)
+//	public String sellProductList(@RequestParam int status, Model model) {
+	public String sellProductList(Model model) {
+		model.addAttribute("productList", productService.getProductList());
 //		model.addAttribute("productStatusList", productService.getStatusProductList(status));
-//		
-//		return "mypage/mypage_list";
-//	}
+		
+		return "mypage/mypage_list";
+	}
 	
 	
 	@RequestMapping("/mypage_exchange")

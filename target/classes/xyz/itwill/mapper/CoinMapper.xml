@@ -14,7 +14,7 @@
 	
 	<!-- 해당 회원의 코인량 검색 -->
 	<select id="selectCoin" resultType="Coin">
-		select * from coin where memberId=#{memberId}
+		select * from coin where member_id=#{memberId}
 	</select>
 	
 </mapper>

@@ -44,11 +44,11 @@
 									<div class="my_profile_item_menu">
 										<ul>
 											<%-- a의 class를 active로 놓으면 밑줄 --%>
-											<li value="1"><a href="<c:url value="/mypage_list"/>" id="list1" onclick="activeList1();">판매 상품</a></li>
-											<li value="2"><a href="<c:url value="/mypage_list"/>" id="list2" onclick="activeList2();">구매 상품</a></li>
-											<li value="3"><a href="<c:url value="/mypage_list"/>" id="list3" onclick="activeList3();">거래 중</a></li>
-											<li value="4"><a href="<c:url value="/mypage_list"/>" id="list4" onclick="activeList4();">거래 완료</a></li>
-											<li value="5"><a href="<c:url value="/mypage_list"/>" id="list5" onclick="activeList5();">찜 상품</a></li>
+											<li ><a href="<c:url value="/mypage_list"/>" id="list1" onclick="activeList1();">판매 상품</a></li>
+											<li ><a href="<c:url value="/mypage_list"/>" id="list2" onclick="activeList2();">구매 상품</a></li>
+											<li ><a href="<c:url value="/mypage_list"/>" id="list3" onclick="activeList3();">거래 중</a></li>
+											<li ><a href="<c:url value="/mypage_list"/>" id="list4" onclick="activeList4();">거래 완료</a></li>
+											<li ><a href="<c:url value="/mypage_list"/>" id="list5" onclick="activeList5();">찜 상품</a></li>
 										</ul>
 									</div>
 									<div class="cat_box">
@@ -71,16 +71,9 @@
 									</div>
 									<div class="tab_content">
 									<div>
-<%-- 										<c:forEach var="productStatusList" items="${productStatusList }"> --%>
-										<div class="infinite-scroll-component " style="height:auto;overflow:auto;-webkit-overflow-scrolling:touch">
-											<ul class="mian_row profile_main_row">
-												<li class="main_col_3">
-													<div class="search_icon_box related_item_icon profile_libs_page">
-														<div class="search_icon">
-															<div class="search_circle"></div>
-															<div class="search_rectangle"></div>
-														</div>
-													</div>
+										<c:forEach var="product" items="${productList }">
+											<ul style="position:relative; left:10px; bottom: 250px; list-style: none;">
+												<li class="main_col_3" style="float: left; width: 30%;">
 													<a class="card card_list" href="/item/173551272?viewPath=wish_list&amp;clickPath=member">
 													<div class="card_box">
 														<div class="image_wrapper">
@@ -91,19 +84,20 @@
 															</div>
 														</div>
 														<div class="cont">
-															<div class="item_title related_item_icon">dd</div>
-															<div class="item_price profile_price">dddd</div>
+															<div class="item_title related_item_icon">${product.title }</div>
+															<div class="item_price profile_price">${product.price }</div>
 														</div>
 													</div>
 													</a>
 												</li>
 											</ul>
-										</div>
-<%-- 										</c:forEach> --%>
+										</c:forEach>
 									</div>
 										<div class="default_message">
+										<!-- 페이징 처리 -->
 										</div>
 									</div>
+									<br>
 								</div>
 							</section>
 						</div>
@@ -117,20 +111,25 @@
 	<script type="text/javascript">
 	
 	
-	function activeList1() {
+	function activeList1(status) {
 		$("#list1").attr('class','active');
+// 		location.href='<c:url value="/mypage/mypage_list"/>?status='+stauts;
 	};
 	function activeList2() {
 		$("#list2").attr('class','active');
+// 		location.href='<c:url value="/mypage/mypage_list"/>?status='+stauts;
 	};
 	function activeList3() {
 		$("#list3").attr('class','active');
+// 		location.href='<c:url value="/mypage/mypage_list"/>?status='+stauts;
 	};
 	function activeList4() {
 		$("#list4").attr('class','active');
+// 		location.href='<c:url value="/mypage/mypage_list"/>?status='+stauts;
 	};
 	function activeList5() {
 		$("#list5").attr('class','active');
+// 		location.href='<c:url value="/mypage/mypage_list"/>?status='+stauts;
 	};
 	
 	</script>

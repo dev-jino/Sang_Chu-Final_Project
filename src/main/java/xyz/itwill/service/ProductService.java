@@ -10,6 +10,6 @@ public interface ProductService {
 	void modifyAdminProduct(Product product);
 	void removeAdminProduct(int idx);
 	Product getProduct(int idx);	
-	List<Product> getStatusProductList(String status);
+	List<Product> getStatusProductList(int status);
 	List<Product> getProductList();
 }

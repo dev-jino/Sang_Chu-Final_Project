@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<Product> getStatusProductList(String status) {
+	public List<Product> getStatusProductList(int status) {
 		return productDAO.selectStatusProductList(status);
 	}
 
