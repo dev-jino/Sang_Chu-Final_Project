@@ -34,7 +34,7 @@ function userCreate() {
 <div class="auth_form_box">
 
 
-<form name="f" action="join" method="get">
+<form name="f" action="join" method="post">
 <div class="email_title">아이디</div>
 <div class="email_area"><input type="text" value="${member.id}" class="email_sign" placeholder="아이디 입력" name="id"/></div>
 <div class="email_title">이름</div>

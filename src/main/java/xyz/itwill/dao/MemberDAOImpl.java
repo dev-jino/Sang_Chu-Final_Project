@@ -17,27 +17,24 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public int insertMember(Member member) {
 		return sqlSession.getMapper(MemberMapper.class).insertMember(member);
+
 	}
 
 	@Override
 	public int updateMember(Member member) {
 		return sqlSession.getMapper(MemberMapper.class).updateMember(member);
+
 	}
 
 	@Override
 	public int deleteMember(String id) {
 		return sqlSession.getMapper(MemberMapper.class).deleteMember(id);
+
 	}
 
-	@Override
-	public Member selectMember(String id) {
-		return sqlSession.getMapper(MemberMapper.class).selectMember(id);
-	}
-	
 	@Override
 	public List<Member> selectMemberList() {
 		return sqlSession.getMapper(MemberMapper.class).selectMemberList();
-	}
 
-	
+	}
 }

@@ -6,32 +6,30 @@
 	</insert>
 	
 	<update id="updateMember">
-	update member
-	<set>
-		<if test="password!=null and password!=''">
-			password=#{password},
-		</if>
-		<if test="name!=null and name!=''">
+		update member 
+		<set>
+			<if test="password!=null and password!=''">
+				password=#{password},
+			</if>
+			<if test="name!=null and name!=''">
 				name=#{name},
 			</if>
-		
-		<if test="status!=null and status!='0'">
+			<if test="status!=null and status!='0'">
 				status=#{status}
-			</if>	
-	</set>
-	where id=#{id}
+			</if>
+		</set> 
+		where id=#{id}
 	</update>
 	
 	<delete id="deleteMember">
-		delete from member where id=#{id}
+		delete from Member where id=#{id}
 	</delete>
 	
 	<select id="selectMember" resultType="Member">
-		select * from member where id=#{id}
+		select * from Member where id=#{id}
 	</select>
 	
 	<select id="selectMemberList" resultType="Member">
-		select * from member order by id
+		select * from Member order by id 
 	</select>
-	
 </mapper>

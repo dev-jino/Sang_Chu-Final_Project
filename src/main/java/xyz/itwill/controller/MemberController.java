@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import xyz.itwill.dto.Member;
-import xyz.itwill.service.MemberSerivce;
+import xyz.itwill.service.MemberService;
 
 @Controller
 public class MemberController {
 	@Autowired
-	private MemberSerivce memberSerivce;
+	private MemberService memberSerivce;
 	
 	@RequestMapping("/login")
 	public String Login() {

@@ -13,7 +13,7 @@ import xyz.itwill.exception.UserinfoExistsException;
 import xyz.itwill.exception.UserinfoNotFoundException;
 
 @Service
-public class MemberSerivceImpl implements MemberSerivce {
+public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
