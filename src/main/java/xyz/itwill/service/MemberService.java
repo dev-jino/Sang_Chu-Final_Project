@@ -13,4 +13,6 @@ public interface MemberService {
 	void removeMember(String id);
 	Member getMember(String id);
 	List<Member> getMemberList();
+	void modifyPayPw(Member member);
+	void modifyAddAccount(Member member);
 }

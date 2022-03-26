@@ -45,4 +45,18 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.selectMemberList();
 	}
 
+	@Override
+	public void modifyPayPw(Member member) {
+		return memberDAO.mypagePaypwUpdate(member);
+		
+	}
+
+	@Override
+	public void modifyAddAccount(Member member) {
+		return memberDAO.mypageAddAccount(member);
+		
+	}
+	
+	
+
 }

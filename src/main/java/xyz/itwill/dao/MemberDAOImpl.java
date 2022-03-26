@@ -37,4 +37,14 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.getMapper(MemberMapper.class).selectMemberList();
 
 	}
+
+	@Override
+	public int mypagePaypwUpdate(Member member) {
+		return sqlSession.getMapper(MemberMapper.class).mypagePaypwUpdate(member);
+	}
+
+	@Override
+	public int mypageAddAccount(Member member) {
+		return sqlSession.getMapper(MemberMapper.class).mypageAddAccount(member);
+	}
 }
