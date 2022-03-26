@@ -1,5 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<style type="text/css">
+#imgimg1{
+	z-index:0;
+}
+#imgimg2{
+	z-index:1;
+}
+#imgimg3{
+	z-index:2;
+}
+#imgimg4{
+	z-index:3;
+}
+#imgimg5{
+	z-index:4;
+}
+
+</style>
+
 
 <main class="content">
 	<div class="item_list_area">
@@ -27,23 +46,45 @@
 														<div class="badeagle">
 															<div class="centered">
 																<img alt="영월 산약초 농장 매매 합니다의 상세 이미지 1"
-																	class="view thumbnail_img"
+																	class="view thumbnail_img" id = "imgimg1"
 																	src="<%=request.getContextPath()%>/img/o7.jpg"
-																	data-src="https://ccimg.hellomarket.com/images/2017/item/s9/06/22/21/4715_68018675_1.jpg?size=s6" />
+																	data-src="https://ccimg.hellomarket.com/images/2017/item/s9/06/22/21/4715_68018675_1.jpg?size=s6" 
+																	/>
+																<img alt="영월 산약초 농장 매매 합니다의 상세 이미지 1"
+																	class="view thumbnail_img" id = "imgimg2"
+																	src="<%=request.getContextPath()%>/img/o8.jpg"
+																	data-src="https://ccimg.hellomarket.com/images/2017/item/s9/06/22/21/4715_68018675_1.jpg?size=s6" 
+																	/>
+																<img alt="영월 산약초 농장 매매 합니다의 상세 이미지 1"
+																	class="view thumbnail_img" id = "imgimg3"
+																	src="<%=request.getContextPath()%>/img/o7.jpg"
+																	data-src="https://ccimg.hellomarket.com/images/2017/item/s9/06/22/21/4715_68018675_1.jpg?size=s6" 
+																	/>
+																<img alt="영월 산약초 농장 매매 합니다의 상세 이미지 1"
+																	class="view thumbnail_img" id = "imgimg4"
+																	src="<%=request.getContextPath()%>/img/o8.jpg"
+																	data-src="https://ccimg.hellomarket.com/images/2017/item/s9/06/22/21/4715_68018675_1.jpg?size=s6" 
+																	/>
+																<img alt="영월 산약초 농장 매매 합니다의 상세 이미지 1"
+																	class="view thumbnail_img"id = "imgimg5"
+																	src="<%=request.getContextPath()%>/img/o8.jpg"
+																	data-src="https://ccimg.hellomarket.com/images/2017/item/s9/06/22/21/4715_68018675_1.jpg?size=s6" 
+																	/>
+																
 															</div>
 														</div>
 													</div>	
 												</div>
 												<div
 													class="swiper-pagination swiper-pagination-white auto_item_image_pagination"></div>
-												<div class="swiper-button-next auto_swiper_next">
-													<svg xmlns="https://www.w3.org/2000/svg"
+												<div class="swiper-button-next auto_swiper_next" id = "next1">
+													<svg xmlns="https://www.w3.org/2000/svg" id = "next1"
 														viewBox="0 0 27 44">
 														<path
-															d="M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z"></path></svg>
+															d="M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z" ></path></svg>
 												</div>
-												<div class="swiper-button-prev auto_swiper_prev">
-													<svg xmlns="https://www.w3.org/2000/svg"
+												<div class="swiper-button-prev auto_swiper_prev" id ="prev1">
+													<svg xmlns="https://www.w3.org/2000/svg" id = "prev1"
 														viewBox="0 0 27 44">
 														<path
 															d="M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z"></path></svg>
@@ -232,4 +273,90 @@ document.getElementById('wish_img_box').onclick = function() {
 	
 	
 }
+
+
+
+/* const style1 = document.getElementById('img1'); //.style;
+const style2 = document.getElementById('img2').style;
+const style3 = document.getElementById('img3').style;
+const style4 = document.getElementById('img4').style;
+const style5 = document.getElementById('img5').style; */
+document.getElementById('imgimg1').style.zIndex = 0;
+document.getElementById('imgimg2').style.zIndex = 1;
+document.getElementById('imgimg3').style.zIndex = 2;
+document.getElementById('imgimg4').style.zIndex = 3;
+document.getElementById('imgimg5').style.zIndex = 4;
+var style1 = document.getElementById('imgimg1').style.zIndex;
+var style2 = document.getElementById('imgimg2').style.zIndex;
+var style3 = document.getElementById('imgimg3').style.zIndex;
+var style4 = document.getElementById('imgimg4').style.zIndex;
+var style5 = document.getElementById('imgimg5').style.zIndex;
+
+//alert(style1);
+document.getElementById('next1').onclick = function(){
+	
+	style1++;
+	style2++;
+	style3++;
+	style4++;
+	style5++;
+	//alert(style1)
+	
+	if(style1>4){
+		style1 = 0;
+	}else if(style2>4){
+		style2 = 0;
+	}else if(style3>4){
+		style3 = 0;
+	}else if(style4>4){
+		style4 = 0;
+	}else if(style5>4){
+		style5 = 0;
+	}
+	//alert(style5);
+	
+	document.getElementById('imgimg1').style.zIndex = style1;
+	document.getElementById('imgimg2').style.zIndex = style2;
+	document.getElementById('imgimg3').style.zIndex = style3;
+	document.getElementById('imgimg4').style.zIndex = style4;
+	document.getElementById('imgimg5').style.zIndex = style5;
+}
+document.getElementById('prev1').onclick = function(){
+	
+	style1--;
+	style2--;
+	style3--;
+	style4--;
+	style5--;
+	//alert(style1)
+	
+	if(style1<0){
+		style1 = 4;
+	}else if(style2<0){
+		style2 = 4;
+	}else if(style3<0){
+		style3 = 4;
+	}else if(style4<0){
+		style4 = 4;
+	}else if(style5<0){
+		style5 = 4;
+	}
+	//alert(style5);
+	
+	document.getElementById('imgimg1').style.zIndex = style1;
+	document.getElementById('imgimg2').style.zIndex = style2;
+	document.getElementById('imgimg3').style.zIndex = style3;
+	document.getElementById('imgimg4').style.zIndex = style4;
+	document.getElementById('imgimg5').style.zIndex = style5;
+}
+//document.getElementById('imgimg1').style.zIndex = 5;
+//style1.style.
+//console.log(style1);
+//console.log(window.getElementById(img1).zindex);
+
+	
+
+
+
+
 </script>
