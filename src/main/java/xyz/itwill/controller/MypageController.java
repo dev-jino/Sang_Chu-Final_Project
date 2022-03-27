@@ -72,7 +72,7 @@ public class MypageController {
 	@RequestMapping("/mypage_pay")
 	public String mypagePay(@RequestParam String id,Model model) {
 		model.addAttribute("member", memberSerivce.getMember(id));
-		
+		System.out.println("id : "+id);
 		return "mypage/mypage_pay";
 	}
 	
