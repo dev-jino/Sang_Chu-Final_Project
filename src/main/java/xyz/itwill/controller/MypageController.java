@@ -23,16 +23,16 @@ public class MypageController {
 	private MemberService memberSerivce;
 	
 	//GET방식이나 POST방식에 상관없이 mypage_list를 요청하면 실행되는 메소드
-	@RequestMapping("/mypage_list")
-	public String mypageList() {
-		return "mypage/mypage_list";
-	}
+//	@RequestMapping("/mypage_list")
+//	public String mypageList() {
+//		return "mypage/mypage_list";
+//	}
 	
 	@RequestMapping(value = "/mypage_list", method = RequestMethod.GET)
-//	public String sellProductList(@RequestParam int status, Model model) {
-	public String mypageList(Model model) {
-		model.addAttribute("productList", productService.getProductList());
-//		model.addAttribute("productStatusList", productService.getStatusProductList(status));
+	public String sellProductList(@RequestParam(defaultValue = "1") int status, Model model) {
+//	public String mypageList(Model model) {
+//		model.addAttribute("productList", productService.getProductList());
+		model.addAttribute("productStatusList", productService.getStatusProductList(status));
 		
 		return "mypage/mypage_list";
 	}
@@ -72,7 +72,6 @@ public class MypageController {
 	@RequestMapping("/mypage_pay")
 	public String mypagePay(@RequestParam String id,Model model) {
 		model.addAttribute("member", memberSerivce.getMember(id));
-		System.out.println("id : "+id);
 		return "mypage/mypage_pay";
 	}
 	

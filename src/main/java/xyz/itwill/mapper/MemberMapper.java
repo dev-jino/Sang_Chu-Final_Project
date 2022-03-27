@@ -8,6 +8,7 @@ public interface MemberMapper {
 	int insertMember(Member member);
 	int updateMember(Member member);
 	int deleteMember(String id);
+	Member selectMember(String id);
 	List<Member> selectMemberList();
 	int mypagePaypwUpdate(Member member);
 	int mypageAddAccount(Member member);

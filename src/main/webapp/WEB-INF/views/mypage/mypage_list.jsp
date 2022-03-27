@@ -44,11 +44,11 @@
 									<div class="my_profile_item_menu">
 										<ul>
 											<%-- a의 class를 active로 놓으면 밑줄 --%>
-											<li ><a href="<c:url value="/mypage_list"/>" id="list1" onclick="activeList1();">판매 상품</a></li>
-											<li ><a href="<c:url value="/mypage_list"/>" id="list2" onclick="activeList2();">구매 상품</a></li>
-											<li ><a href="<c:url value="/mypage_list"/>" id="list3" onclick="activeList3();">거래 중</a></li>
-											<li ><a href="<c:url value="/mypage_list"/>" id="list4" onclick="activeList4();">거래 완료</a></li>
-											<li ><a href="<c:url value="/mypage_list"/>" id="list5" onclick="activeList5();">찜 상품</a></li>
+											<li ><a id="list1" onclick="activeList1(1);">판매 상품</a></li>
+											<li ><a id="list2" onclick="activeList2(2);">구매 상품</a></li>
+											<li ><a id="list3" onclick="activeList3(3);">거래 중</a></li>
+											<li ><a id="list4" onclick="activeList4(4);">거래 완료</a></li>
+											<li ><a id="list5" onclick="activeList5(5);">찜 상품</a></li>
 										</ul>
 									</div>
 									<div class="cat_box">
@@ -71,7 +71,8 @@
 									</div>
 									<div class="tab_content">
 									<div>
-										<c:forEach var="product" items="${productList }">
+<%-- 										<c:forEach var="product" items="${productList }"> --%>
+										<c:forEach var="product" items="${productStatusList }">
 											<ul style="position:relative; left:10px; bottom: 250px; list-style: none;">
 												<li class="main_col_3" style="float: left; width: 30%;">
 													<a class="card card_list" href="/item/173551272?viewPath=wish_list&amp;clickPath=member">
@@ -113,23 +114,23 @@
 	
 	function activeList1(status) {
 		$("#list1").attr('class','active');
-// 		location.href='<c:url value="/mypage/mypage_list"/>?status='+stauts;
+		location.href='<c:url value="/mypage_list?status='+status+'"/>';
 	};
-	function activeList2() {
+	function activeList2(status) {
 		$("#list2").attr('class','active');
-// 		location.href='<c:url value="/mypage/mypage_list"/>?status='+stauts;
+		location.href='<c:url value="/mypage_list?status='+status+'"/>';
 	};
-	function activeList3() {
+	function activeList3(status) {
 		$("#list3").attr('class','active');
-// 		location.href='<c:url value="/mypage/mypage_list"/>?status='+stauts;
+		location.href='<c:url value="/mypage_list?status='+status+'"/>';
 	};
-	function activeList4() {
+	function activeList4(status) {
 		$("#list4").attr('class','active');
-// 		location.href='<c:url value="/mypage/mypage_list"/>?status='+stauts;
+		location.href='<c:url value="/mypage_list?status='+status+'"/>';
 	};
-	function activeList5() {
+	function activeList5(status) {
 		$("#list5").attr('class','active');
-// 		location.href='<c:url value="/mypage/mypage_list"/>?status='+stauts;
+		location.href='<c:url value="/mypage_list?status='+status+'"/>';
 	};
 	
 	</script>

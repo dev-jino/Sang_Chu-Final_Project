@@ -36,8 +36,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member getMember(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return memberDAO.selectMember(id);
 	}
 
 	@Override
