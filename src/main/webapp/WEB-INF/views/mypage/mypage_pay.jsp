@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,7 @@
 												<div class="wallet_total">
 													<div class="title">보유 상추</div>
 													<div class="price" id="mypage_pay_price">
-														<span>0<!-- -->원
+														<span>${member.coin }
 														</span>
 													</div>
 												</div>

@@ -50,9 +50,11 @@ public class MypageController {
 	
 	
 	
-	@RequestMapping(value = "/mypage_pay_password", method = RequestMethod.GET)
-	public String mypagePayPassword(@RequestParam String id, Model model) {
-		model.addAttribute("memberid", memberSerivce.getMember(id));
+//	@RequestMapping(value = "/mypage_pay_password", method = RequestMethod.GET)
+	@RequestMapping("/mypage_pay_password")
+//	public String mypagePayPassword(@RequestParam String id, Model model) {
+	public String mypagePayPassword() {
+//		model.addAttribute("id", memberSerivce.getMember(id));
 		return "mypage/mypage_pay_password";
 	}
 	
@@ -62,13 +64,15 @@ public class MypageController {
 		
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		
-		return "redirect:/mypage/mypage_pay_password";
+		return "redirect:/mypage_pay_password";
 	}
 	
 	
 	
 	@RequestMapping("/mypage_pay")
-	public String mypagePay() {
+	public String mypagePay(@RequestParam String id,Model model) {
+		model.addAttribute("member", memberSerivce.getMember(id));
+		
 		return "mypage/mypage_pay";
 	}
 	
