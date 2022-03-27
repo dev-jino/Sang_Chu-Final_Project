@@ -47,13 +47,13 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void modifyPayPw(Member member) {
-		return memberDAO.mypagePaypwUpdate(member);
+		memberDAO.mypagePaypwUpdate(member);
 		
 	}
 
 	@Override
 	public void modifyAddAccount(Member member) {
-		return memberDAO.mypageAddAccount(member);
+		memberDAO.mypageAddAccount(member);
 		
 	}
 	
