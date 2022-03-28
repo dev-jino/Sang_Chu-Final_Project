@@ -1,10 +1,13 @@
 package xyz.itwill.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import xyz.itwill.dao.CoinDAO;
 import xyz.itwill.dto.Coin;
+import xyz.itwill.dto.CoinMemberJoin;
 
 @Service
 public class CoinServiceImpl implements CoinService {
@@ -21,5 +24,8 @@ public class CoinServiceImpl implements CoinService {
 		return coinDAO.selectCoin(id);
 	}
 	
-	
+	@Override
+	public List<CoinMemberJoin> getCoinList() {
+		return coinDAO.selectCoinList();
+	}
 }

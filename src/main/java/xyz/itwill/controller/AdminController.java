@@ -49,9 +49,4 @@ public class AdminController {
 	public String AdminQnaAnswer() {
 		return "admin/qna/admin_qna_answer";
 	}
-	
-	@RequestMapping("/admin_exchange")
-	public String AdminExchange() {
-		return "admin/exchange/admin_exchange_list";
-	}
 }

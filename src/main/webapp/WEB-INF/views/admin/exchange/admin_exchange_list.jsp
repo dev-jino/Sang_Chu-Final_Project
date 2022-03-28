@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="__next">
 	<section class="content">
 		<h1>상추슈퍼 - 중고거래는 상추슈퍼~!</h1>
@@ -39,11 +40,12 @@
 											<!-- <caption>출금신청 목록</caption> -->
 											<colgroup>
 												<col style="width: 5%;"/>
-												<col style="width: 15%;"/>
-												<col style="width: 15%;"/>
-												<col style="width: 25%;"/>
-												<col style="width: 15%;"/>
 												<col style="width: 13%;"/>
+												<col style="width: 13%;"/>
+												<col style="width: 20%;"/>
+												<col style="width: 13%;"/>
+												<col style="width: 12%;"/>
+												<col style="width: 12%;"/>
 												<col style="width: 12%;"/>
 											</colgroup>
 											<thead>
@@ -54,51 +56,53 @@
 													<th class="admin_exchange_th" scope="col">Account</th>
 													<th class="admin_exchange_th" scope="col">Amount</th>
 													<th class="admin_exchange_th" scope="col">Status</th>
-													<th class="admin_exchange_th" scope="col">Confirm</th>
+													<th class="admin_exchange_th" scope="col" colspan="2">Confirm</th>
 												</tr>
 											</thead>
 											<tbody>
-												<!--
-												<tr>
-													<td colspan="7">검색된 출금신청 내역이 없습니다.</td>
-												</tr>
-												-->
-												<tr class="admin_exchange_tr">	
-													<!-- 번호 -->
-													<td class="admin_exchange_td">1111</td>
-													<!-- 회원 아이디-->
-													<td class="admin_exchange_td">test</td>
-													<!--회원 이름-->
-													<td class="admin_exchange_td">홍길동</td>
-													<!--회원 계좌-->
-													<td class="admin_exchange_td">000000-00-000000</td>
-													<!--출금 금액-->
-													<td class="admin_exchange_td">200000</td>
-													<!--출금 상태-->
-													<td class="admin_exchange_td">출금대기</td>
-													<!--승인 버튼-->
-													<td class="admin_exchange_td">
-														<button type="button">출금승인</button>
-													</td>
-												</tr>
-												<tr class="admin_exchange_tr">	
-													<!-- 번호 -->
-													<td class="admin_exchange_td">1111</td>
-													<!-- 회원 아이디-->
-													<td class="admin_exchange_td">test</td>
-													<!--회원 이름-->
-													<td class="admin_exchange_td">홍길동</td>
-													<!--회원 계좌-->
-													<td class="admin_exchange_td">0000-000-000000</td>
-													<!--출금 금액-->
-													<td class="admin_exchange_td">1000000</td>
-													<!--출금 상태-->
-													<td class="admin_exchange_td">출금완료</td>
-													<!--승인 버튼-->
-													<td class="admin_exchange_td">
-														<button type="button">출금승인</button>
-													</td>
-												</tr>
+												<c:choose>
+													<c:when test="${empty(CoinMemberJoinList) }">
+														<tr>
+															<td class="admin_exchange_td" colspan="7" align="center">검색된 출금신청 내역이 없습니다.</td>
+														</tr>
+													</c:when>
+													<c:otherwise>
+														<c:forEach var="coinMemberJoin" items="${CoinMemberJoinList }">
+														<tr class="admin_exchange_tr">
+															<!-- 번호 -->
+															<td class="admin_exchange_td">${coinMemberJoin.coin.idx }</td>
+															<!-- 회원 아이디 -->
+															<td class="admin_exchange_td">${coinMemberJoin.member.id }</td>
+															<!-- 회원 이름 -->
+															<td class="admin_exchange_td">${coinMemberJoin.member.name }</td>
+															<!-- 회원 계좌 -->
+															<td class="admin_exchange_td">${coinMemberJoin.member.account }</td>
+															<!-- 출금 금액 -->
+															<td class="admin_exchange_td">${coinMemberJoin.coin.exCoin }</td>
+															<!-- 출금 상태 -->
+															<td class="admin_exchange_td">
+																<c:if test="${coinMemberJoin.coin.status == 1 }">
+																	출금대기
+																</c:if>
+																<c:if test="${coinMemberJoin.coin.status == 2 }">
+																	출금완료
+																</c:if>
+																<c:if test="${coinMemberJoin.coin.status == 9 }">
+																	출금취소
+																</c:if>
+															</td>
+															<!-- 승인 버튼 -->
+															<td class="admin_exchange_td">
+																<button type="button">출금승인</button>
+															</td>
+															<!-- 취소 버튼 -->
+															<td class="admin_exchange_td">
+																<button type="button">출금취소</button>
+															</td>
+														</tr>
+														</c:forEach>
+													</c:otherwise>
+												</c:choose>
 											</tbody>
 										</table>
 									</div>

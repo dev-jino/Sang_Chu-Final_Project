@@ -18,4 +18,20 @@
 		select * from coin where member_id=#{memberId}
 	</select>
 	
+	<resultMap type="CoinMemberJoin" id="CoinMemberJoinResultMap">
+		<association property="coin" javaType="Coin">
+			<id column="idx" property="idx"/>
+			<result column="ex_coin" property="exCoin"/>
+			<result column="status" property="status"/>
+		</association>
+		<association property="member" javaType="Member">
+			<id column="id" property="id"/>
+			<result column="name" property="name"/>
+			<result column="account" property="account"/>
+		</association>
+	</resultMap>
+		
+	<select id="selectCoinList" resultMap="CoinMemberJoinResultMap">
+		select coin.idx idx, member.id id, member.name name, member.account account, coin.ex_coin ex_coin, coin.status status from coin inner join member on coin.member_id = member.id
+	</select>
 </mapper>
