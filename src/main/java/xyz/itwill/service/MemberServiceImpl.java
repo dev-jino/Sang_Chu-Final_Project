@@ -89,5 +89,10 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.mypageAddAccount(member);
 		
 	}
+
+	@Override
+	public void modifyExchangeCoin(Member member) {
+		memberDAO.exchangeCoin(member);
+	}
 	
 }

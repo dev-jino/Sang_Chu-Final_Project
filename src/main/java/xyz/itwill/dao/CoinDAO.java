@@ -1,5 +1,8 @@
 package xyz.itwill.dao;
 
-public interface CoinDAO {
+import xyz.itwill.dto.Coin;
 
+public interface CoinDAO {
+	int insertCoin(Coin coin);
+	Coin selectCoin(String id);
 }

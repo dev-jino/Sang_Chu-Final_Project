@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보수정</title>
+<style type="text/css">
+#info_update_btn{
+	background-color: green;
+	color: white;
+	border-radius: 5px;
+	width: 80px;
+	height: 30px;}
+</style>
 </head>
 <body>
 	<div id="__next">
@@ -43,20 +51,19 @@
 
 								<div class="profile_edit_wrapper">
 									<div class="profile_edit_main">
+									<form method="post">
 										<ul>
 											<li>
 												<div>닉네임</div>
 												<div>
-													<input type="text" value="${member.nicname }" class="input_box" style="outline: none;" />
-												</div>
-												<div>
-													<button type="button" id="info_update_btn">변경</button>
+													<input type="text" name="nicname" value="${member.nicname }" class="input_box"  />
 												</div>
 											</li>
 											<li>
 												<div>아이디</div>
 												<div>
 													<div class="profile_userId_value">${member.id }</div>
+													<input type="hidden" name="id" value="${member.id }">
 												</div>
 											</li>
 											<li>
@@ -69,33 +76,40 @@
 												<div>휴대폰</div>
 												<div>
 													<div>
-														<input type="text" value="${member.phone }" class="input_box" style="outline: none;" />
+														<input type="text" name="phone" value="${member.phone }" class="input_box" />
 													</div>
 												</div>
+
+											</li>
+											<li>
+												<div>계좌번호</div>
 												<div>
-													<button class="" type="button" id="info_update_btn">변경</button>
+													<div>
+														<input type="text" name="account" value="${member.account }" class="input_box" />
+													</div>
 												</div>
 											</li>
 											<li class="profile_password_area profile_password_area_first">
 												<div>비밀번호</div>
 												<div>
 													<div>
-														<input type="password" value="${member.password }" class="input_box" style="outline: none;" />
+														<input type="password" value="${member.password }" class="input_box" />
 													</div>
-												</div>
-												<div>
-													<button class="" type="button" id="info_update_btn">변경</button>
 												</div>
 											</li>
 										</ul>
 										<br>
 										<br>
 										<div class="profile_edit_bye">
-											<span><a
-												href="<c:url value="/delete_member"/>" onclick="deleteCheck()">회원탈퇴</a>></span>
+											<button class="" type="submit" id="info_update_btn" onclick="updateCheck()">변경</button>
 										</div>
+										<br><br><br><br>
 										<br>
 										<br>
+									</form>
+										<div class="profile_edit_bye">
+											<span><a href="<c:url value="/delete_member"/>" onclick="deleteCheck()">회원탈퇴</a>></span>
+										</div>
 									</div>
 								</div>
 							</section>
@@ -105,10 +119,14 @@
 			</div>
 		</section>
 	</div>
-	
 <script type="text/javascript">
 function deleteCheck() {
 	alert("정말로 상추슈퍼에서 탈퇴하시겠습니까?");
+}
+
+
+function updateCheck() {
+	alert("성공적으로 변경되었습니다.");
 }
 </script>
 </body>

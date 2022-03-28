@@ -1,5 +1,8 @@
 package xyz.itwill.mapper;
 
-public interface CoinMapper {
+import xyz.itwill.dto.Coin;
 
+public interface CoinMapper {
+	int insertCoin(Coin coin);
+	Coin selectCoin(String id);
 }

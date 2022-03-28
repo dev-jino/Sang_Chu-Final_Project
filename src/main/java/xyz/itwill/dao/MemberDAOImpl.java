@@ -52,4 +52,9 @@ public class MemberDAOImpl implements MemberDAO{
 	public Member selectMember(String id) {
 		return sqlSession.getMapper(MemberMapper.class).selectMember(id);
 	}
+
+	@Override
+	public int exchangeCoin(Member member) {
+		return sqlSession.getMapper(MemberMapper.class).exchangeCoin(member);
+	}
 }

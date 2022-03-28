@@ -30,7 +30,7 @@
 					</div>
 					<div class="btn_box">
 						<div class="nick">
-							<span class="nick_title">n16587153님</span>
+							<span class="nick_title">${nicname }</span>
 						</div>
 						<div class="notification_box">
 							<a href="https://account.hellomarket.com/messages"

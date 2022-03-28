@@ -24,7 +24,7 @@
 									<div class="my_profile_image">
 										<img src="<c:url value="/img/site/user.png"/>">
 									</div>
-									<div class="my_profile_nick">n16587153</div>
+									<div class="my_profile_nick">${nicname }</div>
 									<div class="my_profile_shop_created">
 									</div>
 									<div class="my_profile_pro_review">

@@ -36,13 +36,11 @@
 									<ul class="left_nav_menu">
 									<c:url value=""/>
 										<li><a id="scrollMain"
-											href="<c:url value="/mypage_pay"/>"><span>전자지갑
-													내역</span></a></li>
+											href="<c:url value="/mypage_pay"/>"><span>전자지갑 내역</span></a></li>
 										<li><a
-											href="<c:url value="/mypage_exchange"/>"><span>현금인출신청</span></a></li>
+											href="<c:url value="/mypage_exchange"/>"><span>상추 환전</span></a></li>
 										<li><a class="active"
-											href="<c:url value="/mypage_pay_password"/>"><span>결제
-													비밀번호 변경</span></a></li>
+											href="<c:url value="/mypage_pay_password"/>"><span>결제 비밀번호 변경</span></a></li>
 									</ul>
 								</div>
 							</div>
@@ -92,13 +90,13 @@
 	</div>
 	
 	<script type="text/javascript">
-	function submitCheck() {
-		if(payPwForm.payPw.value!=payPwForm.payPwCheck.value) {
-			alert("비밀번호가 맞는지 다시 한번 확인해주세요.");
-			payPwForm.payPw.focus();
-			return;
-		}
-	}
+// 	function submitCheck() {
+// 		if() {
+// 			alert("비밀번호가 맞는지 다시 한번 확인해주세요.");
+// 			payPwForm.payPw.focus();
+// 			return;
+// 		}
+// 	}
 	
 		
 	</script>

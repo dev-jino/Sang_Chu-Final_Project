@@ -12,4 +12,5 @@ public interface MemberMapper {
 	List<Member> selectMemberList();
 	int mypagePaypwUpdate(Member member);
 	int mypageAddAccount(Member member);
+	int exchangeCoin(Member member);
 }

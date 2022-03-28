@@ -17,4 +17,5 @@ public interface MemberService {
 	
 	void modifyPayPw(Member member);
 	void modifyAddAccount(Member member);
+	void modifyExchangeCoin(Member member);
 }
