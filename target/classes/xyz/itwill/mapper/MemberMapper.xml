@@ -14,7 +14,7 @@
 			<if test="name!=null and name!=''">
 				name=#{name},
 			</if>
-			<if test="status!=null and status!='0'">
+			<if test="status!=null">
 				status=#{status}
 			</if>
 		</set> 
@@ -32,15 +32,14 @@
 	<select id="selectMemberList" resultType="Member">
 		select * from Member order by id 
 	</select>
-	
 	<!-- 아이디 찾기 -->
 	<select id="findId" resultType="Member">
-		select * from Member where name=#{name} and phone=#{phone}
+		select * from Member where name=#{name} and phone=#{phone} and (status = 1 or status = 9)
 	</select>
 	
 	<!-- 비밀번호 찾기 -->
 	<select id="findPassword" resultType="Member">
-		select * from Member where id=#{id} and name=#{name} and phone=#{phone}
+		select * from Member where id=#{id} and name=#{name} and phone=#{phone} and (status = 1 or status = 9)
 	</select>
 	
 	
@@ -53,6 +52,5 @@
 	<update id="mypageAddAccount">
 		update member set account=#{account} where id=#{id}
 	</update>
-	
 	
 </mapper>
