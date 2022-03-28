@@ -11,6 +11,8 @@
 		</div>
 		<!-- 비로그인시 -->
 		
+			
+		
 		<div class="btn_box">
 			<a class="btn_login_box" href="<c:url value="/login"/>"><button class="login_btn">로그인</button></a>
 			<a class="btn_signup_box" href="<c:url value="/join"/>"><button class="signup_btn">회원가입</button></a>
@@ -19,8 +21,11 @@
 			
 			<div class="nick" id="nick">
 				<img src="img/site/user.png" width="36" height="36" alt="n16587153의 프로필 사진" class="profile_img">
-				<span class="nick_title">test님</span>
+			
+				<span class="nick_title">${loginMember.nicname}님</span>
 			</div>
+			
+			
 			
 			
 		</div>

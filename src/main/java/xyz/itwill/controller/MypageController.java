@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import xyz.itwill.dto.Member;
+import xyz.itwill.exception.UserinfoNotFoundException;
 import xyz.itwill.service.MemberService;
 import xyz.itwill.service.ProductService;
 
@@ -70,7 +71,7 @@ public class MypageController {
 	
 	
 	@RequestMapping("/mypage_pay")
-	public String mypagePay(@RequestParam String id,Model model) {
+	public String mypagePay(@RequestParam String id,Model model) throws UserinfoNotFoundException {
 		model.addAttribute("member", memberSerivce.getMember(id));
 		return "mypage/mypage_pay";
 	}

@@ -8,11 +8,13 @@ import xyz.itwill.exception.UserinfoExistsException;
 import xyz.itwill.exception.UserinfoNotFoundException;
 
 public interface MemberService {
-	void addMember(Member member);
-	void modifyMember(Member member);
-	void removeMember(String id);
-	Member getMember(String id);
+	void addMember(Member member) throws UserinfoExistsException;
+	void modifyMember(Member member) throws UserinfoNotFoundException;
+	void removeMember(String id) throws UserinfoNotFoundException;
+	Member getMember(String id) throws UserinfoNotFoundException;
 	List<Member> getMemberList();
+	void loginAuth(Member member) throws LoginAuthFailException;
+	
 	void modifyPayPw(Member member);
 	void modifyAddAccount(Member member);
 }
