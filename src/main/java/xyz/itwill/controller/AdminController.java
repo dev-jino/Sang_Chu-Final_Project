@@ -10,20 +10,8 @@ public class AdminController {
 		return "admin/member/admin_member_list";
 	}
 	
-	@RequestMapping("/admin_product")
-	public String AdminProduct() {
-		return "admin/product/admin_product_list";
-	}
 	
-	@RequestMapping("/admin_notice")
-	public String AdminNotice() {
-		return "admin/notice/admin_notice_list";
-	}
 	
-	@RequestMapping("/admin_notice_write")
-	public String AdminNoticeWrite() {
-		return "admin/notice/admin_notice_write";
-	}
 	
 	@RequestMapping("/admin_faq")
 	public String AdminFaq() {
