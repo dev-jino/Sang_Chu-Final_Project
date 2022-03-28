@@ -66,6 +66,8 @@
 													<div class=notice_title> 환전할 금액 :&nbsp;&nbsp;
 													<input type="hidden" name="memberId" value="${id }">
 													<input type="text" id="coin" name="exCoin" value="0">
+													<input type="hidden" name="id" value="${id }">
+<!-- 													<input type="hidden" name="coin" value=""> -->
 													</div>
 													<div class="notice_sub_title"><span class="message"></span></div>
 												<br><br>

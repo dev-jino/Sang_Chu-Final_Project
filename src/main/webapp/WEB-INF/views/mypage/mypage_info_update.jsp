@@ -56,7 +56,7 @@
 											<li>
 												<div>닉네임</div>
 												<div>
-													<input type="text" name="nicname" value="${member.nicname }" class="input_box"  />
+													<input type="text" name="name" value="${member.nicname }" class="input_box"  />
 												</div>
 											</li>
 											<li>
@@ -101,7 +101,7 @@
 										<br>
 										<br>
 										<div class="profile_edit_bye">
-											<button class="" type="submit" id="info_update_btn" onclick="updateCheck()">변경</button>
+											<button class="" type="submit" id="info_update_btn" onclick="">변경</button>
 										</div>
 										<br><br><br><br>
 										<br>

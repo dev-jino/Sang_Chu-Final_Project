@@ -46,9 +46,9 @@
 		select * from Member where name=#{name} and phone=#{phone} and (status = 1 or status = 9)
 	</select>
 	
-	<!-- 비밀번호 찾기 -->
+	<!-- 비밀번호 변경 -->
 	<select id="findPassword" resultType="Member">
-		select * from Member where id=#{id} and name=#{name} and phone=#{phone} and (status = 1 or status = 9)
+		update member set password=#{password} where id=#{id} and name=#{name} and phone=#{phone} and (status = 1 or status = 9)
 	</select>
 	
 	

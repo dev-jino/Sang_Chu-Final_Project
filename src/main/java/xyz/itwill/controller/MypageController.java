@@ -61,14 +61,13 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/mypage_exchange", method = RequestMethod.POST)
-	public String mypageExchange(@ModelAttribute Coin coin) {
+	public String mypageExchange(@ModelAttribute Coin coin, @ModelAttribute Member member) {
 		coinService.addCoin(coin);
+//		memberSerivce.modifyExchangeCoin(member);
 		return "redirect:/mypage_exchange";
 	}
 	
-	
-	
-	
+
 	
 	//회원정보 수정
 	@RequestMapping(value = "/mypage_info_update", method = RequestMethod.GET)
@@ -83,6 +82,8 @@ public class MypageController {
 		session.setAttribute("loginMember", memberSerivce.getMember(member.getId()));
 		return "redirect:/mypage_info_update";
 	}
+	
+	
 	
 	
 	
@@ -102,6 +103,8 @@ public class MypageController {
 	
 	
 	
+	
+	
 	@RequestMapping("/mypage_pay")
 	public String mypagePay(Model model, HttpSession session) throws UserinfoNotFoundException {
 		model.addAttribute("member", session.getAttribute("loginMember"));
@@ -113,6 +116,8 @@ public class MypageController {
 	public String mypageQna() {
 		return "mypage/mypage_qna";
 	}
+	
+	
 	
 	
 	@RequestMapping("/pay_detail")

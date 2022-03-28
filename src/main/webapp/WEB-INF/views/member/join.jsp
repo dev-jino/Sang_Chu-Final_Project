@@ -22,7 +22,6 @@
 <div id="__next"><div class="sign_box auth_common_box"> <!-- <div class="title"><span class="title_text">회원가입</span></div> -->
 <div class="auth_form_box">
 
-
 <form name="f" action="${pageContext.request.contextPath}/join" method="post" onsubmit="return userCreate();" id="f2">
 <div class="email_title">아이디</div>
 <div class="email_area"><input type="text"  class="email_sign" placeholder="아이디 입력" name="id"/></div>
