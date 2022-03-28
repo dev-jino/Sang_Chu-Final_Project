@@ -23,7 +23,7 @@
 			<if test="phone!=null and phone!=''">
 				phone=#{phone},
 			</if>			
-			<if test="status!=null">
+			<if test="status!=null and status!='0'">
 				status=#{status}
 			</if>
 		</set> 

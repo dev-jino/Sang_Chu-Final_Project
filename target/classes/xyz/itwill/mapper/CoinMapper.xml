@@ -4,10 +4,11 @@
 
 	<!-- 코인을 현금으로 환전 신청 -->
 	<insert id="insertCoin">
-		<selectKey resultType="int" keyProperty="num" order="BEFORE">
+		<selectKey resultType="int" keyProperty="idx" order="BEFORE">
 			select coin_idx.nextval from dual
 		</selectKey>
-		insert into coin values(#{num}, #{memberId}, #{exCoin}, 1)
+		insert into coin values(#{idx},#{memberId},#{exCoin},1)
+<!-- 		insert into coin(idx, member_id, ex_coin, status) values(#{num}, #{memberId), #{exCoin}, 1) -->
 	</insert>
 	
 	<update id=""></update>

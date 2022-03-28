@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="xyz.itwill.mapper.ProductMapper">
 	<insert id="insertProduct">
-		<selectKey resultType="int" keyProperty="num" order="BEFORE">
+		<selectKey resultType="int" keyProperty="idx" order="BEFORE">
 			select product_idx.nextval from dual
 		</selectKey>
-		insert into product values(#{num},#{memberId},#{category1},#{category2},#{title},#{price},#{content},#{img},#{img1},#{img2},#{img3},#{img4},#{img5},sysdate,1)
+		insert into product values(#{idx},#{memberId},#{category1},#{category2},#{title},#{price},#{content},#{img},#{img1},#{img2},#{img3},#{img4},#{img5},sysdate,1)
 	</insert>
 	
 	<!-- 사용자의 상품 수정 -->

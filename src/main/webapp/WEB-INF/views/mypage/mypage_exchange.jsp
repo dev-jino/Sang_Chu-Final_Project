@@ -64,13 +64,13 @@
 											<div class="withdraw_footer">
 												<form method="post">
 													<div class=notice_title> 환전할 금액 :&nbsp;&nbsp;
-													<input type="hidden" name="id" value="${id }">
-													<input type="text" id="coin" name="coin" value="0">
+													<input type="hidden" name="memberId" value="${id }">
+													<input type="text" id="coin" name="exCoin" value="0">
 													</div>
 													<div class="notice_sub_title"><span class="message"></span></div>
 												<br><br>
 												<div class="withdraw_btn">
-													<button type="submit" >환전 신청</button>
+													<button type="submit" onclick="message()">환전 신청</button>
 												</div>
 												</form>
 											</div>
@@ -91,6 +91,10 @@
 // 			alert("보유하고 있는 상추보다 많은 숫자를 입력할 수 없습니다.");
 // 		}	
 // 	})
+
+function message() {
+	alert("환전 신청되었습니다.");
+}
 </script>
 </body>
 </html>
