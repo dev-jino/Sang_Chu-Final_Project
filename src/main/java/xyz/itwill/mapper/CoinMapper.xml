@@ -34,4 +34,18 @@
 	<select id="selectCoinList" resultMap="CoinMemberJoinResultMap">
 		select coin.idx idx, member.id id, member.name name, member.account account, coin.ex_coin ex_coin, coin.status status from coin inner join member on coin.member_id = member.id
 	</select>
+	
+	<select id="selectCoinListPager" resultMap="CoinMemberJoinResultMap">
+		select * from (select rownum rn, board.* from 
+		(select coin.idx idx, member.id id, member.name name, member.account account, coin.ex_coin ex_coin, coin.status status from coin inner join member on coin.member_id = member.id order by idx desc) board) 
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="selectCoinCount" resultType="int">
+		select count(*) from coin 
+	</select>
+	
+	<update id="updateCoinStatus">
+		update coin set status=#{status} where idx=#{idx}
+	</update>
 </mapper>

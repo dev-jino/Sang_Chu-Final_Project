@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xyz.itwill.mapper.FaqMapper">
+	<insert id="insertFaq" parameterType="Faq">
+		<selectKey resultType="int" keyProperty="idx" order="BEFORE">
+			select qna_idx.nextval from dual
+		</selectKey>
+		insert into faq values(#{idx}, #{category}, #{title}, #{content}, sysdate, 1)
+	</insert>
+	
+	<update id="updateFaq" parameterType="Faq">
+		update faq
+		<set>
+			<if test="category != null and category != ''">
+				category = #{category},
+			</if>
+			<if test="title != null and title != ''">
+				title = #{title},
+			</if>
+			<if test="content != null and content != ''">
+				content = #{content},
+			</if>
+			<!-- <if test="reg_date != null and reg_date != ''"> -->
+				reg_date = sysdate
+			<!-- </if> -->
+			<!-- 
+			<if test="status != null and status != ''">
+				status = #{status}
+			</if>
+			 -->
+		</set>
+		where idx = #{idx}
+	</update>
+
+	<delete id="deleteFaq" parameterType="Faq">
+		delete from faq where idx = #{idx}
+	</delete>
+
+	<select id="selectFaqIdx" resultType="Faq">
+		select * from faq where idx = #{idx}
+	</select>
+
+	<select id="selectFaqListCategory" resultType="Faq">	
+		select * from faq where category = #{category} order by idx desc
+	</select>
+	
+	<select id="selectFaqCount" resultType="int">
+		select count(*) from faq 
+	</select>
+	
+	<select id="selectFaqListPager" resultType="Faq">
+		select * from (select rownum rn, board.* from (select * from faq order by idx desc) board) 
+			where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="selectFaqList" resultType="Faq">
+		select * from faq order by idx desc
+	</select>
+</mapper>

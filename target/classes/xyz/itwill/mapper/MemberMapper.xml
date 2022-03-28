@@ -67,4 +67,17 @@
 	<update id="exchangeCoin">
 		update member set coin=coin-#{coin} where id=#{id}
 	</update>
+	
+	<update id="updateMemberCoin">
+		update member set coin=coin+#{coin} where id=#{id}
+	</update>
+	
+	<select id="selectMemberCount" resultType="int">
+		select count(*) from member 
+	</select>
+	
+	<select id="selectMemberListPager" resultType="Member">
+		select * from (select rownum rn, member.* from (select * from Member order by id) member) 
+			where rn between #{startRow} and #{endRow}
+	</select>
 </mapper>

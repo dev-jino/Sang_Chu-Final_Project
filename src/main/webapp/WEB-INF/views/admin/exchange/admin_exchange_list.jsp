@@ -93,11 +93,26 @@
 															</td>
 															<!-- 승인 버튼 -->
 															<td class="admin_exchange_td">
-																<button type="button">출금승인</button>
+																<form method="post" id="approveForm${coinMemberJoin.coin.idx }" action="<%=request.getContextPath()%>/admin_exchange">
+																	<input type="hidden" name="memberId" value="${coinMemberJoin.member.id }">
+																	<input type="hidden" name="idx" value="${coinMemberJoin.coin.idx }">
+																	<input type="hidden" name="exCoin" value="${coinMemberJoin.coin.exCoin }">
+																	<input type="hidden" name="status" value="2">
+																</form>
+																<button id="approveBtn${coinMemberJoin.coin.idx }" type="submit" form="approveForm${coinMemberJoin.coin.idx }" 
+																	<c:if test="${coinMemberJoin.coin.status != 1 }">disabled="disabled"</c:if>>출금승인</button>
+																
 															</td>
 															<!-- 취소 버튼 -->
 															<td class="admin_exchange_td">
-																<button type="button">출금취소</button>
+																<form method="post" id="cancelForm${coinMemberJoin.coin.idx }" action="<%=request.getContextPath()%>/admin_exchange">
+																	<input type="hidden" name="memberId" value="${coinMemberJoin.member.id }">
+																	<input type="hidden" name="idx" value="${coinMemberJoin.coin.idx }">
+																	<input type="hidden" name="exCoin" value="${coinMemberJoin.coin.exCoin }">
+																	<input type="hidden" name="status" value="9">
+																</form>
+																<button id="cancelBtn${coinMemberJoin.coin.idx }" type="submit" form="cancelForm${coinMemberJoin.coin.idx }" 
+																	<c:if test="${coinMemberJoin.coin.status != 1 }">disabled="disabled"</c:if>>출금취소</button>
 															</td>
 														</tr>
 														</c:forEach>
@@ -107,34 +122,43 @@
 										</table>
 									</div>
 									<br>
-									<div id="page_num">
-										<span>
-											<a href="#">&lt;&lt;</a>
-											&nbsp;
-											<a href="#">&lt;</a>
-										</span>
-									<!-- 
-										<ol>
-											
-											<li class="page_list">
-												<a href="#" class="other">1</a>
-											</li>
-											
-											<li class="page_list">
-												<a href="#">1</a>
-											</li>
-										</ol>
-									 -->
-									 	&nbsp;
-									 	<span><a href="#">1</a></span>
-									 	&nbsp;
-									 
-										<span>
-											<a href="#">&gt;</a>
-											&nbsp;
-											<a href="#">&gt;&gt;</a>
-										</span>
-									</div>
+										<section>
+										<div id="page_num">
+											<span>
+												<c:if test="${pager.startPage > pager.blockSize }">
+													<a href="<%=request.getContextPath()%>/admin_exchange?pageNum=1">&lt;&lt;</a>
+													&nbsp;
+													<a href="<%=request.getContextPath()%>/admin_exchange?pageNum=${pager.prevPage }">&lt;</a>
+												</c:if>
+												<c:if test="${pager.startPage <= pager.blockSize }">
+													<a href="<%=request.getContextPath()%>/admin_exchange?pageNum=1">&lt;&lt;</a>
+													&nbsp;
+													<a href="<%=request.getContextPath()%>/admin_exchange?pageNum=1">&lt;</a>
+												</c:if>
+											</span>
+		
+										 	&nbsp;
+										 	<span>
+											 	<c:forEach var="index" begin="1" end="${pager.endPage }">
+											 		<a href="<%=request.getContextPath()%>/admin_exchange?pageNum=${index }">${index }</a>
+											 	</c:forEach>
+										 	</span>
+										 	&nbsp;
+										 
+											<span>
+												<c:if test="${pager.endPage != pager.totalPage }">
+													<a href="<%=request.getContextPath()%>/admin_exchange?pageNum=${pager.nextPage }">&gt;</a>
+													&nbsp;
+													<a href="<%=request.getContextPath()%>/admin_exchange?pageNum=${pager.totalPage }">&gt;&gt;</a>
+												</c:if>
+												<c:if test="${pager.endPage == pager.totalPage }">
+													<a href="<%=request.getContextPath()%>/admin_exchange?pageNum=${pager.totalPage }">&gt;</a>
+													&nbsp;
+													<a href="<%=request.getContextPath()%>/admin_exchange?pageNum=${pager.totalPage }">&gt;&gt;</a>
+												</c:if>
+											</span>
+										</div>
+									</section>
 								</div>
 							</section>
 						</div>

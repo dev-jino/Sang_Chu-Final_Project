@@ -1,6 +1,7 @@
 package xyz.itwill.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,20 @@ public class CoinDAOImpl implements CoinDAO {
 	@Override
 	public List<CoinMemberJoin> selectCoinList() {
 		return sqlSessoin.getMapper(CoinMapper.class).selectCoinList();
+	}
+	
+	@Override
+	public List<CoinMemberJoin> selectCoinListPager(Map<String, Object> map) {
+		return sqlSessoin.getMapper(CoinMapper.class).selectCoinListPager(map);
+	}
+	
+	@Override
+	public int selectCoinCount() {
+		return sqlSessoin.getMapper(CoinMapper.class).selectCoinCount();
+	}
+	
+	@Override
+	public int updateCoinStatus(Coin coin) {
+		return sqlSessoin.getMapper(CoinMapper.class).updateCoinStatus(coin);
 	}
 }

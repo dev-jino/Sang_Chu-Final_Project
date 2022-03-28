@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="__next">
 	<section class="content">
 		<h1>상추슈퍼 - 중고거래는 상추슈퍼~!</h1>
@@ -38,85 +39,107 @@
 										<table class="admin_member_table" border="1" summary="">
 											<!-- <caption>회원 목록</caption> -->
 											<colgroup>
-												<col style="width: 5%;"/>
-												<col style="width: 15%;"/>
-												<col style="width: 15%;"/>
-												<col style="width: 15%;"/>
+												<col style="width: 14%;"/>
+												<col style="width: 13%;"/>
+												<col style="width: 14%;"/>
+												<col style="width: 16%;"/>
 												<col style="width: 20%;"/>
-												<col style="width: 20%;"/>
+												<col style="width: 13%;"/>
 												<col style="width: 10%;"/>
 											</colgroup>
 											<thead>
 												<tr>
-													<th class="admin_member_th" scope="col">No</th>
 													<th class="admin_member_th" scope="col">ID</th>
 													<th class="admin_member_th" scope="col">Name</th>
 													<th class="admin_member_th" scope="col">NicName</th>
-													<th class="admin_member_th" scope="col">Email</th>
 													<th class="admin_member_th" scope="col">Phone</th>
+													<th class="admin_member_th" scope="col">Account</th>
+													<th class="admin_member_th" scope="col">Coin</th>
 													<th class="admin_member_th" scope="col">Status</th>
 												</tr>
 											</thead>
 											<tbody>
-												<!--
-												<tr>
-													<td colspan="7">검색된 회원이 없습니다.</td>
-												</tr>
-												-->
-												<tr class="admin_member_tr">	
-													<!-- 번호 -->
-													<td class="admin_member_td">1111</td>
-													<!-- 회원 아이디-->
-													<td class="admin_member_td">test</td>
-													<!--회원 이름-->
-													<td class="admin_member_td">홍길동</td>
-													<!--회원 닉네임-->
-													<td class="admin_member_td">동해번쩍</td>
-													<!--회원 이메일-->
-													<td class="admin_member_td">test@test.com</td>
-													<!--회원 핸드폰번호-->
-													<td class="admin_member_td">01011112222</td>
-													<!--회원 상태-->
-													<td class="admin_member_td">
-														<select class="status" name="" >
-															<option value="0">삭제회원</option>			
-															<option value="1">일반회원</option>			
-															<option value="9">관리자</option>			
-														</select>
-													</td>
-												</tr>
+												<c:choose>
+													<c:when test="${empty(memberList) }">
+														<tr>
+															<td colspan="7" class="admin_member_td" align="center">검색된 회원이 없습니다.</td>
+														</tr>
+													</c:when>
+													<c:otherwise>
+															<c:forEach var="member" items="${memberList }">
+																<tr class="admin_member_tr">	
+																	<!-- 회원 아이디 -->
+																	<td class="admin_member_td">${member.id }</td>
+																	<!-- 회원 이름-->
+																	<td class="admin_member_td">${member.name }</td>
+																	<!--회원 닉네임-->
+																	<td class="admin_member_td">${member.nicname }</td>
+																	<!--회원 전화번호-->
+																	<td class="admin_member_td">${member.phone }</td>
+																	<!--회원 계좌-->
+																	<td class="admin_member_td">${member.account }</td>
+																	<!--회원 코인-->
+																	<td class="admin_member_td">${member.coin }</td>
+																	<!--회원 상태-->
+																	<td class="admin_member_td">
+																		<form method="post" id="member_status_form" action="<%=request.getContextPath()%>/admin_member">
+																		<input type="text" name="id" value="${member.id }" hidden="hidden">
+																		<input type="text" name="pageNum" value="${pager.pageNum }" hidden="hidden">
+																		<select class="status" name="status" onchange="this.form.submit()">
+																			<option value="0" 
+																				<c:if test="${member.status == 0 }">selected = "selected"</c:if>>삭제회원</option>			
+																			<option value="1" 
+																				<c:if test="${member.status == 1 }">selected = "selected"</c:if>>일반회원</option>			
+																			<option value="9" 
+																				<c:if test="${member.status == 9 }">selected = "selected"</c:if>>관리자</option>			
+																		</select>
+																		</form>
+																	</td>
+																</tr>
+															</c:forEach>
+													</c:otherwise>
+												</c:choose>
 											</tbody>
 										</table>
 									</div>
 									<br>
-									<div id="page_num">
-										<span>
-											<a href="#">&lt;&lt;</a>
-											&nbsp;
-											<a href="#">&lt;</a>
-										</span>
-									<!-- 
-										<ol>
-											
-											<li class="page_list">
-												<a href="#" class="other">1</a>
-											</li>
-											
-											<li class="page_list">
-												<a href="#">1</a>
-											</li>
-										</ol>
-									 -->
-									 	&nbsp;
-									 	<span><a href="#">1</a></span>
-									 	&nbsp;
-									 
-										<span>
-											<a href="#">&gt;</a>
-											&nbsp;
-											<a href="#">&gt;&gt;</a>
-										</span>
-									</div>
+									<section>
+										<div id="page_num">
+											<span>
+												<c:if test="${pager.startPage > pager.blockSize }">
+													<a href="<%=request.getContextPath()%>/admin_member?pageNum=1">&lt;&lt;</a>
+													&nbsp;
+													<a href="<%=request.getContextPath()%>/admin_member?pageNum=${pager.prevPage }">&lt;</a>
+												</c:if>
+												<c:if test="${pager.startPage <= pager.blockSize }">
+													<a href="<%=request.getContextPath()%>/admin_member?pageNum=1">&lt;&lt;</a>
+													&nbsp;
+													<a href="<%=request.getContextPath()%>/admin_member?pageNum=1">&lt;</a>
+												</c:if>
+											</span>
+		
+										 	&nbsp;
+										 	<span>
+											 	<c:forEach var="index" begin="1" end="${pager.endPage }">
+											 		<a href="<%=request.getContextPath()%>/admin_member?pageNum=${index }">${index }</a>
+											 	</c:forEach>
+										 	</span>
+										 	&nbsp;
+										 
+											<span>
+												<c:if test="${pager.endPage != pager.totalPage }">
+													<a href="<%=request.getContextPath()%>/admin_member?pageNum=${pager.nextPage }">&gt;</a>
+													&nbsp;
+													<a href="<%=request.getContextPath()%>/admin_member?pageNum=${pager.totalPage }">&gt;&gt;</a>
+												</c:if>
+												<c:if test="${pager.endPage == pager.totalPage }">
+													<a href="<%=request.getContextPath()%>/admin_member?pageNum=${pager.totalPage }">&gt;</a>
+													&nbsp;
+													<a href="<%=request.getContextPath()%>/admin_member?pageNum=${pager.totalPage }">&gt;&gt;</a>
+												</c:if>
+											</span>
+										</div>
+									</section>
 								</div>
 							</section>
 						</div>

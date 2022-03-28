@@ -10,7 +10,7 @@
 <title>상추슈퍼 - 중고거래는 상추슈퍼~!</title>
 <link rel="stylesheet" href="<c:url value="css/default.css" />" type="text/css">
 <link rel="stylesheet" href="<c:url value="css/admin_member_list.css" />" type="text/css">
-<link rel="stylesheet" href="<c:url value="css/admin_faq.css" />" type="text/css">
+<link rel="stylesheet" href="<c:url value="css/admin_faq.css?ver1" />" type="text/css">
 <link rel="stylesheet" href="<c:url value="css/admin_exchange.css" />" type="text/css">
 <link rel="stylesheet" href="<c:url value="css/admin_notice.css" />" type="text/css">
 <link rel="stylesheet" href="<c:url value="css/admin_qna.css" />" type="text/css">

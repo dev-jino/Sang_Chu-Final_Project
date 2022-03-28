@@ -42,28 +42,31 @@
                                         <table class="faq_detail_table">
                                             <tbody>
 	                                            <tr class="faq_detail_tr">
-	                                                <th class="faq_detail_th">*글번호</th>
-	                                                <td class="faq_detail_td">1111</td>
-	                                                <th class="faq_detail_th">*작성일</th>
-	                                                <td class="faq_detail_td">2022-03-02</td>
-	                                                <th class="faq_detail_th">*아이디</th>
-	                                                <td class="faq_detail_td">test123</td>
+	                                                <th class="faq_detail_th" style="width: 15%;">*글번호</th>
+	                                                <td class="faq_detail_td" style="width: 10%;">${faq.idx }</td>
+	                                                <th class="faq_detail_th" style="width: 15%;">*작성일</th>
+	                                                <td class="faq_detail_td" style="width: auto;">${faq.regDate }</td>
+	                                                <th class="faq_detail_th" style="width: 15%;">*카테고리</th>
+	                                                <td class="faq_detail_td" style="width: 15%;">${faq.category }</td>
 	                                            </tr>
 	                                            <tr class="faq_detail_tr">
 	                                                <th class="faq_detail_th">*제   목</th>
-	                                                <td colspan="5" class="faq_detail_td">test입니다.</td>
+	                                                <td colspan="5" class="faq_detail_td">${faq.title }</td>
 	                                            </tr>
 	                                            <tr class="faq_detail_tr">
-	                                                <td colspan="6" class="table_td_content">test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.test중이빈다.</td>
+	                                                <td colspan="6" class="table_td_content">${faq.content }</td>
 	                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
+                                    <form id="delete_form" method="post" action="<%=request.getContextPath()%>/admin_faq_delete">
+                                    	<input name="idx" value="${faq.idx }" hidden="hidden"/>
+                                    </form>
                                     <br>
                                    	<div class="write_btn_div">
-                                    	<button class="write_btn" type="button" onclick="location.href='#'">수정하기</button>
-                                    	<button class="write_btn" type="button" onclick="location.href='#'">삭제하기</button>
-                                    	<button class="write_btn" type="button" onclick="location.href='/admin_faq_list'">목록으로</button>
+                                    	<button class="write_btn" type="button" onclick="location.href='<%=request.getContextPath()%>/admin_faq_modify?idx=${faq.idx}'">수정하기</button>
+                                    	<button class="write_btn" type="submit" form="delete_form">삭제하기</button>
+                                    	<button class="write_btn" type="button" onclick="location.href='<%=request.getContextPath()%>/admin_faq'">목록으로</button>
 									</div>
 								</div>
 							</section>

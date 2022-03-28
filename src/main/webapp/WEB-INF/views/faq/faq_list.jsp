@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="__next">
 	<section class="content">
 		<h1>상추슈퍼 - 중고거래는 상추슈퍼~!</h1>
@@ -44,35 +45,38 @@
 										</div>
 									</div>
 									<ul class="faq_tab">
-										<li class="active" id="faq_tab_li1"><div>Top 10</div></li>
-										<li class="" id="faq_tab_li2"><div>상추페이</div></li>
-										<li class="" id="faq_tab_li3"><div>이용방법</div></li>
+										<li class="" id="faq_tab_li_1" onclick="click_tab('1')"><div>All</div></li>
+										<li class="" id="faq_tab_li_2" onclick="click_tab('2')"><div>운영정책</div></li>
+										<li class="" id="faq_tab_li_3" onclick="click_tab('3')"><div>계정</div></li>
+										<li class="" id="faq_tab_li_4" onclick="click_tab('4')"><div>거래품목</div></li>
+										<li class="" id="faq_tab_li_5" onclick="click_tab('5')"><div>이용제재</div></li>
+										<li class="" id="faq_tab_li_6" onclick="click_tab('6')"><div>상추페이</div></li>
+										<li class="" id="faq_tab_li_7" onclick="click_tab('7')"><div>기타</div></li>
 									</ul>
 									<ul class="faq_List">
-									
-										<li class="faq_section" id="faq_section" value="0">
-											<div class="faq_title_wrapper">
-												<img class="faq_questions" src="img/site/faq_question.png" alt="질문 이미지"/>
-												<div class="faq_title" id="faq_title">[헬로페이] 인출신청 하면 언제 입금되나요?</div>
-											</div>
-											<div class="faq_content">
-												출금은 인출신청일 다음 영업일까지 처리되고 있습니다. <br /> <br />평일 오전에 인출신청 하신
-												경우, 반나절 빠르게 당일 오후까지 출금 처리가 완료됩니다.
-											</div>
-										</li>
-											
-										<li class="faq_section" id="faq_section">
-											<div class="faq_title_wrapper">
-												<img class="faq_questions" src="img/site/faq_question.png" alt="질문 이미지" />
-												<div class="faq_title">[헬로페이] 쿠폰 사용방법을 알려주세요</div>
-											</div>
-											<div class="faq_content">
-												헬로마켓은 다양한 이벤트를 통해 헬로페이 할인쿠폰을 제공하고 있습니다.<br/>
-												<br/>할인쿠폰은 헬로페이 결제 시 주문서에서 사용이 가능합니다.<br/>
-												<br/>진행 중인 쿠폰 이벤트나 나의메뉴 내 '할인쿠폰'에서 다운 가능한 쿠폰을 확인해보세요.
-											</div>
-										</li>
-										
+										<c:choose>
+											<c:when test="${empty(faqList) }">
+												<li class="faq_section">
+													<div class="faq_title_wrapper">
+														<div align="center">검색된 글이 없습니다.</div>
+													</div>
+												</li>
+											</c:when>
+											<c:otherwise>
+												<c:forEach var="faq" items="${faqList }">
+													<li class="faq_section" id="faq_section_${faq.idx }" value="0">
+														<div class="faq_title_wrapper">
+															<img class="faq_questions" src="img/site/faq_question.png" alt="질문 이미지"/>
+															<div class="faq_title" id="faq_title_${faq.idx }" onclick="open_content('${faq.idx }')">[${faq.category}]${faq.title }</div>
+														</div>
+														<div class="faq_content">
+															${faq.content }
+														</div>
+													</li>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
+
 									</ul>
 								</div>
 							</section>
@@ -84,7 +88,16 @@
 	</section>
 </div>
 <script type="text/javascript">
-	document.getElementById('faq_tab_li1').onclick = function() {
-		alert('test');
+	document.addEventListener("DOMContentLoaded", function(){
+ 		document.getElementById("faq_tab_li_" + ${index}).classList.toggle('active');
+	});
+
+	function click_tab(index) {
+		//document.getElementById("faq_tab_li_" + index).classList.toggle('active');
+		location.href='<c:url value="/faq?index='+index+'"/>';
+	}
+	
+	function open_content(index) {
+		document.getElementById("faq_section_" + index).classList.toggle('active');
 	}
 </script>

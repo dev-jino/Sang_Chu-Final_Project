@@ -14,4 +14,7 @@ public interface MemberMapper {
 	int mypagePaypwUpdate(Member member);
 	int mypageAddAccount(Member member);
 	int exchangeCoin(Map<String, Object> map);
+	int updateMemberCoin(Map<String, Object> map);
+	int selectMemberCount();
+	List<Member> selectMemberListPager(Map<String, Object> map);
 }

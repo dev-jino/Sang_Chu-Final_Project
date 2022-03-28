@@ -1,6 +1,7 @@
 package xyz.itwill.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,20 @@ public class CoinServiceImpl implements CoinService {
 	@Override
 	public List<CoinMemberJoin> getCoinList() {
 		return coinDAO.selectCoinList();
+	}
+	
+	@Override
+	public List<CoinMemberJoin> getCoinListPager(Map<String, Object> map) {
+		return coinDAO.selectCoinListPager(map);
+	}
+
+	@Override
+	public int getCoinCount() {
+		return coinDAO.selectCoinCount();
+	}
+	
+	@Override
+	public int modifyCoinStatus(Coin coin) {
+		return coinDAO.updateCoinStatus(coin);
 	}
 }

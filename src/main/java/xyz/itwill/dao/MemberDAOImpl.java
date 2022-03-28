@@ -58,4 +58,19 @@ public class MemberDAOImpl implements MemberDAO{
 	public int exchangeCoin(Map<String, Object> map) {
 		return sqlSession.getMapper(MemberMapper.class).exchangeCoin(map);
 	}
+	
+	@Override
+	public int updateMemberCoin(Map<String, Object> map) {
+		return sqlSession.getMapper(MemberMapper.class).updateMemberCoin(map);
+	}
+
+	@Override
+	public int selectMemberCount() {
+		return sqlSession.getMapper(MemberMapper.class).selectMemberCount();
+	}
+
+	@Override
+	public List<Member> selectMemberListPager(Map<String, Object> map) {
+		return sqlSession.getMapper(MemberMapper.class).selectMemberListPager(map);
+	}
 }

@@ -96,4 +96,18 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.exchangeCoin(map);
 	}
 	
+	@Override
+	public int modifyMemberCoin(Map<String, Object> map) {
+		return memberDAO.updateMemberCoin(map);
+	}
+
+	@Override
+	public int getMemberCount() {
+		return memberDAO.selectMemberCount();
+	}
+
+	@Override
+	public List<Member> getMemberListPager(Map<String, Object> map) {
+		return memberDAO.selectMemberListPager(map);
+	}
 }

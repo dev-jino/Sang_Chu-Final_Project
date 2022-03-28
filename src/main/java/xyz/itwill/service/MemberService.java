@@ -19,4 +19,7 @@ public interface MemberService {
 	void modifyPayPw(Member member);
 	void modifyAddAccount(Member member);
 	void modifyExchangeCoin(Map<String, Object> map);
+	int modifyMemberCoin(Map<String, Object> map);
+	int getMemberCount();
+	List<Member> getMemberListPager(Map<String, Object> map);
 }

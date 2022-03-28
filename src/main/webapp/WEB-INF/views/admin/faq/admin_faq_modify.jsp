@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="__next">
 	<section class="content">
 		<h1>상추슈퍼 - 중고거래는 상추슈퍼~!</h1>
@@ -30,47 +31,48 @@
 							<section class="left_main">
 								<div class="comunity_content_title_area_policy">
 									<img class="comunity_title_img" src="img/site/faq.png" style="width: 30px;" alt="내용 타이틀 이미지" />
-									 <span>FAQ관리 - FAQ작성</span>
+									 <span>FAQ관리 - FAQ수정</span>
 								</div>
 								
 								<div class="mail_view">
 									<h1>상추슈퍼 - 중고거래는 상추슈퍼~!</h1>
                                    	<h2>FAQ 작성 페이지</h2>
-                                    <form id="faq_form" method="post" action="<%=request.getContextPath()%>/admin_faq_write" onsubmit="return checkForm();">
+                                    <form id="faq_form" method="post" action="<%=request.getContextPath()%>/admin_faq_modify" onsubmit="return checkForm();">
+                                    	<input name="idx" type="text" value="${faq.idx }" hidden="hidden"/>
                                         <table class="inquiry_table">
                                             <tbody>
 	                                            <tr>
 	                                                <td class="label">*카테고리</td>
 	                                                <td class="field">
-	                                                	<!-- <input name="category" type="text" class="" placeholder="아이디를 입력해주세요." value=""/> -->
 	                                                	<select name="category" id="admin_faq_write_category">
-	                                                		<option disabled selected value="" style="display:none">선택하세요.</option>
-	                                                		<option value="운영정책">운영정책</option>
-	                                                		<option value="계정">계정</option>
-	                                                		<option value="거래품목">거래품목</option>
-	                                                		<option value="이용제재">이용제재</option>
-	                                                		<option value="상추페이">상추페이</option>
-	                                                		<option value="기타">기타</option>
+	                                                		<option disabled value="" style="display:none">선택하세요.</option>
+	                                                		<option value="운영정책" <c:if test="${faq.category == '운영정책'}">selected="selected"</c:if>>운영정책</option>
+	                                                		<option value="계정" <c:if test="${faq.category == '계정'}">selected="selected"</c:if>>계정</option>
+	                                                		<option value="거래품목" <c:if test="${faq.category == '거래품목'}">selected="selected"</c:if>>거래품목</option>
+	                                                		<option value="이용제재" <c:if test="${faq.category == '이용제재'}">selected="selected"</c:if>>이용제재</option>
+	                                                		<option value="상추페이" <c:if test="${faq.category == '상추페이'}">selected="selected"</c:if>>상추페이</option>
+	                                                		<option value="기타" <c:if test="${faq.category == '기타'}">selected="selected"</c:if>>기타</option>
 	                                                	</select>
 	                                                </td>
 	                                            </tr>
+	                                            <c:if test="${faq.category } == '운영정책'">selected</c:if>
 	                                            <tr>
 	                                                <td class="label">*제목</td>
 	                                                <td class="field">
-	                                                	<input name="title" type="text" id="admin_faq_write_title" class="" placeholder="제목을 입력해주세요." value=""/>
+	                                                	<input name="title" id="admin_faq_write_title" type="text" class="" placeholder="제목을 입력해주세요." value="${faq.title }"/>
 	                                                </td>
 	                                            </tr>
 	                                            <tr>
 	                                            	<td class="label label_content">*내용</td>
 	                                                <td class="field field_content">
-	                                                	<textarea name="content" id="admin_faq_write_content" placeholder="내용을 입력해주세요." class="textarea" rows="15"></textarea>
+	                                                	<textarea name="content" id="admin_faq_write_content" placeholder="내용을 입력해주세요." class="textarea" rows="15">${faq.content }</textarea>
 	                                                </td>
 	                                            </tr>
                                             </tbody>
                                         </table>
                                     </form>
                                    	<div class="write_btn_div">
-                                    	<button class="write_btn" type="submit" form="faq_form">등록하기</button>
+                                    	<button class="write_btn" type="submit" form="faq_form">수정하기</button>
                                     	<button class="write_btn" type="button" onclick="location.href='<%=request.getContextPath()%>/admin_faq'">취소</button>
 									</div>
 								</div>
