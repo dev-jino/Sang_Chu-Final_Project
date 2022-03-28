@@ -1,6 +1,7 @@
 package xyz.itwill.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +46,8 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@Override
-	public List<Product> selectStatusProductList(int status) {
-		return sqlSession.getMapper(ProductMapper.class).selectStatusProductList(status);
+	public List<Product> selectStatusProductList(Map<String, Object> map) {
+		return sqlSession.getMapper(ProductMapper.class).selectStatusProductList(map);
 	}
 	
 	

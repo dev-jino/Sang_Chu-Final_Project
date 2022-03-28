@@ -55,7 +55,7 @@
 												<hr><br>
 												<div class="price" id="mypage_pay_price">
 													<form name="pawPwForm" method="post" action="mypage_pay_password">
-														<input type="hidden" name="id" value="alfk11">
+														<input type="hidden" name="id" value="${id }">
 														<div class="password_title">변경할 결제 비밀번호</div>
 														<div class="password_box">
 															<input type="password" class="password_input" value=""

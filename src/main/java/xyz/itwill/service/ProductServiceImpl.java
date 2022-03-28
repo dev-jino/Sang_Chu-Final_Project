@@ -1,6 +1,7 @@
 package xyz.itwill.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,8 +40,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<Product> getStatusProductList(int status) {
-		return productDAO.selectStatusProductList(status);
+	public List<Product> getStatusProductList(Map<String, Object> map) {
+		return productDAO.selectStatusProductList(map);
 	}
 
 	@Override

@@ -28,9 +28,9 @@
 		select * from product where idx=#{idx}
 	</select>
 	
-	<!-- 상품 상태별 검색(최신 날짜 순으로 정렬) -->
+	<!-- 회원마다의 상품 상태별 검색(최신 날짜 순으로 정렬) -->
 	<select id="selectStatusProductList" resultType="Product">
-		select * from product where status=#{status} order by reg_date desc
+		select * from product where status=#{status} and member_id=#{memberId} order by reg_date desc
 	</select>
 	
 	<!-- 전체 상품 검색(최신 날짜 순으로 정렬) -->

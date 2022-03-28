@@ -23,7 +23,7 @@
 									<div class="my_profile_image">
 										<img src="<c:url value="/img/site/user.png"/>">
 									</div>
-									<div class="my_profile_nick">n16587153</div>
+									<div class="my_profile_nick">${member.nicname }</div>
 									<div class="my_profile_shop_created">
 									</div>
 									<div class="my_profile_pro_review">
@@ -47,7 +47,7 @@
 											<li>
 												<div>닉네임</div>
 												<div>
-													<input type="text" value="n16587159" class="input_box" />
+													<input type="text" value="${member.nicname }" class="input_box" style="outline: none;" />
 												</div>
 												<div>
 													<button type="button" id="info_update_btn">변경</button>
@@ -56,48 +56,43 @@
 											<li>
 												<div>아이디</div>
 												<div>
-													<div class="profile_userId_value">2443825@naver.com</div>
-												</div>
-												<div>
-													<button class="" type="button" id="info_update_btn">변경</button>
+													<div class="profile_userId_value">${member.id }</div>
 												</div>
 											</li>
 											<li>
-												<div>본인인증</div>
+												<div>이름</div>
 												<div class="certificates_box">
-													<div class="profile_userId_value">윤다혜</div>
+													<div class="profile_userId_value">${member.name }</div>
 												</div>
-												<div class="certificates_box_btn">
-													<button class="" type="button" id="info_update_btn">변경</button>
-												</div>
-												<form method="post" name="CARD_FORM"
-													action="https://cert.cardcert.co.kr/check"
-													target="creditForm">
-													<input type="hidden" name="certInfo" value="" />
-												</form>
 											</li>
 											<li>
 												<div>휴대폰</div>
 												<div>
 													<div>
-														<div class="phone_notice active">01038251118</div>
+														<input type="text" value="${member.phone }" class="input_box" style="outline: none;" />
 													</div>
 												</div>
 												<div>
 													<button class="" type="button" id="info_update_btn">변경</button>
 												</div>
 											</li>
-											<li class="profile_password_area profile_password_area_first"><div>비밀번호</div>
-												<div class="profile_userId_value">****************</div>
+											<li class="profile_password_area profile_password_area_first">
+												<div>비밀번호</div>
+												<div>
+													<div>
+														<input type="password" value="${member.password }" class="input_box" style="outline: none;" />
+													</div>
+												</div>
 												<div>
 													<button class="" type="button" id="info_update_btn">변경</button>
-												</div></li>
+												</div>
+											</li>
 										</ul>
 										<br>
 										<br>
 										<div class="profile_edit_bye">
 											<span><a
-												href="<c:url value="/delete_member"/>">회원탈퇴</a>></span>
+												href="<c:url value="/delete_member"/>" onclick="deleteCheck()">회원탈퇴</a>></span>
 										</div>
 										<br>
 										<br>
@@ -110,5 +105,11 @@
 			</div>
 		</section>
 	</div>
+	
+<script type="text/javascript">
+function deleteCheck() {
+	alert("정말로 상추슈퍼에서 탈퇴하시겠습니까?");
+}
+</script>
 </body>
 </html>

@@ -1,5 +1,8 @@
 package xyz.itwill.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,8 @@ import xyz.itwill.exception.UserinfoNotFoundException;
 import xyz.itwill.service.MemberService;
 import xyz.itwill.service.ProductService;
 
+
+//로그인 사용자만 사용할 수 있도록 인터셉터 사용해야함
 @Controller
 public class MypageController {
 	@Autowired
@@ -22,18 +27,15 @@ public class MypageController {
 	
 	@Autowired
 	private MemberService memberSerivce;
-	
-	//GET방식이나 POST방식에 상관없이 mypage_list를 요청하면 실행되는 메소드
-//	@RequestMapping("/mypage_list")
-//	public String mypageList() {
-//		return "mypage/mypage_list";
-//	}
-	
+
 	@RequestMapping(value = "/mypage_list", method = RequestMethod.GET)
-	public String sellProductList(@RequestParam(defaultValue = "1") int status, Model model) {
-//	public String mypageList(Model model) {
-//		model.addAttribute("productList", productService.getProductList());
-		model.addAttribute("productStatusList", productService.getStatusProductList(status));
+	public String sellProductList(@RequestParam(defaultValue = "1") int status, Model model, HttpSession session) {
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("status", status);
+		map.put("memberId", loginMember.getId());
+		model.addAttribute("productStatusList", productService.getStatusProductList(map));
+		model.addAttribute("status", status);
 		
 		return "mypage/mypage_list";
 	}
@@ -45,34 +47,31 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/mypage_info_update")
-	public String mypageInfoUpdate() {
+	public String mypageInfoUpdate(Model model,HttpSession session) {
+		model.addAttribute("member", session.getAttribute("loginMember"));
+		
 		return "mypage/mypage_info_update";
 	}
 	
 	
 	
-//	@RequestMapping(value = "/mypage_pay_password", method = RequestMethod.GET)
 	@RequestMapping("/mypage_pay_password")
-//	public String mypagePayPassword(@RequestParam String id, Model model) {
-	public String mypagePayPassword() {
-//		model.addAttribute("id", memberSerivce.getMember(id));
+	public String mypagePayPassword(HttpSession session, Model model) {
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		model.addAttribute("id",loginMember.getId());
 		return "mypage/mypage_pay_password";
 	}
 	
 	@RequestMapping(value = "/mypage_pay_password", method = RequestMethod.POST)
-	public String mypagePayPassword(@ModelAttribute Member member, HttpSession session) {
+	public String mypagePayPassword(@ModelAttribute Member member) {
 		memberSerivce.modifyPayPw(member);
-		
-		Member loginMember = (Member)session.getAttribute("loginMember");
-		
 		return "redirect:/mypage_pay_password";
 	}
 	
 	
-	
 	@RequestMapping("/mypage_pay")
-	public String mypagePay(@RequestParam String id,Model model) throws UserinfoNotFoundException {
-		model.addAttribute("member", memberSerivce.getMember(id));
+	public String mypagePay(Model model, HttpSession session) throws UserinfoNotFoundException {
+		model.addAttribute("member", session.getAttribute("loginMember"));
 		return "mypage/mypage_pay";
 	}
 	
@@ -88,7 +87,9 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/delete_member")
-	public String deleteMember() {
+	public String deleteMember(HttpSession session) throws UserinfoNotFoundException {
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		memberSerivce.removeMember(loginMember.getId());
 		return "mypage/delete_member";
 	}
 	

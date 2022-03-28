@@ -1,6 +1,7 @@
 package xyz.itwill.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import xyz.itwill.dto.Product;
 
@@ -10,6 +11,6 @@ public interface ProductDAO {
 	int updateAdminProduct(Product product);
 	int deleteAdminProduct(int idx);
 	Product selectProduct(int idx);	
-	List<Product> selectStatusProductList(int status);
+	List<Product> selectStatusProductList(Map<String, Object> map);
 	List<Product> selectProductList();
 }

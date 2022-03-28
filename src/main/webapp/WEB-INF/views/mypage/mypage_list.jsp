@@ -44,11 +44,11 @@
 									<div class="my_profile_item_menu">
 										<ul>
 											<%-- a의 class를 active로 놓으면 밑줄 --%>
-											<li ><a id="list1" onclick="activeList1(1);">판매 상품</a></li>
-											<li ><a id="list2" onclick="activeList2(2);">구매 상품</a></li>
-											<li ><a id="list3" onclick="activeList3(3);">거래 중</a></li>
-											<li ><a id="list4" onclick="activeList4(4);">거래 완료</a></li>
-											<li ><a id="list5" onclick="activeList5(5);">찜 상품</a></li>
+											<li ><a id="list1" onclick="activeList(1);">판매 상품</a></li>
+											<li ><a id="list2" onclick="activeList(2);">구매 상품</a></li>
+											<li ><a id="list3" onclick="activeList(3);">거래 중</a></li>
+											<li ><a id="list4" onclick="activeList(4);">거래 완료</a></li>
+											<li ><a id="list5" onclick="activeList(5);">찜 상품</a></li>
 										</ul>
 									</div>
 									<div class="cat_box">
@@ -65,13 +65,10 @@
 												</form>
 											</div>
 										</div>
-										<div class="regist_category_profile">
-											<select><option value="">카테고리 전체</option><option value="HAC0000">신발,가방,잡화</option></select>
-										</div>
+
 									</div>
 									<div class="tab_content">
 									<div>
-<%-- 										<c:forEach var="product" items="${productList }"> --%>
 										<c:forEach var="product" items="${productStatusList }">
 											<ul style="position:relative; left:10px; bottom: 250px; list-style: none;">
 												<li class="main_col_3" style="float: left; width: 30%;">
@@ -111,25 +108,11 @@
 
 	<script type="text/javascript">
 	
+	$(document).ready(function () {
+	    $("#list" + ${status}).attr('class','active');
+	});
 	
-	function activeList1(status) {
-		$("#list1").attr('class','active');
-		location.href='<c:url value="/mypage_list?status='+status+'"/>';
-	};
-	function activeList2(status) {
-		$("#list2").attr('class','active');
-		location.href='<c:url value="/mypage_list?status='+status+'"/>';
-	};
-	function activeList3(status) {
-		$("#list3").attr('class','active');
-		location.href='<c:url value="/mypage_list?status='+status+'"/>';
-	};
-	function activeList4(status) {
-		$("#list4").attr('class','active');
-		location.href='<c:url value="/mypage_list?status='+status+'"/>';
-	};
-	function activeList5(status) {
-		$("#list5").attr('class','active');
+	function activeList(status) {
 		location.href='<c:url value="/mypage_list?status='+status+'"/>';
 	};
 	
