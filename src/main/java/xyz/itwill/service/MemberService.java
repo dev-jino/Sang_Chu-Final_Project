@@ -1,6 +1,7 @@
 package xyz.itwill.service;
 
 import java.util.List;
+import java.util.Map;
 
 import xyz.itwill.dto.Member;
 import xyz.itwill.exception.LoginAuthFailException;
@@ -17,5 +18,5 @@ public interface MemberService {
 	
 	void modifyPayPw(Member member);
 	void modifyAddAccount(Member member);
-	void modifyExchangeCoin(Member member);
+	void modifyExchangeCoin(Map<String, Object> map);
 }

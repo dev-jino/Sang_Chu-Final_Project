@@ -1,6 +1,7 @@
 package xyz.itwill.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import xyz.itwill.dto.Member;
 
@@ -12,5 +13,5 @@ public interface MemberDAO {
 	List<Member> selectMemberList();
 	int mypagePaypwUpdate(Member member);
 	int mypageAddAccount(Member member);
-	int exchangeCoin(Member member);
+	int exchangeCoin(Map<String, Object> map);
 }

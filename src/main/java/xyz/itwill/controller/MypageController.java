@@ -61,9 +61,13 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/mypage_exchange", method = RequestMethod.POST)
-	public String mypageExchange(@ModelAttribute Coin coin, @ModelAttribute Member member) {
+	public String mypageExchange(@ModelAttribute Coin coin, @ModelAttribute Member member, HttpSession session) throws UserinfoNotFoundException {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", coin.getMemberId());
+		map.put("coin", coin.getExCoin());
 		coinService.addCoin(coin);
-//		memberSerivce.modifyExchangeCoin(member);
+		memberSerivce.modifyExchangeCoin(map);
+		session.setAttribute("loginMember", memberSerivce.getMember(coin.getMemberId()));
 		return "redirect:/mypage_exchange";
 	}
 	

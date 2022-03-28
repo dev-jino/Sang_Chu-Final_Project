@@ -1,6 +1,7 @@
 package xyz.itwill.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public int exchangeCoin(Member member) {
-		return sqlSession.getMapper(MemberMapper.class).exchangeCoin(member);
+	public int exchangeCoin(Map<String, Object> map) {
+		return sqlSession.getMapper(MemberMapper.class).exchangeCoin(map);
 	}
 }

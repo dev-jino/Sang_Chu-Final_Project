@@ -1,6 +1,7 @@
 package xyz.itwill.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,8 +92,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void modifyExchangeCoin(Member member) {
-		memberDAO.exchangeCoin(member);
+	public void modifyExchangeCoin(Map<String, Object> map) {
+		memberDAO.exchangeCoin(map);
 	}
 	
 }
