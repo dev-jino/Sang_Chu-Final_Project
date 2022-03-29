@@ -32,3 +32,37 @@ document.getElementById('item-input4').onchange=function() {
 document.getElementById('item-input5').onchange=function() {
 	setImageFromFile(this, 'item_img5')
 };
+
+function checkSaleForm() {
+	var title = document.getElementById('sale_form_title');
+	if (title.value == '') {
+		alert('제목을 입력해주세요.');
+		return false;
+	}
+	
+	var category = document.getElementById('sale_form_category1');
+	if (category.value == '') {
+		alert('카테고리를 선택해주세요.');
+		return false;
+	}
+	
+	var category1 = document.getElementById('sale_form_category2');
+	if (category1.value == '') {
+		alert('하위 카테고리를 선택해주세요.');
+		return false;
+	}
+
+	var category2 = document.getElementById('sale_form_price');
+	if (category2.value == '') {
+		alert('가격을 입력해주세요.');
+		return false;
+	}
+	
+	var content = document.getElementById('sale_form_content');
+	if (content.value == '') {
+		alert('내용을 입력해주세요.');
+		return false;
+	}
+	
+	return true;
+}

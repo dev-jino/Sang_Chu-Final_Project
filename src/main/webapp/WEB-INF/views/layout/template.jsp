@@ -37,6 +37,6 @@
 	</div>
 	<script type="text/javascript" src=<c:url value="js/header.js"/>></script>
 	<script type="text/javascript" src=<c:url value="js/faq.js"/>></script>
-	<script type="text/javascript" src=<c:url value="js/sale_form.js?ver2"/>></script>
+	<script type="text/javascript" src=<c:url value="js/sale_form.js?ver3"/>></script>
 </body>
 </html>

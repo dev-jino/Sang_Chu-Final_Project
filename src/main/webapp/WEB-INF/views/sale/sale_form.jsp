@@ -18,7 +18,7 @@
 							<div>상품 등록</div>
 						</div>
 					</div>
-					<form method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%>/sale" id="saleForm">
+					<form method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%>/sale" id="saleForm" onsubmit="return checkSaleForm();">
 						<input type="hidden" name="memberId" value="${loginMember.id }">
 						<div class="regist_box">
 							<div class="description">
@@ -85,7 +85,7 @@
 										<label style="color: rgb(0, 0, 0);">상품제목</label>
 									</dt>
 									<dd>
-										<input type="text" name="title" class="title_input"
+										<input type="text" name="title" id="sale_form_title" class="title_input"
 											placeholder="상품 제목을 입력해주세요." value="">
 										<ul class="item_recommend_box"></ul>
 									</dd>
@@ -96,7 +96,7 @@
 									</dt>
 									<dd>
 										<div class="item_select_box">
-											<select name="category1">
+											<select name="category1" id="sale_form_category1">
 												<option value="" hidden="">카테고리</option>
 												<option value="가구·가전">가구/가전</option>
 												<option value="생활·식품">생활/식품</option>
@@ -106,7 +106,7 @@
 											</select>
 										</div>
 										<div class="item_select_box item_select_margin">
-											<select name="category2">
+											<select name="category2" id="sale_form_category2">
 												<option value="" hidden="">하위 카테고리</option>
 												<option value="기타">기타</option>
 											</select>
@@ -115,15 +115,15 @@
 								</dl>
 								<dl class="sell_method_box">
 									<dt>
-										<label id="price" style="color: rgb(0, 0, 0);">상품가격</label>
+										<label id="price" style="color: rgb(0, 0, 0); ">상품가격</label>
 									</dt>
 									<dd>
 										<div class="box_sell_method box_area">
 											<div class="box_price">
 												<input type="text" name="price" placeholder="가격을 입력해주세요."
-													value=""
-													style="width: 90%; max-width: 280px; height: 38px;"><span
-													class="input_span_text">원</span>
+													value="" id="sale_form_price" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+													style="width: 90%; max-width: 280px; height: 38px;">
+													<span class="input_span_text">원</span>
 											</div>
 										</div>
 									</dd>
@@ -133,7 +133,7 @@
 										<label style="color: rgb(0, 0, 0);">상품설명</label>
 									</dt>
 									<dd>
-										<textarea rows="5" class="introduce" name="content"
+										<textarea rows="5" class="introduce" name="content" id="sale_form_content"
 											placeholder="상품 설명을 입력해주세요."></textarea>
 									</dd>
 								</dl>
