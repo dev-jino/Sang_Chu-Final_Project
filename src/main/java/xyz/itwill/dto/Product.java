@@ -1,5 +1,7 @@
 package xyz.itwill.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /*
  이름        널?       유형             
 --------- -------- -------------- 
@@ -36,6 +38,7 @@ public class Product {
 	private String regDate;
 	private int status;
 	
+	private MultipartFile[] imgFile;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
@@ -191,6 +194,24 @@ public class Product {
 		this.status = status;
 	}
 	
+	public MultipartFile[] getImgFile() {
+		if(imgFile!=null){
+			MultipartFile[] tempData = new MultipartFile[imgFile.length];
+			System.arraycopy(imgFile, 0, tempData, 0, imgFile.length);
+			return tempData;
+		}else{
+			return null;
+		}
+	//출처: https://kooremo.tistory.com/entry/배열-형식의-데이터를-setget하는-경우 [자바블로그]
+	}
 	
-	
+	public void setImgFile(MultipartFile[] imgFile) {
+		if(imgFile!=null){
+			this.imgFile = new MultipartFile[imgFile.length];
+			System.arraycopy(imgFile, 0, this.imgFile, 0, imgFile.length);
+		}else{
+			this.imgFile = null;
+		}
+	//출처: https://kooremo.tistory.com/entry/배열-형식의-데이터를-setget하는-경우 [자바블로그]
+	}
 }

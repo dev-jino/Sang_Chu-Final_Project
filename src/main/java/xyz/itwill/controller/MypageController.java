@@ -61,7 +61,7 @@ public class MypageController {
 	public String sellProductList(@RequestParam int idx, HttpSession session) {
 		
 		//판매하기 눌렀을 때 상품의 상태를 판매완료로 변경
-		productService.modifyAdminProduct(null)
+		productService.modifyAdminProduct(null);
 		
 		
 		return "redirect:/mypage_list";
