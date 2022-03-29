@@ -13,4 +13,5 @@ public interface ProductMapper {
 	Product selectProduct(int idx);
 	List<Product> selectStatusProductList(Map<String, Object> map);
 	List<Product> selectProductList();
+	int selectCountProduct(Map<String, Object> map);
 }

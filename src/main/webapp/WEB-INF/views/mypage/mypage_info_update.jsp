@@ -56,7 +56,7 @@
 											<li>
 												<div>닉네임</div>
 												<div>
-													<input type="text" name="name" value="${member.nicname }" class="input_box"  />
+													<input type="text" name="nicname" value="${member.nicname }" class="input_box"  />
 												</div>
 											</li>
 											<li>

@@ -44,16 +44,16 @@
 									<div class="my_profile_item_menu">
 										<ul>
 											<%-- a의 class를 active로 놓으면 밑줄 --%>
-											<li ><a id="list1" onclick="activeList(1);">판매 상품</a></li>
-											<li ><a id="list2" onclick="activeList(2);">구매 상품</a></li>
-											<li ><a id="list3" onclick="activeList(3);">거래 중</a></li>
-											<li ><a id="list4" onclick="activeList(4);">판매 완료</a></li>
-											<li ><a id="list5" href="<c:url value="/mypage_favorite"/>">찜 상품</a></li>
+											<li ><a id="list1" href="<c:url value="/mypage_list?status=1"/>">판매 상품</a></li>
+											<li ><a id="list2" href="<c:url value="/mypage_list?status=2"/>">구매 상품</a></li>
+											<li ><a id="list3" href="<c:url value="/mypage_list?status=3"/>">거래 중</a></li>
+											<li ><a id="list4" href="<c:url value="/mypage_list?status=4"/>">판매 완료</a></li>
+											<li ><a id="list5" class="active">찜 상품</a></li>
 										</ul>
 									</div>
 									<div class="cat_box">
 										<div class="my_specialist_name">
-											전체&nbsp;<span>${countProduct }개</span>
+											
 										</div>
 										<div class="profile_right_search">
 											<div class="regist_search_category_profile">
@@ -70,7 +70,7 @@
 									
 									<div class="tab_content">
 									<div>
-										<c:forEach var="product" items="${productStatusList }">
+										<c:forEach var="favorite" items="${favoriteList }">
 											<ul style="position:relative; left:10px; bottom: 250px; list-style: none;">
 												<li class="main_col_3" style="float: left; width: 30%;">
 													<a class="card card_list" href="/item/173551272?viewPath=wish_list&amp;clickPath=member">
@@ -83,8 +83,8 @@
 															</div>
 														</div>
 														<div class="cont">
-															<div class="item_title related_item_icon">${product.title }</div>
-															<div class="item_price profile_price">${product.price }</div>
+															<div class="item_title related_item_icon">${favorite.product.title }</div>
+															<div class="item_price profile_price">${favorite.product.price }</div>
 														</div>
 													</div>
 													</a>
@@ -108,15 +108,7 @@
 
 
 	<script type="text/javascript">
-	
-	$(document).ready(function () {
-	    $("#list" + ${status}).attr('class','active');
-	});
-	
-	function activeList(status) {
-		location.href='<c:url value="/mypage_list?status='+status+'"/>';
-	};
-	
+
 	</script>
 </body>
 </html>

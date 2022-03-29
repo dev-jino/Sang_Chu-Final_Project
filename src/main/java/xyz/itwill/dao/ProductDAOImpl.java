@@ -49,6 +49,11 @@ public class ProductDAOImpl implements ProductDAO{
 	public List<Product> selectStatusProductList(Map<String, Object> map) {
 		return sqlSession.getMapper(ProductMapper.class).selectStatusProductList(map);
 	}
+
+	@Override
+	public int selectCountProduct(Map<String, Object> map) {
+		return sqlSession.getMapper(ProductMapper.class).selectCountProduct(map);
+	}
 	
 	
 }

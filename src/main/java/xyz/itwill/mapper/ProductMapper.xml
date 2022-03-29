@@ -34,6 +34,11 @@
 		select * from product where status=#{status} and member_id=#{memberId} order by reg_date desc
 	</select>
 	
+	<!-- 회원의 상품 상태별 총 개수 -->
+	<select id="selectCountProduct" resultType="int">
+		select count(*) from product where status=#{status} and member_id=#{memberId}
+	</select>
+	
 	<!-- 카테고리별 상품 출력 -->
 	<select id="selectCategoryProductList" resultType="Product">
 		select * from product where category1=#{category1} and category2=#{category2} order by reg_date desc

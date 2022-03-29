@@ -17,6 +17,7 @@ import xyz.itwill.dto.Coin;
 import xyz.itwill.dto.Member;
 import xyz.itwill.exception.UserinfoNotFoundException;
 import xyz.itwill.service.CoinService;
+import xyz.itwill.service.FavoriteService;
 import xyz.itwill.service.MemberService;
 import xyz.itwill.service.ProductService;
 
@@ -32,8 +33,12 @@ public class MypageController {
 	
 	@Autowired
 	private CoinService coinService;
+	
+	@Autowired
+	private FavoriteService favoriteService;
 
 	
+	//회원의 주문 관련 상품 목록
 	@RequestMapping(value = "/mypage_list", method = RequestMethod.GET)
 	public String sellProductList(@RequestParam(defaultValue = "1") int status, Model model, HttpSession session) {
 		Member loginMember = (Member)session.getAttribute("loginMember");
@@ -42,12 +47,25 @@ public class MypageController {
 		map.put("memberId", loginMember.getId());
 		model.addAttribute("productStatusList", productService.getStatusProductList(map));
 		model.addAttribute("status", status);
+
 		
-		
-		model.addAttribute("nicname", loginMember.getNicname());
+		//상품상태별 개수
+		model.addAttribute("countProduct", productService.getCountProduct(map));
 		
 		return "mypage/mypage_list";
 	}
+	
+	
+	
+	//찜목록
+	@RequestMapping("/mypage_favorite")
+	public String mypageFavorite(Model model, HttpSession session) {
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		model.addAttribute("favoriteList", favoriteService.getFavoriteList(loginMember.getId()));
+		
+		return "mypage/mypage_favorite";
+	}
+	
 	
 	
 	
@@ -70,6 +88,7 @@ public class MypageController {
 		session.setAttribute("loginMember", memberSerivce.getMember(coin.getMemberId()));
 		return "redirect:/mypage_exchange";
 	}
+	
 	
 
 	
@@ -108,7 +127,7 @@ public class MypageController {
 	
 	
 	
-	
+	//보유중인 상추
 	@RequestMapping("/mypage_pay")
 	public String mypagePay(Model model, HttpSession session) throws UserinfoNotFoundException {
 		model.addAttribute("member", session.getAttribute("loginMember"));
@@ -116,10 +135,15 @@ public class MypageController {
 		return "mypage/mypage_pay";
 	}
 	
+	
+	
+	
+	
 	@RequestMapping("/mypage_qna")
 	public String mypageQna() {
 		return "mypage/mypage_qna";
 	}
+	
 	
 	
 	
@@ -131,6 +155,11 @@ public class MypageController {
 		return "mypage/pay_detail";
 	}
 	
+	
+	
+	
+	
+	//회원탈퇴
 	@RequestMapping("/delete_member")
 	public String deleteMember(HttpSession session) throws UserinfoNotFoundException {
 		Member loginMember = (Member)session.getAttribute("loginMember");

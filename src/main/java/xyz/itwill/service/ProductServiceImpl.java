@@ -49,7 +49,10 @@ public class ProductServiceImpl implements ProductService{
 		return productDAO.selectProductList();
 	}
 
+	@Override
+	public int getCountProduct(Map<String, Object> map) {
+		return productDAO.selectCountProduct(map);
+	}
 
-	
 	
 }

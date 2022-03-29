@@ -13,4 +13,5 @@ public interface ProductService {
 	Product getProduct(int idx);	
 	List<Product> getStatusProductList(Map<String, Object> map);
 	List<Product> getProductList();
+	int getCountProduct(Map<String, Object> map);
 }

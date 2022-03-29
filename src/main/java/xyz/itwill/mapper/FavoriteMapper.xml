@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.itwill.mapper.FavoriteMapper">
+	<!-- 찜목록에 상품 추가 -->
+	<insert id="insertFavorite">
+		<selectKey resultType="int" keyProperty="idx" order="BEFORE">
+			select favorite_idx.nextval from dual
+		</selectKey>
+		insert into favorite values(#{idx}, #{productIdx}, #{memberId})
+	</insert>
+	
+	
+	<!-- 회원의 찜목록을 검색하되, 찜한 최신순으로 정렬 -->
+	<select id="selectFavorite" resultType="Favorite">
+		select * from favorite where member_id=#{memberId} order by idx desc
+	</select>
+
+	
+	<!-- 회원의 찜목록을 검색하되, 찜한 최신순으로 정렬(상품T와 찜T 조인) -->
+	
+	<resultMap type="ProductFavoriteJoin" id="PJFResultMap">
+		<association property="product" javaType="Product">
+			<id column="idx" property="idx"/>
+			<result column="member_id" property="memberId"/>
+			<result column="title" property="title"/>
+			<result column="price" property="price"/>
+			<result column="img" property="img"/>
+			<result column="status" property="status"/>
+		</association>
+		<association property="favorite" javaType="Favorite">
+			<id column="idx" property="idx"/>
+			<result column="product_idx" property="productIdx"/>
+			<result column="member_id" property="memberId"/>
+		</association>
+	</resultMap>
+	
+	<select id="selectFavoriteList" resultMap="PJFResultMap">
+		select * from product p inner join favorite f on p.idx = f.product_idx where p.member_id=#{memberId} order by f.idx desc
+	</select>
+
+</mapper>

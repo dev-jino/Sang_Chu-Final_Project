@@ -32,6 +32,7 @@
 								<section class="left_main">
 									<div class="wallet_wrapper">
 										<div class="wallet_withdraw">
+										<br>
 											<div class="withdraw_title">현금인출신청</div>
 											<div class="withdraw_detail">
 												<div class="withdraw_top">
@@ -43,7 +44,14 @@
 													</div>
 												</div>
 											</div>
-											<div class="info_title info_margin_title">인출가능</div>
+											<div class="withdraw_footer">
+												<div class=notice_title> 충전할 금액 :&nbsp;&nbsp;
+													<input type="text">
+												</div>
+											</div>
+											
+											<br><br><br>
+											
 											<div class="withdraw_detail withdraw_detail_margin">
 												<div class="withdraw_top">
 													<div class="sub_title">환전 신청</div>
@@ -67,7 +75,6 @@
 													<input type="hidden" name="memberId" value="${id }">
 													<input type="text" id="coin" name="exCoin" value="0">
 													<input type="hidden" name="id" value="${id }">
-<!-- 													<input type="hidden" name="coin" value=""> -->
 													</div>
 													<div class="notice_sub_title"><span class="message"></span></div>
 												<br><br>
