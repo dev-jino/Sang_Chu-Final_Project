@@ -11,6 +11,8 @@ public interface MemberMapper {
 	int deleteMember(String id);
 	Member selectMember(String id);
 	List<Member> selectMemberList();
+	Member findId(Map<String, Object> map);
+	int findPassword(Map<String, Object> map);
 	int mypagePaypwUpdate(Member member);
 	int mypageAddAccount(Member member);
 	int exchangeCoin(Map<String, Object> map);

@@ -51,6 +51,14 @@ function userCreate() {
 		f.id.focus();
 		return false;
  	}
+	var idReg=/^[a-zA-Z0-9]\w{5,19}/g;
+	if(!idReg.test(f.id.value)) { 
+		alert("아이디를 형식에 맞게 입력해 주세요.");
+		f.id.focus();
+		
+		return false;
+	}
+	
 	if ( f.name.value == "" ) {
 		alert("이름을 입력하십시요.");
 		f.name.focus();
@@ -66,11 +74,21 @@ function userCreate() {
 		f.password.focus();
 		return false;
 	}
+	var passwdReg=/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*_-]).{6,20}$/g;
+	if(!passwdReg.test(f.password.value)) {
+		alert("비밀번호를 형식에 맞게 입력해 주세요.");
+		f.password.focus();
+		
+		return false;
+	};
+	
+	
 	if ( f.phone.value == "" ) {
 		alert("번호를 입력하십시요.");
 		f.phone.focus();
 		return false;
 	}
+	
 	if ( f.account.value == "" ) {
 		alert("계좌번호를 입력하십시요.");
 		f.account.focus();
@@ -81,10 +99,6 @@ function userCreate() {
 		f.payPw.focus();
 		return false;
 	}
-// 	f.method = "post";
-// 	f.action = "<c:url value='/login'/>";
-// 	f.submit(); 
-	
 	return true;
 }
 </script>

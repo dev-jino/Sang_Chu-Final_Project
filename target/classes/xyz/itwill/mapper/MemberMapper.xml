@@ -47,9 +47,9 @@
 	</select>
 	
 	<!-- 비밀번호 변경 -->
-	<select id="findPassword" resultType="Member">
-		update member set password=#{password} where id=#{id} and name=#{name} and phone=#{phone} and (status = 1 or status = 9)
-	</select>
+	<update id="findPassword">
+ 		update member set password=#{password} where id=#{id} and name=#{name} and phone=#{phone} and (status = 1 or status = 9)
+	</update>
 	
 	
 	<!-- 마이페이지 결제비밀번호 수정 -->

@@ -73,4 +73,17 @@ public class MemberDAOImpl implements MemberDAO{
 	public List<Member> selectMemberListPager(Map<String, Object> map) {
 		return sqlSession.getMapper(MemberMapper.class).selectMemberListPager(map);
 	}
+
+	@Override
+	public Member findId(Map<String, Object> map) {
+		
+		return sqlSession.getMapper(MemberMapper.class).findId(map);
+		
+	}
+
+	@Override
+	public int findPassword(Map<String, Object> map) {
+		return sqlSession.getMapper(MemberMapper.class).findPassword(map);
+	}
+
 }

@@ -15,6 +15,8 @@ public interface MemberService {
 	Member getMember(String id) throws UserinfoNotFoundException;
 	List<Member> getMemberList();
 	void loginAuth(Member member) throws LoginAuthFailException;
+	Member getFindId(Map<String, Object> map);
+	int getFindPassword(Map<String, Object> map);
 	
 	void modifyPayPw(Member member);
 	void modifyAddAccount(Member member);

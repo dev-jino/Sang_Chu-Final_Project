@@ -1,5 +1,8 @@
 package xyz.itwill.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import xyz.itwill.dto.Member;
 import xyz.itwill.exception.LoginAuthFailException;
@@ -65,31 +69,38 @@ public class MemberController {
 	
 	
 	//아이디찾기
-	@RequestMapping("/find_id")
-	public String findId() {
+	@RequestMapping(value = "/find_id", method =  RequestMethod.GET)
+	public String findId() {		
+	return "member/find_id";
+	}
+		
+	@RequestMapping(value = "/find_id", method =  RequestMethod.POST)
+	public String findId(@RequestParam String name, @RequestParam String phone, Model model ) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("name",name);
+		map.put("phone", phone);
+		model.addAttribute("member", memberSerivce.getFindId(map));
 		return "member/find_id";
 	}
-	
-	//비밀번호 찾기
-	@RequestMapping("/find_password")
-	public String findPasswd() {
 		
-		
+	//비밀번호 재설정
+	@RequestMapping(value = "/find_password",method = RequestMethod.GET)
+	public String findPassword() {
 		return "member/find_passwd";
 	}
-	
-//	@RequestMapping(value = "/find_password", method = RequestMethod.POST)
-//	public String findPasswd(@ModelAttribute Member member, Model model) {
-//		model.addAttribute("id", 1번페이지에서 전달받은 아이디);
-//		model.addAttribute("name", 1번페이지에서 전달받은 이름);
-//		model.addAttribute("phone", 1번페이지에서 전달받은 전화번호);
-//		
-//		memberSerivce.modifyPayPw(member);
-//		
-//		return "member/find_passwd";
-//	}
-	
-	
+		
+	@RequestMapping(value = "/find_password",method = RequestMethod.POST)
+	public String findPassword(@RequestParam String id, @RequestParam String name, @RequestParam String phone, @RequestParam String password) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("name", name);
+		map.put("phone", phone);
+		map.put("password",password);
+		memberSerivce.getFindPassword(map);
+		return "redirect:/login";
+	}
+		
+		
 	//예외처리 어노테이션
 	@ExceptionHandler(value = UserinfoExistsException.class)
 	public String exceptionHandler(UserinfoExistsException exception, Model model) {

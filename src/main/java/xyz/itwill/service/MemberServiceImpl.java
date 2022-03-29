@@ -110,4 +110,17 @@ public class MemberServiceImpl implements MemberService {
 	public List<Member> getMemberListPager(Map<String, Object> map) {
 		return memberDAO.selectMemberListPager(map);
 	}
+
+	@Override
+	public Member getFindId(Map<String, Object> map) {
+		
+		return memberDAO.findId(map);
+	}
+
+	@Override
+	public int getFindPassword(Map<String, Object> map) {
+		
+		return memberDAO.findPassword(map);
+
+	}
 }
