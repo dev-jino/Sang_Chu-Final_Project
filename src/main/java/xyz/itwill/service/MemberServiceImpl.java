@@ -123,4 +123,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.findPassword(map);
 
 	}
+
+	@Override
+	public void modifyExchangeCash(Map<String, Object> map) {
+		memberDAO.exchangeCash(map);
+		
+	}
 }

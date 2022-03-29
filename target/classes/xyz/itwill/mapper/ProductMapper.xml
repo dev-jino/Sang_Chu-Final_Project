@@ -25,7 +25,7 @@
 	</update>
 	
 	<!-- 상품번호를 전달받아서 상품 검색 -->
-	<select id="selectProduct">
+	<select id="selectProduct" resultType="Product">
 		select * from product where idx=#{idx}
 	</select>
 	

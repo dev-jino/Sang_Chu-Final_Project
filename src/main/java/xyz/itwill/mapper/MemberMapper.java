@@ -19,4 +19,5 @@ public interface MemberMapper {
 	int updateMemberCoin(Map<String, Object> map);
 	int selectMemberCount();
 	List<Member> selectMemberListPager(Map<String, Object> map);
+	int exchangeCash(Map<String, Object> map);
 }

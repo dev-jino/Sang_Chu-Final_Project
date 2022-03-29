@@ -57,16 +57,18 @@
 		update member set pay_pw=#{payPw} where id=#{id}
 	</update>
 	
-	<!-- 마이페이지 다른 계좌로 변경 -->
-	<update id="mypageAddAccount">
-		update member set account=#{account} where id=#{id}
-	</update>
-	
 	
 	<!-- 상추->현금으로 환전 -->
 	<update id="exchangeCoin">
 		update member set coin=coin-#{coin} where id=#{id}
 	</update>
+	
+	<!-- 현금->상추로 환전 -->
+	<update id="exchangeCash">
+		update member set coin=coin+#{coin} where id=#{id}
+	</update>
+	
+	
 	
 	<update id="updateMemberCoin">
 		update member set coin=coin+#{coin} where id=#{id}

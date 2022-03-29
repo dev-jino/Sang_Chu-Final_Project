@@ -19,47 +19,7 @@
 	<div id="__next">
 		<header class="">
 			<div class="bar hide"></div>
-			<section class="header_top">
-				<div class="header_logo header_logo_s">
-					<div class="log_box">
-						<a href="/"><img
-							src="https://ccimage.hellomarket.com/web/2019/header/img_gnb_logo_x2.png"
-							class="logo" alt="헬로마켓 로고"><img
-							src="https://ccimage.hellomarket.com/web/2020/common/img_title_logo_01.png"
-							class="mobile_logo" alt="헬로마켓 타이틀 로고"></a>
-					</div>
-					<div class="btn_box">
-						<div class="nick">
-							<span class="nick_title">${nicname }</span>
-						</div>
-						<div class="notification_box">
-							<a href="https://account.hellomarket.com/messages"
-								target="_blank" rel="noopener noreferrer"><img
-								src="https://ccimage.hellomarket.com/web/2019/common/btn_title_hellotalk.png"
-								alt="채팅 아이콘" class="chat"></a>
-						</div>
-					</div>
-					<div class="header_search" id="tebas">
-						<div class="com_search_box">
-							<div>
-								<div>
-									<input type="text" class="com_search"
-										placeholder="어떤 상품을 찾고 계세요?" value=""
-										style="border-bottom: 1px solid rgb(158, 164, 170);">
-									<div class="search_icon_box search_engine_icon">
-										<div class="search_icon">
-											<div class="search_circle"
-												style="border-color: rgb(158, 164, 170);"></div>
-											<div class="search_rectangle"
-												style="border-color: rgb(158, 164, 170); background-color: rgb(158, 164, 170);"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+
 		<section class="content">
 			<h1>헬로마켓 - 100% 비대면 안전 결제 중고거래 마켓</h1>
 			<h2>헬로페이 결제 페이지</h2>
@@ -77,20 +37,18 @@
 							</div>
 							<div class="order_content_wrapper">
 								<ul>
-									<li class="order_card"><div class="title_box">배송지</div>
+									<li class="order_card"><div class="title_box">주문자 정보</div>
 										<ul class="order_member_info">
 											<li><dl>
 													<dt>이름</dt>
 													<dd class="order_member_name">
-														<input type="text" class="w_10" name="receiverName"
-															value="" placeholder="이름 입력" />
+														${loginMember.name }
 													</dd>
 												</dl></li>
 											<li><dl>
 													<dt>연락처</dt>
 													<dd class="order_member_phone">
-														<input type="number" class="w_10" value=""
-															placeholder="숫자만 입력" />
+														${loginMember.phone }
 													</dd>
 												</dl></li>
 										</ul></li>
@@ -128,7 +86,7 @@
 												<div class="final_order_price">
 													<dl class="final_order_price_border_bottom final_order_price_padding">
 														<dt>상품가격</dt>
-														<dd>36,000원
+														<dd>${productInfo.price }
 														</dd>
 													</dl>
 													<dl class="final_order_price_border_bottom final_order_price_padding">

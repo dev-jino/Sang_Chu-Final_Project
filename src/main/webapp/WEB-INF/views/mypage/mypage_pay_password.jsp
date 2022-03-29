@@ -38,7 +38,7 @@
 										<li><a id="scrollMain"
 											href="<c:url value="/mypage_pay"/>"><span>전자지갑 내역</span></a></li>
 										<li><a
-											href="<c:url value="/mypage_exchange"/>"><span>상추 환전</span></a></li>
+											href="<c:url value="/mypage_exchange"/>"><span>상추 · 현금 환전</span></a></li>
 										<li><a class="active"
 											href="<c:url value="/mypage_pay_password"/>"><span>결제 비밀번호 변경</span></a></li>
 									</ul>

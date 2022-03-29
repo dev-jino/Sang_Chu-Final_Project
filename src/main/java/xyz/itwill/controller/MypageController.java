@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import oracle.net.aso.m;
 import xyz.itwill.dto.Coin;
 import xyz.itwill.dto.Member;
 import xyz.itwill.exception.UserinfoNotFoundException;
@@ -79,15 +80,30 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/mypage_exchange", method = RequestMethod.POST)
-	public String mypageExchange(@ModelAttribute Coin coin, @ModelAttribute Member member, HttpSession session) throws UserinfoNotFoundException {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id", coin.getMemberId());
-		map.put("coin", coin.getExCoin());
-		coinService.addCoin(coin);
-		memberSerivce.modifyExchangeCoin(map);
-		session.setAttribute("loginMember", memberSerivce.getMember(coin.getMemberId()));
+	public String mypageExchange(@RequestParam String formStatus, @ModelAttribute Coin coin, @ModelAttribute Member member, HttpSession session) throws UserinfoNotFoundException {
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		
+		if(formStatus.equals("현금환전")) {
+		
+			//상추->현금 환전
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("id", coin.getMemberId());
+			map.put("coin", coin.getExCoin());
+			coinService.addCoin(coin);
+			memberSerivce.modifyExchangeCoin(map);
+		} else {
+			
+			//상추 충전
+			Map<String, Object> map2 = new HashMap<String, Object>();
+			map2.put("id", member.getId());
+			map2.put("coin", member.getCoin());
+			memberSerivce.modifyExchangeCash(map2);
+		}
+		
+		session.setAttribute("loginMember", memberSerivce.getMember(loginMember.getId()));
 		return "redirect:/mypage_exchange";
 	}
+
 	
 	
 
@@ -143,18 +159,6 @@ public class MypageController {
 	public String mypageQna() {
 		return "mypage/mypage_qna";
 	}
-	
-	
-	
-	
-	
-	@RequestMapping("/pay_detail")
-	public String payDetail(HttpSession session, Model model) {
-		Member loginMember = (Member)session.getAttribute("loginMember");
-		model.addAttribute("nicname", loginMember.getNicname());
-		return "mypage/pay_detail";
-	}
-	
 	
 	
 	

@@ -86,4 +86,11 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.getMapper(MemberMapper.class).findPassword(map);
 	}
 
+	@Override
+	public int exchangeCash(Map<String, Object> map) {
+		return sqlSession.getMapper(MemberMapper.class).exchangeCash(map);
+	}
+	
+	
+
 }

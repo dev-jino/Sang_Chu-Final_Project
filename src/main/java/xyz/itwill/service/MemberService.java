@@ -24,4 +24,5 @@ public interface MemberService {
 	int modifyMemberCoin(Map<String, Object> map);
 	int getMemberCount();
 	List<Member> getMemberListPager(Map<String, Object> map);
+	void modifyExchangeCash(Map<String, Object> map);
 }

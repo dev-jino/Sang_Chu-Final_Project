@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style type="text/css">
 #imgimg1{
 	z-index:0;
@@ -144,7 +145,7 @@
 										<div class="item_price_box item_price_box_bottom">
 											<div class="item_price_box_bottom_low">
 												<div class="item_price item_price_bottom">
-													title 가전 매매
+													${productInfo.title }
 													<!--20,000 원-->
 												</div>
 											</div>
@@ -157,7 +158,7 @@
 														</tr>
 														<tr>
 															<td class="title">가격</td>
-															<td class="description">2,000</td>
+															<td class="description">${productInfo.price }</td>
 														</tr>
 													</tbody>
 												</table>
@@ -187,7 +188,7 @@
 														<!-- <button type="button" class="hello_talk_btn canpayment_hello_talk_btn">충전하기</button></div> -->
 
 														<div class="item_hello_box_pay item_hello_box_chat_pay">
-															<button type="button" class="hello_pay_btn">구매 신청하기</button>
+															<button type="button" class="hello_pay_btn" onclick="location.href = '${pageContext.request.contextPath}/order_detail?idx=${productInfo.idx }'">구매 신청하기</button>
 														</div>
 													</div>
 												</div>
@@ -225,7 +226,7 @@
 													<div class="item_talk">충전하기</div>
 												</div>
 												<div class="item_buy_box">
-													<button type="button" class="item_buy">구매 신청하기</button>
+													<button type="button" class="item_buy" onclick="location.href = '<c:url value='/order_detail'/>'">구매 신청하기</button>
 												</div>
 											</section>
 
@@ -273,7 +274,6 @@ document.getElementById('wish_img_box').onclick = function() {
 	
 	
 }
-
 
 
 /* const style1 = document.getElementById('img1'); //.style;
