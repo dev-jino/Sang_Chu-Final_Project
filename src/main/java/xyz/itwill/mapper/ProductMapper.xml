@@ -10,12 +10,48 @@
 	
 	<!-- 사용자의 상품 수정 -->
 	<update id="updateUserProduct">
-		update product set category1=#{category1}, category2=#{category2}, title=#{title}, price=#{price}, content=#{content}, img=#{img}, img1=#{img1}, img2=#{img2}, img3=#{img3}, img4=#{img4}, img5=#{img5} where memberId=#{memberId}
+		update product
+		<set>
+			<if test="category1!=null and category1!=''">
+				category1=#{category1},
+			</if>
+			<if test="category2!=null and category2!=''">
+				category2=#{category2},
+			</if>
+			<if test="title!=null and title!=''">
+				title=#{title},
+			</if>
+			<if test="price!=null and price!=''">
+				price=#{price},
+			</if>
+			<if test="content!=null and content!=''">
+				content=#{content},
+			</if>
+			<if test="img!=null and img!=''">
+				img=#{img},
+			</if>
+			<if test="img1!=null and img1!=''">
+				img1=#{img1},
+			</if>
+			<if test="img2!=null and img2!=''">
+				img2=#{img2},
+			</if>
+			<if test="img3!=null and img3!=''">
+				img3=#{img3},
+			</if>
+			<if test="img4!=null and img4!=''">
+				img4=#{img4},
+			</if>
+			<if test="img5!=null and img5!=''">
+				img5=#{img5}
+			</if>
+		</set>
+		  where member_id=#{memberId}
 	</update>
 	
-	<!-- 관리자의 상품 수정(상태변경까지 가능) -->
+	<!-- 판매완료 버튼 누른 상품의 status=4(:판매완료)로 변경 -->
 	<update id="updateAdminProduct">
-		update product set category1=#{category1}, category2=#{category2}, title=#{title}, price=#{price}, content=#{content}, img=#{img}, img1=#{img1}, img2=#{img2}, img3=#{img3}, img4=#{img4}, img5=#{img5}, status=#{status} where memberId=#{memberId}
+		update product set status=4	where idx=#{idx}
 	</update>
 	
 	

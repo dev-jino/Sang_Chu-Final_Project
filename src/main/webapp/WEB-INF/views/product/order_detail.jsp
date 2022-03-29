@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,12 +68,9 @@
 															</div>
 														</div>
 														<div class="cont cont_main_col_1">
-															<div class="item_title title_main_col_1">(무료배송) 내구성
-																좋은 남성 다이얼 트레킹화 / 등산화 /트레킹화</div>
+															<div class="item_title title_main_col_1">${productInfo.title }</div>
 															<div class="item_price pri_main_col_1">
-																36,000
-																<!-- -->
-																원
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${productInfo.price }"/> 원
 															</div>
 														</div>
 													</div></li>
@@ -86,20 +84,14 @@
 												<div class="final_order_price">
 													<dl class="final_order_price_border_bottom final_order_price_padding">
 														<dt>상품가격</dt>
-														<dd>${productInfo.price }
+														<dd><fmt:formatNumber type="number" maxFractionDigits="3" value="${productInfo.price }"/>
 														</dd>
-													</dl>
-													<dl class="final_order_price_border_bottom final_order_price_padding">
-														<dt>안전거래수수료</dt>
-														<dd>1,000원</dd>
 													</dl>
 												</div>
 												<div class="order_total_price">
 													<div class="title">최종결제금액</div>
 													<div class="price" id="orderTotalPrice">
-														37,684
-														<!-- -->
-														원
+														<fmt:formatNumber type="number" maxFractionDigits="3" value="${productInfo.price }"/> 원
 													</div>
 												</div>
 												<div class="policy_area">

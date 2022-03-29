@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 <title>거래중인 상품</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style type="text/css">
+#okBtn {
+	background-color: green;
+	color: white;
+	border-radius: 5px;
+	width: 80px;
+}
+</style>
 </head>
 <body>
 	<div id="__next">
@@ -86,6 +94,14 @@
 															<div class="item_title related_item_icon">${product.title }</div>
 															<div class="item_price profile_price">${product.price }</div>
 														</div>
+														<c:if test="${status eq 3 }">
+															<div>
+																<form method="post" onsubmit="alert('상품판매를 완료하였습니다');">
+																<input type="hidden" name="idx" value="${product.idx }">
+																<button type="submit" id="okBtn" class="search_icon_box related_item_icon profile_libs_page">판매하기</button>
+																</form>
+															</div>
+														</c:if>
 													</div>
 													</a>
 												</li>

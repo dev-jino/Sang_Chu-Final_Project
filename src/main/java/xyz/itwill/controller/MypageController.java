@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import oracle.net.aso.m;
 import xyz.itwill.dto.Coin;
 import xyz.itwill.dto.Member;
+import xyz.itwill.dto.Product;
 import xyz.itwill.exception.UserinfoNotFoundException;
 import xyz.itwill.service.CoinService;
 import xyz.itwill.service.FavoriteService;
@@ -55,6 +56,19 @@ public class MypageController {
 		
 		return "mypage/mypage_list";
 	}
+	
+	@RequestMapping(value = "/mypage_list", method = RequestMethod.POST)
+	public String sellProductList(@RequestParam int idx, HttpSession session) {
+		
+		//판매하기 눌렀을 때 상품의 상태를 판매완료로 변경
+		productService.modifyAdminProduct(null)
+		
+		
+		return "redirect:/mypage_list";
+	}
+	
+	
+	
 	
 	
 	
