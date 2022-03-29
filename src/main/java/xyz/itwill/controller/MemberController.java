@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -88,14 +89,14 @@ public class MemberController {
 	public String findPassword() {
 		return "member/find_passwd";
 	}
-		
+	
 	@RequestMapping(value = "/find_password",method = RequestMethod.POST)
 	public String findPassword(@RequestParam String id, @RequestParam String name, @RequestParam String phone, @RequestParam String password) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("name", name);
 		map.put("phone", phone);
-		map.put("password",password);
+		map.put("password",BCrypt.hashpw(password,BCrypt.gensalt()));
 		memberSerivce.getFindPassword(map);
 		return "redirect:/login";
 	}

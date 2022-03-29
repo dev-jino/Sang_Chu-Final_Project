@@ -30,7 +30,7 @@
 <button type="submit" class="signup_btn">로그인</button>
 <div class="login_find_area pc_login_area"><span class="re_password"><a class="re_password_btn" onclick="location.href='${pageContext.request.contextPath}/find_id'">아이디찾기</a></span>
 <span class="gap">|</span>
-<span class="re_password"><a class="re_password_btn" onclick="location.href='${pageContext.request.contextPath}/find_password'">비밀번호찾기</a></span></div>
+<span class="re_password"><a class="re_password_btn" onclick="location.href='${pageContext.request.contextPath}/find_password'">비밀번호 재설정</a></span></div>
 </form>
 	</c:when>
 </c:choose>
