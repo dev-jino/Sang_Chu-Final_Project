@@ -47,10 +47,11 @@
 			f.phone.focus();
 			return false;
 		}
-		//alert("회원님의 아이디는" +${member.id}+ "입니다.");
+		
 		return true;
 	}
-	
+
+
 </script>
 
 

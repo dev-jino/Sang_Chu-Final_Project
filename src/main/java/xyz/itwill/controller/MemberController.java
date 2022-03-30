@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import xyz.itwill.dto.Member;
 import xyz.itwill.exception.LoginAuthFailException;
@@ -68,6 +69,17 @@ public class MemberController {
 		return "redirect:/login";
 	}
 	
+	@RequestMapping(value = "/id_check", method = RequestMethod.GET)
+	@ResponseBody
+	public String idCheck(@RequestParam String id) {
+		try {
+			memberSerivce.getMember(id);
+			return "impossible";
+		} catch (UserinfoNotFoundException e) {
+			return "possible";
+		}
+	}
+	
 	
 	//아이디찾기
 	@RequestMapping(value = "/find_id", method =  RequestMethod.GET)
@@ -81,7 +93,7 @@ public class MemberController {
 		map.put("name",name);
 		map.put("phone", phone);
 		model.addAttribute("member", memberSerivce.getFindId(map));
-		return "member/find_id";
+		return "member/id_ok";
 	}
 		
 	//비밀번호 재설정
