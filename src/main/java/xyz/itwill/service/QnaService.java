@@ -14,4 +14,6 @@ public interface QnaService {
 	List<Qna> getQnaList(Map<String, Object> map);
 	int modifyAdminQnaAnswer(Qna qna);
 	int removeAdminQnaComment(int idx);
+	int modifyQnaFile(Qna qna);
+	 int modifyQna(Qna qna);
 }

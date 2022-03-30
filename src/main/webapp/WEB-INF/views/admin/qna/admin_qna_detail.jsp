@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
     
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	 <% pageContext.setAttribute("replaceChar","\n");  %>
 <div id="__next">
 	<section class="content">
 		<h1>상추슈퍼 - 중고거래는 상추슈퍼~!</h1>
@@ -61,8 +62,9 @@
 	                                                <td colspan="6" class="table_td_content"><img src="${pageContext.request.contextPath}/img/qna/ace.png" style=" width:300px; margin-left: 200px;"></td>
 	                                                
 	                                                
+                                        
 	                                            </tr>
-	                                           <tr class="faq_detail_tr"><td class="table_td_content">${qa.content}</td></tr>
+	                                           <tr class="faq_detail_tr"><td class="table_td_content">${fn:replace(qa.content,replaceChar,"<br/>")}</td></tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -79,7 +81,7 @@
 	                                                <td colspan="5" class="faq_detail_td">${qa.commentTitle}</td>
 	                                            </tr>
 	                                            <tr class="faq_detail_tr">
-	                                                <td colspan="6" class="table_td_content">${qa.commentContent}</td>
+	                                                <td colspan="6" class="table_td_content">${fn:replace(qa.commentContent,replaceChar,"<br/>")}</td>
 	                                            </tr>
                                             </tbody>
                                         </table>

@@ -3,7 +3,9 @@
          
          <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
          <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
+		<% pageContext.setAttribute("replaceChar","\n");  %>
+		
+
 <!DOCTYPE html>
 <html lang="ko">
 <!-- Mirrored from www.hellomarket.com/help/notice.hm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Feb 2022 13:25:06 GMT -->
@@ -25,10 +27,7 @@
             margin: 15px;
             position: absolute;
             top: 230px;}
-        #answer{
-        	width:100%;
-        }
-        
+   
     </style>
 
 </head>
@@ -53,7 +52,7 @@
                                     <div class="left_nav_type2_title">헬프센터</div>
                                     <ul class="left_nav_menu">
                                         <li><a class="active" id="scrollMain" href="${pageContext.request.contextPath}/notice"><span>공지사항</span></a></li>
-										<li><a href="${pageContext.request.contextPath}faq"><span>FAQ</span></a></li>
+										<li><a href="${pageContext.request.contextPath}/faq"><span>FAQ</span></a></li>
 										<li><a href="${pageContext.request.contextPath}/qna"><span>QnA</span></a></li>
                                     </ul>
                                 </div>
@@ -70,19 +69,19 @@
                                 
                                 
                                     <div class="notice_list">
-                                    
+                                    <c:set var="a" value="<\n>"></c:set>
                                        <c:forEach var="notice" items="${noticeList}" >
                                         <div class="questions">
                                             <img class="icon_questions" src="${pageContext.request.contextPath}/img/site/i.png" alt="질문 이미지" height="25"/>
                                             <span class="title" onclick="ds2('${notice.idx}')">${notice.title}</span>
                                             
                                             <span class="timeago">${fn:substring(notice.regDate,0,10)}</span>
-                                            <div class="answer hide"  style="width:100%" id="answerN_${notice.idx}"  >
+                                            <div class="answer hide"   id="answerN_${notice.idx}"  style="border-bottom: 0px; border-left: 0px;">
                                                 <img alt="답변" class="icon_answer" height="25" width="25" src="${pageContext.request.contextPath}/img/site/i.png">
-                                                <span>${notice.content}</span>
+                                                <span style="margin-bottom: 40px;">${fn:replace(notice.content,replaceChar,"<br/>")}</span>
                                             </div>
                                         </div>
-                                        
+                                       
                                          </c:forEach> 
                                     </div>
                                     <div></div>

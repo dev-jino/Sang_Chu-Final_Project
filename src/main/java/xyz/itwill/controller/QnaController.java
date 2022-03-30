@@ -97,5 +97,50 @@ public class QnaController {
 		 */
 		return "redirect:/qna";
 	}
+	
+	@RequestMapping(value = "/qna_modify", method = RequestMethod.GET)
+	public String qnaModify(@RequestParam int idx,Model model) {
+		model.addAttribute("qnam",qnaService.getQna(idx));
+		
+		return "qna/qna_modify";
+	}
+	
+	@RequestMapping(value = "/qna_modify", method = RequestMethod.POST)
+	public String qnaModify(@ModelAttribute Qna qna) throws IllegalStateException, IOException {
+		
+		
+		if(!(qna.getFile()==null)) {
+			String uploadDir = context.getServletContext().getRealPath("/resources/img/qna");
+			MultipartFile orimg = qna.getFile();
+			String orFilename = orimg.getOriginalFilename();
 
+			String upload = System.currentTimeMillis() + "";
+			
+			
+			qna.setOrImg(orFilename);
+			qna.setUpImg(upload);
+			
+			qna.getFile().transferTo(new File(uploadDir,upload));
+			//파일이 있는 경우 
+			qnaService.modifyQnaFile(qna);
+		}else if(qna.getFile()==null){
+			//파일이 없는 경우
+			
+			
+			qnaService.modifyQna(qna);
+		}
+		
+		
+		
+		return "redirect:/qna";
+	}
+	@RequestMapping(value = "/qna_remove", method = RequestMethod.GET)
+	public String qnaModify(@RequestParam int idx) {
+		
+		qnaService.removeQna(idx);
+		return "redirect:/qna";
+	}
+	
+	
+	
 }

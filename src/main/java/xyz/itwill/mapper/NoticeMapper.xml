@@ -13,7 +13,7 @@
 	</update>
 	
 	<select id="selectNoticeCount" resultType="int">
-		select count(*) from notice
+		select count(*) from notice where status=1
 	</select>
 		
 	<select id="selectNotice" resultType="Notice">

@@ -14,7 +14,7 @@
 	</update>
 	
 	<select id="selectQnaCount" resultType="int">
-		select count(*) from qna
+		select count(*) from qna where status=1
 	</select>
 	
 	
@@ -25,6 +25,13 @@
 			 select * from (select rownum rn,board.* from (select * from qna where status = 1 order by idx desc)
 			board) where rn between #{startRow} and #{endRow}
 	</select>
+	<update id="updateQnaFile">
+			update qna set title=#{title},content=#{content},or_img=#{orImg},up_img=#{upImg} where idx=#{idx}
+	</update>
+	<update id="updateQna">
+			update qna set title=#{title},content=#{content} where idx=#{idx}
+	</update>
+	
 	
 	
 	<!-- 관리자 -->
@@ -34,4 +41,6 @@
 	<update id="deleteAdminQnaComment">
 		update qna set comment_title=null , comment_content=null where idx=#{idx}
 	</update>
+	
+	
 </mapper>

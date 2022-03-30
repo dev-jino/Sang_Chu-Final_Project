@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+ <% pageContext.setAttribute("replaceChar","\n");  %>
 
    <style type="text/css">
         .comunity_content_title_area_policy {
@@ -19,7 +20,6 @@
         
         
     </style>
-
 <div id="__next">
 	<section class="content">
 		<h1>헬로마켓 - 100% 비대면 안전 결제 중고거래 마켓</h1>
@@ -84,23 +84,28 @@
                                             
                                             <span class="timeago">${qna.memberId}<c:if test='${qna.commentTitle ne null}'>/답변완료</c:if></span>
                                            
-                                            <div class="answer hide"   id="answer_${qna.idx}" >
-	                                            	<c:if test='${qna.upImg ne null}'>
-	                                            	<img alt="질문이미지" src="${pageContext.request.contextPath}/img/qna/${qna.upImg}" style="margin-left: 100px; width:400px;">
+                                            <div class="answer hide"   id="answer_${qna.idx}" style="border-bottom: 0px; border-left: 0px;">
+	                                            	<c:if test='${qna.upImg eq null}'>
+	                                            		<img alt="질문이미지" src="${pageContext.request.contextPath}/img/qna/${qna.upImg}" style="margin-left: 100px; width:400px;">
 	                                                </c:if>
-                                                
-                                                <span style="margin-left: 50px">${qna.content}</span>
-                                                <c:if test="${qna.memberId eq loginMember.id}"></c:if>
+                                                <span style="margin-left: 50px">${fn:replace(qna.content,replaceChar,"<br/>")}</span>
+                                               		<br>
+                                               		<br>
+                                                <c:if test="${qna.memberId eq loginMember.id}">
+                                                	 <div class="write_btn_div"><button type="button"onclick="location.href='${pageContext.request.contextPath}/qna_modify?idx=${qna.idx}'" style="margin-right: 3px; margin-bottom: 3px;">수정</button></div>
+                                                	 <div class="write_btn_div"><button type="button"onclick="location.href='${pageContext.request.contextPath}/qna_remove?idx=${qna.idx}'" style="margin-right: 3px; margin-bottom: 3px;">삭제</button></div>
+                                                </c:if>
                                                 
                                                	<c:if test='${qna.commentTitle ne null}'>
                                                 <span style="margin-top: 5px; margin-bottom: 0px;"  ><img class="icon_questions" src="${pageContext.request.contextPath}/img/site/a.png" alt="질문 이미지" height="30"/></span>
                                                	
                                                	<span style="margin-left: 50px; margin-top: 0px;  font-size: 14px;"><strong>${qna.commentTitle}</strong></span>
                                                	
-                                                <span style="margin-left: 50px; margin-bottom:30px;">${qna.commentContent}</span>
+                                                <span style="margin-left: 50px; margin-bottom:30px;">${fn:replace(qna.commentContent,replaceChar,"<br/>")}</span>
                                                 
                                                 
                                                 </c:if>
+                                       
                                                 
                                             </div>
 											                                         

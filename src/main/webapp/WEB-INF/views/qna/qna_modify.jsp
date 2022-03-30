@@ -44,7 +44,7 @@
                                 <div class="left_nav_type2">
                                     <div class="left_nav_type2_title">헬프센터</div>
                                     <ul class="left_nav_menu">
-                                   <li><a href="${pageContext.request.contextPath}/notice"><span>공지사항</span></a></li>
+                                        <li><a href="${pageContext.request.contextPath}/notice"><span>공지사항</span></a></li>
 										<li><a href="${pageContext.request.contextPath}/faq"><span>FAQ</span></a></li>
 										<li><a class="active" id="scrollMain"
 											href="${pageContext.request.contextPath}/qna"><span>QnA</span></a></li>
@@ -54,7 +54,7 @@
                             <section class="left_main">
 
                                 <div class="mail_view"><h1>헬로마켓 - 100% 비대면 안전 결제 중고거래 마켓</h1>
-                                    <h2>일반문의 신청 페이지</h2>
+                                    <h2>일반문의 수정 페이지</h2>
                                    
                                    
                                     <form name ="qnaForm" enctype="multipart/form-data" >
@@ -63,13 +63,13 @@
                                            
                                             <tr>
                                                 <td class="label">*제목</td>
-                                                <td class="field"><input type="text" class="" placeholder="제목을 입력해주세요."
-                                                                         value="" name ="title"/></td>
+                                                	<td class="field">
+                                                	<input type="text" class="" value="${qnam.title}" name ="title"/>
+                                                	</td>
                                             </tr>
                                             <tr>
-                                                <td class="field photo_field" colSpan="2" id="text1_field"><textarea placeholder="내용 입력"
-                                                                                                    class="textarea"
-                                                                                                    rows="7" name ="content"></textarea>
+                                                <td class="field photo_field" colSpan="2" id="text1_field">
+                                                <textarea  class="textarea" rows="7" name ="content">${qnam.content}</textarea>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -119,7 +119,7 @@
                                         
                                         
                                         <!-- 여기 value를 아이디 세션받아오는값으로 바꿔야됌 -->
-                                        <input type ="hidden" value="${loginMember.id}" name = memberId>
+                                        <input type ="hidden" value="${qnam.idx}" name = idx>
                                         
                                         
                                         
@@ -129,7 +129,7 @@
                                     </form>
                                     <ul class="btn_wrapper btn_wrapper_center" >
                                         <li>
-                                            <div class="btn" id = "qnabtn5" onclick="qnaCheck()">문의하기</div>
+                                            <div class="btn" id = "qnabtn5" onclick="qnaCheck()">수정완료</div>
                                         </li>
                                     </ul>
                                 </div>
@@ -227,7 +227,7 @@
   function qnaCheck(){
 	if((document.getElementById("agreeindi").classList)=="feature_option_checkbox_indicator checked"){
 		qnaForm.method="post";
-		qnaForm.action="${pageContext.request.contextPath}/qna_write"
+		qnaForm.action="${pageContext.request.contextPath}/qna_modify"
 		qnaForm.submit();
 	}else{
 		alert("개인정보처리방침에 동의해 주세요");

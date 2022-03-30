@@ -58,6 +58,16 @@ public class QnaDAOImpl implements QnaDAO{
 		return sqlSession.getMapper(QnaMapper.class).deleteAdminQnaComment(idx);
 	}
 
+	@Override
+	public int updateQnaFile(Qna qna) {
+		return sqlSession.getMapper(QnaMapper.class).updateQnaFile(qna);
+	}
+
+	@Override
+	public int updateQna(Qna qna) {
+		return sqlSession.getMapper(QnaMapper.class).updateQna(qna);
+	}
+
 	
 	
 	

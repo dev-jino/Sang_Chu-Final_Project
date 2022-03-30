@@ -3,7 +3,7 @@
     
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
          <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
+          <% pageContext.setAttribute("replaceChar","\n");  %>
 <div id="__next">
 	<section class="content">
 		<h1>상추슈퍼 - 중고거래는 상추슈퍼~!</h1>
@@ -57,9 +57,10 @@
 	                                                <td colspan="5" class="faq_detail_td">${noticeDetail.title }</td>
 	                                            </tr>
 	                                            <tr class="faq_detail_tr">
-	                                                <td colspan="6" class="table_td_content">${noticeDetail.content}</td>
+	                                                <td colspan="6" class="table_td_content">${fn:replace(noticeDetail.content,replaceChar,"<br/>")}</td>
 	                                            </tr>
                                             </tbody>
+                                      
                                         </table>
                                     </div>
                                     <br>

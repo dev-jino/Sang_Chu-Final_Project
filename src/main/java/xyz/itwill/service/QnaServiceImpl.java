@@ -57,6 +57,16 @@ public class QnaServiceImpl implements QnaService{
 		return qnaDAO.deleteAdminQnaComment(idx);
 	}
 
+	@Override
+	public int modifyQnaFile(Qna qna) {
+		return qnaDAO.updateQnaFile(qna);
+	}
+
+	@Override
+	public int modifyQna(Qna qna) {
+		return qnaDAO.updateQna(qna);
+	}
+
 	
 	
 	
