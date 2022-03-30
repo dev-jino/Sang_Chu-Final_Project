@@ -37,19 +37,19 @@
                                     <h2>일반문의 신청 페이지</h2>
                                     <div>Q/A 답글 작성</div>
 
-                                    <form name="qnaAnswerForm">
-                                  		<input type="hidden" value="${idx}" name ="idx">
+                                    <form name="qnaAdminModifyForm">
+                                  		<input type="hidden" value="${commentList.idx}" name ="idx">
                                         <table class="inquiry_table">
                                         
                                             <tbody>
 		
                                             <tr>
                                                 <td class="label">제목</td>
-                                                <td class="field"><input type="text" class="" placeholder="답글제목을 입력해주세요." value="" name ="commentTitle"/></td>
+                                                <td class="field"><input type="text" class="" placeholder="답글제목을 입력해주세요." value="${commentList.commentTitle}" name ="commentTitle"/></td>
                                             </tr>
                                             <tr>
                                                 <td class="field photo_field" colSpan="2" style="" id ="qatext">
-                                                    <textarea placeholder="내용 입력" class="textarea" rows="40" cols="60" style="width=70%"name ="commentContent"></textarea>
+                                                    <textarea placeholder="내용 입력" class="textarea" rows="40" cols="60" style="width=70%"name ="commentContent">${commentList.commentContent}</textarea>
                                                 </td>
                                             </tr>
 
@@ -59,7 +59,7 @@
                                     </form>
                                     <ul class="btn_wrapper btn_wrapper_center" id="btnsub" >
                                         <li>
-                                            <div class="btn"id ="qnabtn5" onclick ="qnaAnswerSubmitCheck();">작성완료</div>
+                                            <div class="btn"id ="qnabtn5" onclick ="qnaAnswerSubmitCheck2();">작성완료</div>
                                         </li>
                                     </ul>
                                 </div>
@@ -74,21 +74,21 @@
 
 <script type="text/javascript">
 	
-	function qnaAnswerSubmitCheck() {
+	function qnaAnswerSubmitCheck2() {
 		
-	if(qnaAnswerForm.commentTitle.value=="") {
+	if(qnaAdminModifyForm.commentTitle.value=="") {
 		alert("제목을 입력해 주세요");
-		qnaAnswerForm.commentTitle.focus();
+		qnaAdminModifyForm.commentTitle.focus();
 		return;
 	}
-	if(qnaAnswerForm.commentContent.value=="") {
+	if(qnaAdminModifyForm.commentContent.value=="") {
 		alert("내용을 입력해 주세요");
-		qnaAnswerForm.commentContent.focus();
+		qnaAdminModifyForm.commentContent.focus();
 		return; 
 	}
-	qnaAnswerForm.method="post";
-	qnaAnswerForm.action="${pageContext.request.contextPath}/admin_qna_add";
-	qnaAnswerForm.submit();
+	qnaAdminModifyForm.method="post";
+	qnaAdminModifyForm.action="${pageContext.request.contextPath}/admin_qna_add";
+	qnaAdminModifyForm.submit();
 		
 	}
 	</script>

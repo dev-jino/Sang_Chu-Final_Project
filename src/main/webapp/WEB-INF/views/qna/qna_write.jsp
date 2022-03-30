@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
+         
 <!DOCTYPE html>
 <html lang="ko">
 <!-- Mirrored from www.hellomarket.com/help/inquiry/form.hm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Feb 2022 13:21:35 GMT -->
@@ -30,7 +34,7 @@
             <div class="item_list_area inquiery_list_area">
                 <div class="breadcrumbs">
                     <ul>
-                        <li><a href="<%=request.getContextPath()%>/index.jsp">HOME</a></li>
+                        <li><a href="${pageContext.request.contextPath}/index.jsp">HOME</a></li>
                     </ul>
                 </div>
                 <div class="main_area">
@@ -40,9 +44,9 @@
                                 <div class="left_nav_type2">
                                     <div class="left_nav_type2_title">헬프센터</div>
                                     <ul class="left_nav_menu">
-                                        <li><a href="<%=request.getContextPath()%>/index.jsp?workgroup=notice&work=notice_list"><span>공지사항</span></a></li>
-										<li><a href="<%=request.getContextPath()%>/index.jsp?workgroup=faq&work=faq_list"><span>FAQ</span></a></li>
-										<li><a class="active" id="scrollMain" href="<%=request.getContextPath()%>/index.jsp?workgroup=qna&work=qna_list"><span>QnA</span></a></li>
+                                        <li><a href="${pageContext.request.contextPath}/index.jsp?workgroup=notice&work=notice_list"><span>공지사항</span></a></li>
+										<li><a href="${pageContext.request.contextPath}/index.jsp?workgroup=faq&work=faq_list"><span>FAQ</span></a></li>
+										<li><a class="active" id="scrollMain" href="${pageContext.request.contextPath}/index.jsp?workgroup=qna&work=qna_list"><span>QnA</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -50,53 +54,28 @@
 
                                 <div class="mail_view"><h1>헬로마켓 - 100% 비대면 안전 결제 중고거래 마켓</h1>
                                     <h2>일반문의 신청 페이지</h2>
-                                    <form enctype="multipart/form-data">
+                                   
+                                   
+                                    <form name ="qnaForm" enctype="multipart/form-data" >
                                         <table class="inquiry_table">
                                             <tbody>
-                                            <tr>
-                                                <td class="label">*이름</td>
-                                                <td class="field"><input type="text" class="" placeholder="이름을 입력해주세요."
-                                                                         value=""/></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="label">*연락처</td>
-                                                <td class="field"><input type="text" class=""
-                                                                         placeholder="연락처를 입력해주세요.(숫자만)" value=""/></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="label">*이메일</td>
-                                                <td class="field"><input type="text" class="" placeholder="이메일을 입력해주세요."
-                                                                         value=""/></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="label">*유형</td>
-                                                <td class="field"><select id="" class="commonSelectbox">
-                                                    <option selected="" value="1" disabled="">카테고리 선택</option>
-                                                    <option selected="" value="2" disabled="">카테고리 선택</option>
-                                                </select></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="label">*하위 유형</td>
-                                                <td class="field"><select id="" class="commonSelectbox">
-                                                    <option selected="" value="" disabled="">카테고리 선택</option>
-                                                </select></td>
-                                            </tr>
+                                           
                                             <tr>
                                                 <td class="label">*제목</td>
                                                 <td class="field"><input type="text" class="" placeholder="제목을 입력해주세요."
-                                                                         value=""/></td>
+                                                                         value="" name ="title"/></td>
                                             </tr>
                                             <tr>
                                                 <td class="field photo_field" colSpan="2" id="text1_field"><textarea placeholder="내용 입력"
                                                                                                     class="textarea"
-                                                                                                    rows="7"></textarea>
+                                                                                                    rows="7" name ="content"></textarea>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="field photo_field" colSpan="2" id="photo_field" ><label>사진첨부</label>
                                                     <div class="inquiry_photo_wrapper">
                                                         <ul class="image_list">
-                                                            <input type="file" multiple="" class="multiple"/>
+                                                            
                                                           <!--  <li>
                                                                 <input id="file-input" type="file" style="display: none" />
                                                                 <div class="up_img_box">
@@ -104,26 +83,13 @@
                                                                          class="item_img" alt="상품 등록 이미지" id="preview"/></div>
                                                             </li>-->
                                                             <li>
-                                                                <input id="file-input" type="file" style="display: none" />
+                                                                <input id="file-input" type="file" style="display: none" name="file"/>
                                                                     <label for="file-input" >
-                                                                        <img src="<%=request.getContextPath()%>/img/site/cam.png" id ="preview" for="file-input" />
+                                                                        <img src="${pageContext.request.contextPath}/img/site/cam.png" id ="preview" for="file-input" />
                                                                     </label>
 
                                                              </li>
-                                                            <li>
-                                                                <input id="file-input1" type="file" style="display: none" />
-                                                                <label for="file-input1" >
-                                                                    <img src="<%=request.getContextPath()%>/img/site/cam.png" id ="preview1" for="file-input1" />
-                                                                </label>
-
-                                                            </li>
-                                                            <li>
-                                                                <input id="file-input2" type="file" style="display: none" />
-                                                                <label for="file-input2" >
-                                                                    <img src="<%=request.getContextPath()%>/img/site/cam.png" id ="preview2" for="file-input2" />
-                                                                </label>
-
-                                                            </li>
+                                                           
 
                                                         </ul>
                                                     </div>
@@ -138,7 +104,7 @@
                                                          </label>
 
                                                         <div class="field_notice_box">
-                                                            <div>주)헬로마켓은 이용자님께서 문의한 내용을 통해 소비자 불만 또는 분쟁, 제휴상담을 처리하고자
+                                                            <div>주)상추슈퍼는 이용자님께서 문의한 내용을 통해 소비자 불만 또는 분쟁, 제휴상담을 처리하고자
                                                                 최소한의 범위 내에서 아래와 같이 개인정보를 수집·이용합니다.<br/><br/>- 수집이용·목적 :
                                                                 문의하기<br/>- 수집항목 : 이름, 휴대폰번호, 이메일 주소<br/>- 보유·이용기간 :
                                                                 전자상거래 등에서의 소비자보호에 관한 법률에 따라 3년<br/></div>
@@ -148,10 +114,21 @@
                                             </tr>
                                             </tbody>
                                         </table>
+                                        
+                                        
+                                        
+                                        <!-- 여기 value를 아이디 세션받아오는값으로 바꿔야됌 -->
+                                        <input type ="hidden" value="${loginMember.id}" name = memberId>
+                                        
+                                        
+                                        
+                                       
+                                        
+                                        
                                     </form>
                                     <ul class="btn_wrapper btn_wrapper_center" >
                                         <li>
-                                            <div class="btn" id = "qnabtn5">문의하기</div>
+                                            <div class="btn" id = "qnabtn5" onclick="qnaCheck()">문의하기</div>
                                         </li>
                                     </ul>
                                 </div>
@@ -240,5 +217,23 @@
           reader1.readAsDataURL(input.files[0]);
       }
   }
+  
+/*   function ds1(idx) {
+		document.getElementById("answer_"+idx).classList.toggle('hide');
+		/* alert(idx); 
+	} */
+	
+  function qnaCheck(){
+	if((document.getElementById("agreeindi").classList)=="feature_option_checkbox_indicator checked"){
+		qnaForm.method="post";
+		qnaForm.action="${pageContext.request.contextPath}/qna_write"
+		qnaForm.submit();
+	}else{
+		alert("개인정보처리방침에 동의해 주세요");
+		return;
+	}
+	
+  }
+	  
   </script>
 </body>

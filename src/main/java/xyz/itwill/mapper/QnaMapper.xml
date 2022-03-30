@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.itwill.mapper.QnaMapper">
+	<insert id="insertQna">
+		<selectKey resultType="int" keyProperty="idx" order="BEFORE">
+			select qna_idx.nextval from dual
+		</selectKey>
+		insert into qna values(#{idx},#{memberId},#{title},#{content},sysdate,1,
+		#{orImg},#{upImg},null,null)
+	</insert>
+	
+	<update id="deleteQna">
+		update qna set status = 9 where idx=#{idx}
+	</update>
+	
+	<select id="selectQnaCount" resultType="int">
+		select count(*) from qna
+	</select>
+	
+	
+	<select id="selectQna" resultType="Qna">
+		select * from qna where idx=#{idx}
+	</select> 	
+	<select id="selectQnaList" resultType="Qna">
+			 select * from (select rownum rn,board.* from (select * from qna where status = 1 order by idx desc)
+			board) where rn between #{startRow} and #{endRow}
+	</select>
+	
+	
+	<!-- 관리자 -->
+	<update id="updateAdminQnaAnswer">
+		update qna set comment_title=#{commentTitle} , comment_content=#{commentContent} where idx=#{idx}
+	</update>
+	<update id="deleteAdminQnaComment">
+		update qna set comment_title=null , comment_content=null where idx=#{idx}
+	</update>
+</mapper>
