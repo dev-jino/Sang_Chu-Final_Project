@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
- <% pageContext.setAttribute("replaceChar","\n");  %>
+
 
    <style type="text/css">
         .comunity_content_title_area_policy {
@@ -85,7 +85,7 @@
                                             <span class="timeago">${qna.memberId}<c:if test='${qna.commentTitle ne null}'>/답변완료</c:if></span>
                                            
                                             <div class="answer hide"   id="answer_${qna.idx}" style="border-bottom: 0px; border-left: 0px;">
-	                                            	<c:if test='${qna.upImg eq null}'>
+	                                            	<c:if test='${qna.upImg ne null}'>
 	                                            		<img alt="질문이미지" src="${pageContext.request.contextPath}/img/qna/${qna.upImg}" style="margin-left: 100px; width:400px;">
 	                                                </c:if>
                                                 <span style="margin-left: 50px">${fn:replace(qna.content,replaceChar,"<br/>")}</span>

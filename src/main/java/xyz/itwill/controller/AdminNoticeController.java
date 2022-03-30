@@ -43,7 +43,7 @@ public class AdminNoticeController {
 
 	@RequestMapping("/admin_notice_detail")
 	public String adminNoticeDetail(@RequestParam int idx ,Model model) {
-		
+        model.addAttribute("replaceChar","\n");
 		model.addAttribute("noticeDetail",noticeService.getNotice(idx));
 		
 		

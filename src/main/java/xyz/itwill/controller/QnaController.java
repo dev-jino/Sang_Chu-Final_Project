@@ -46,12 +46,13 @@ public class QnaController {
 		Map<String, Object> pagerMap = new HashMap<String, Object>();
 		pagerMap.put("startRow", pager.getStartRow());
 		pagerMap.put("endRow", pager.getEndRow());
+        model.addAttribute("replaceChar","\n");
 
 		model.addAttribute("qnaList", qnaService.getQnaList(pagerMap));
 		model.addAttribute("pager", pager);
 
 		// model.addAttribute("qnaList",qnaService.getQnaList(startRow));
-
+		
 		return "qna/qna_list";
 	}
 

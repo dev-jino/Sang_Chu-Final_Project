@@ -59,7 +59,7 @@ public class AdminQnaController {
 	}
 	@RequestMapping(value ="/admin_qna_detail",method = RequestMethod.GET)
 	public String AdminQnaDetail(@RequestParam int idx,Model model) {
-		
+        model.addAttribute("replaceChar","\n");
 		model.addAttribute("qa",qnaService.getQna(idx));
 		
 		return "admin/qna/admin_qna_detail";

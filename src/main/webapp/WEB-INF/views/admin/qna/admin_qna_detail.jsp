@@ -3,7 +3,7 @@
     
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-	 <% pageContext.setAttribute("replaceChar","\n");  %>
+	 
 <div id="__next">
 	<section class="content">
 		<h1>상추슈퍼 - 중고거래는 상추슈퍼~!</h1>

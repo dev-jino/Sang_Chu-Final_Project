@@ -30,6 +30,7 @@ public class NoticeController {
 		Map<String, Object> pageMap = new HashMap<String, Object>();
 		pageMap.put("startRow", pager.getStartRow());
 		pageMap.put("endRow", pager.getEndRow());
+        model.addAttribute("replaceChar","\n");
 
 		model.addAttribute("noticeList", noticeService.getNoticeList(pageMap));
 		model.addAttribute("pager", pager);
