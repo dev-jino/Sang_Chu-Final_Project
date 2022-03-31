@@ -34,7 +34,6 @@
 								<div class="my_profile_nav">
 									<ul>
 										<li><a href="<c:url value="/mypage_list"/>"><span>거래내역</span></a></li>
-										<li><a href="<c:url value="/mypage_qna"/>"><span>내 QnA</span></a></li>
 										<li><a href="<c:url value="/mypage_info_update"/>"><span>회원정보수정</span></a></li>
 									</ul>
 								</div>
@@ -64,7 +63,7 @@
 									
 									<div class="tab_content">
 									<div>
-										<c:forEach var="favorite" items="${favoriteList }">
+										<c:forEach var="favorite" items="${favoritePaging }">
 											<ul style="position:relative; left:10px; bottom: 250px; list-style: none;">
 												<li class="main_col_3" style="float: left; width: 30%;">
 													<a class="card card_list" href="<c:url value="/product_detail?idx=${favorite.product.idx }"/>">
@@ -72,7 +71,7 @@
 														<div class="image_wrapper">
 															<div class="image_outside">
 																<div class="image_centerbox">
-																	<img src="<c:url value="/img/product/${product.img }"/>"/>
+																	<img src="<c:url value="/img/product/${favorite.product.img }"/>"/>
 																</div>
 															</div>
 														</div>

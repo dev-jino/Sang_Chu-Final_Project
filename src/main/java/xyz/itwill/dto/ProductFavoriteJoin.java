@@ -4,7 +4,6 @@ public class ProductFavoriteJoin {
 	private Product product;
 	private Favorite favorite;
 	
-	
 	public Product getProduct() {
 		return product;
 	}
@@ -17,6 +16,7 @@ public class ProductFavoriteJoin {
 	public void setFavorite(Favorite favorite) {
 		this.favorite = favorite;
 	}
+	
 	
 	
 }

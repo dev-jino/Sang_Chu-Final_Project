@@ -126,8 +126,7 @@ public class MypageController {
 		pagerMap.put("startRow", pager.getStartRow());
 		pagerMap.put("endRow", pager.getEndRow());
 		
-		//이거 Mapper에서 Join해서 다시 만들어야함
-//		model.addAttribute("favoritePaging", favoriteService.getFavoritePaging(pagerMap));
+		model.addAttribute("favoritePaging", favoriteService.getFavoritePaging(pagerMap));
 		model.addAttribute("pager", pager);
 		return "mypage/mypage_favorite";
 	}

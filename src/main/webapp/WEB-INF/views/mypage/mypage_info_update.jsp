@@ -40,7 +40,6 @@
 								<div class="my_profile_nav">
 									<ul>
 										<li><a href="<c:url value="/mypage_list"/>"><span>거래내역</span></a></li>
-										<li><a href="<c:url value="/mypage_qna"/>"><span>내 Q&A</span></a></li>
 										<li><a href="<c:url value="/mypage_info_update"/>"><span>회원정보수정</span></a></li>
 									</ul>
 								</div>

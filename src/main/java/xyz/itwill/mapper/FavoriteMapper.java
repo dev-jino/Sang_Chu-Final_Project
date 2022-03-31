@@ -10,6 +10,6 @@ public interface FavoriteMapper {
 	int insertFavorite(Favorite favorite);
 	Favorite selectFavorite(String memberId);
 	List<ProductFavoriteJoin> selectFavoriteList(String memberId);
-	List<Favorite> selectFavoritePaging(Map<String, Object> map);
+	List<ProductFavoriteJoin> selectFavoritePaging(Map<String, Object> map);
 	int selectCountFavorite(String memberId);
 }

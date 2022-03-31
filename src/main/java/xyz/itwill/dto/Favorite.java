@@ -3,7 +3,7 @@ package xyz.itwill.dto;
 /*
 이름          널?       유형           
 ----------- -------- ------------ 
-IDX         NOT NULL NUMBER       
+FIDX         NOT NULL NUMBER       
 PRODUCT_IDX          NUMBER       
 MEMBER_ID            VARCHAR2(50) 
  */
@@ -17,7 +17,6 @@ public class Favorite {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 
 	public int getFidx() {
 		return fidx;
@@ -27,7 +26,6 @@ public class Favorite {
 	public void setFidx(int fidx) {
 		this.fidx = fidx;
 	}
-
 
 
 	public int getProductIdx() {
@@ -48,6 +46,7 @@ public class Favorite {
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-	
+
+
 	
 }

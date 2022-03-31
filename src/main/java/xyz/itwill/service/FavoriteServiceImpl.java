@@ -34,7 +34,7 @@ public class FavoriteServiceImpl implements FavoriteService {
 	}
 
 	@Override
-	public List<Favorite> getFavoritePaging(Map<String, Object> map) {
+	public List<ProductFavoriteJoin> getFavoritePaging(Map<String, Object> map) {
 		return favoriteDAO.selectFavoritePaging(map);
 	}
 

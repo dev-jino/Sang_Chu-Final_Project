@@ -32,7 +32,7 @@ public class FavoriteDAOImpl implements FavoriteDAO {
 	}
 
 	@Override
-	public List<Favorite> selectFavoritePaging(Map<String, Object> map) {
+	public List<ProductFavoriteJoin> selectFavoritePaging(Map<String, Object> map) {
 		return sqlSession.getMapper(FavoriteMapper.class).selectFavoritePaging(map);
 	}
 

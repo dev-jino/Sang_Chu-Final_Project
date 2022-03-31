@@ -10,6 +10,6 @@ public interface FavoriteService {
 	void addFavorite(Favorite favorite);
 	Favorite getFavorite(String memberId);
 	List<ProductFavoriteJoin> getFavoriteList(String memberId);
-	List<Favorite> getFavoritePaging(Map<String, Object> map);
+	List<ProductFavoriteJoin> getFavoritePaging(Map<String, Object> map);
 	int getCountFavorite(String memberId);
 }
