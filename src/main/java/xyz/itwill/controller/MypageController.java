@@ -91,16 +91,19 @@ public class MypageController {
 		
 		//판매자의 대기 -> 판매완료 리스트로 가는 메소드
 		productService.modifyStatusProduct(map);
-		
-		//판매자가 판매완료 버튼 눌렀을 때 구매자의 구매완료 리스트에 뜨게해주는 메소드
-		orderService.modifySellProduct(idx);
-		
-		
+
 		return "redirect:/mypage_list?status=3";
 	}
 	
 	
-	
+	@RequestMapping(value = "/mypage_buy")
+	public String buyProductList(Model model, HttpSession session) {
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		model.addAttribute("buyList", productService.getBuyList(loginMember.getId()));
+		
+		
+		return "mypage/mypage_buy";
+	}
 	
 	
 	
