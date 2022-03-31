@@ -55,7 +55,7 @@
 					<li class="gnb_my_list_first"><a style="display:block;" href="<c:url value="/mypage_list"/>">마이 페이지</a></li>
 					<li><a style="display:block;" href="<c:url value="/mypage_pay"/>">결제관리</a></li>
 					<li><a style="display:block;" href="<c:url value="/admin_member"/>">관리자 페이지</a></li>
-					<li class="gnb_my_list_last">로그아웃</li>
+					<li class="gnb_my_list_last" onclick="location.href='${pageContext.request.contextPath}/logout'">로그아웃</li>
 				</ul>
 			</div>
 		</div>
@@ -106,12 +106,15 @@
 				<i class="arrow"></i><span for="cat_checkbox" class="selectbox">카테고리</span>
 				-->
 			<ul class="header_ul">
-				<li><a href="#">전체상품</a></li>
-				<li><a href="<c:url value="/product_list"/>">가구·가전</a></li>
-				<li><a href="#">생활·식품</a></li>
-				<li><a href="#">게임·취미</a></li>
-				<li><a href="#">의류·잡화</a></li>
-				<li><a href="#">기타</a></li>
+				<li><a href="<c:url value="/product_list?category1='전체상품'"/>"">전체상품</a></li>
+<%-- 				<li><a href="<c:url value="/product_list"/>">가구·가전</a></li> --%>
+				<li><a href="<c:url value="/product_list?category1='가구·가전'"/>">가구·가전</a></li>
+				<li><a href="<c:url value="/product_list?category1='생활·식품'"/>">생활·식품</a></li>
+				<li><a href="<c:url value="/product_list?category1='게임·취미'"/>">게임·취미</a></li>
+				<li><a href="<c:url value="/product_list?category1='의류·잡화'"/>">의류·잡화</a></li>
+				<li><a href="<c:url value="/product_list?category1='기타'"/>">기타</a></li>
+			
+			
 			</ul>
 		</div>
 		<!-- 
