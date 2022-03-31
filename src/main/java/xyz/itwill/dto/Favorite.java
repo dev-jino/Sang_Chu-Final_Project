@@ -8,7 +8,7 @@ PRODUCT_IDX          NUMBER
 MEMBER_ID            VARCHAR2(50) 
  */
 public class Favorite {
-	private int idx;
+	private int fidx;
 	private int productIdx;
 	private String memberId;
 	
@@ -17,15 +17,17 @@ public class Favorite {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 
-	public int getIdx() {
-		return idx;
+	public int getFidx() {
+		return fidx;
 	}
 
 
-	public void setIdx(int idx) {
-		this.idx = idx;
+	public void setFidx(int fidx) {
+		this.fidx = fidx;
 	}
+
 
 
 	public int getProductIdx() {

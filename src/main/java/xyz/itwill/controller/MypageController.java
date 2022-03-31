@@ -221,18 +221,6 @@ public class MypageController {
 	
 	
 	
-	//È¸¿øÀÇ QnA ¸®½ºÆ®
-	@RequestMapping("/mypage_qna")
-	public String mypageQna(Model model, HttpSession session) {
-		Member loginMember = (Member)session.getAttribute("loginMember");
-		model.addAttribute("qnaList", qnaService.getMyQna(loginMember.getId()));
-		
-		return "mypage/mypage_qna";
-	}
-	
-	
-	
-	
 	//È¸¿øÅ»Åð
 	@RequestMapping(value = "/delete_member", method = RequestMethod.GET)
 	public String deleteMember(HttpSession session) throws UserinfoNotFoundException {

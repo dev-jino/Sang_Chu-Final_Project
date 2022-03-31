@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import xyz.itwill.dto.Comment;
+import xyz.itwill.dto.Favorite;
 import xyz.itwill.dto.Member;
 import xyz.itwill.dto.Order;
 import xyz.itwill.service.CommentService;
+import xyz.itwill.service.FavoriteService;
 import xyz.itwill.service.OrderService;
 import xyz.itwill.service.ProductService;
 
@@ -27,6 +29,9 @@ public class ProductController {
 	
 	@Autowired
 	private CommentService commentService;
+	
+	@Autowired
+	private FavoriteService favoriteService;
 	
 	@RequestMapping("/product_list")
 	public String Product() {
@@ -43,7 +48,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/product_detail", method = RequestMethod.POST)
-	public String ProductDetail(@ModelAttribute Comment comment, Model model, @RequestParam int idx, @RequestParam int pStatus) {
+	public String ProductDetail(@ModelAttribute Favorite favorite ,@ModelAttribute Comment comment, Model model, @RequestParam int idx, @RequestParam(defaultValue = "0") int pStatus) {
 		if (comment.getStatus() == 1) {
 			commentService.addComment(comment);
 		} else if (comment.getStatus() == 2) {
@@ -58,7 +63,11 @@ public class ProductController {
 		model.addAttribute("productInfo", productService.getProduct(idx));
 		model.addAttribute("commentList", commentService.getCommentProductIdx(idx));
 		model.addAttribute("commentCount", commentService.getCommentCount(idx));
+		
+		favoriteService.addFavorite(favorite);
+		
 		return "product/product_detail";
+		
 	}
 	
 	

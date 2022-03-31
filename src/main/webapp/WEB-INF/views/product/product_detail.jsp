@@ -183,8 +183,13 @@
 												<div class="item_hello_box">
 													<div class="item_hello_box_talk">
 														<div class="wish_img_box" id="wish_img_box">
+															<form name="favoriteImg" method="post" action="<c:url value="/product_detail"/>">
+															<input type="hidden" name="idx" value="${productInfo.idx }" >
+															<input type="hidden" name="productIdx" value="${productInfo.idx }" >
+															<input type="hidden" name="memberId" value="${loginMember.id}">
 															<img src="<%=request.getContextPath()%>/img/site/heart.png"
-																alt="찜하기이미지" class="wish_icon" id="wish_icon"/>
+																alt="찜하기이미지" class="wish_icon" id="wish_icon" onclick="favoriteSubmit()"/>
+															</form>
 														</div>
 
 														<!-- <button type="button" class="hello_talk_btn canpayment_hello_talk_btn">충전하기</button></div> -->
@@ -589,4 +594,8 @@ function modifyCmt(idx) {
 	}
 }
 
+
+function favoriteSubmit() {
+	favoriteImg.submit();
+}
 </script>

@@ -62,9 +62,7 @@
 															class="image_wrapper image_wrapper_main_col_1 deal_image_wrapper">
 															<div class="image_outside">
 																<div class="image_centerbox">
-																	<img class="thumbnail_img"
-																		src="https://ccimg.hellomarket.com/images/2022/item/02/27/14/0207441_5439197_1.jpg?size=s4"
-																		alt="(무료배송) 내구성 좋은 남성 다이얼 트레킹화 / 등산화 /트레킹화" />
+																	<img src="<c:url value="/img/product/${product.img }"/>"/>
 																</div>
 															</div>
 														</div>
