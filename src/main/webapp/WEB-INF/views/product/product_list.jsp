@@ -48,7 +48,7 @@
       <div class="main_col_3" id="tool">
       
 	<div>
-		<a href="${pageContext.request.contextPath}/product_detail">
+		<a href="${pageContext.request.contextPath}/product_detail?idx=${product.idx}">
 			<img src="${pageContext.request.contextPath}/img/product/${product.img}" width="230">
 		</a>
 	</div>

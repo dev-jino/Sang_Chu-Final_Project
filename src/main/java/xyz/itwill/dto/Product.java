@@ -195,6 +195,16 @@ public class Product {
 		this.status = status;
 	}
 	
+	public String getBuymember() {
+		return buymember;
+	}
+
+
+	public void setBuymember(String buymember) {
+		this.buymember = buymember;
+	}
+
+
 	public MultipartFile[] getImgFile() {
 		if(imgFile!=null){
 			MultipartFile[] tempData = new MultipartFile[imgFile.length];

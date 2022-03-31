@@ -68,6 +68,7 @@ public class QnaController {
 		String uploadDir = context.getServletContext().getRealPath("/resources/img/qna");
 		// 전달파일명 받아
 		
+		if(!(qna.getFile().isEmpty())) {
 		MultipartFile orimg = qna.getFile();
 
 		String orFilename = orimg.getOriginalFilename();
@@ -78,6 +79,9 @@ public class QnaController {
 		qna.setUpImg(upload);
 		
 		qna.getFile().transferTo(new File(uploadDir,upload));
+		}
+		
+		
 		
 		qnaService.addQna(qna);
 		// System.out.println("파일이름

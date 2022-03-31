@@ -6,7 +6,7 @@
 			select qna_idx.nextval from dual
 		</selectKey>
 		insert into qna values(#{idx},#{memberId},#{title},#{content},sysdate,1,
-		#{orImg},#{upImg},null,null)
+		#{orImg ,jdbcType = VARCHAR},#{upImg, jdbcType = VARCHAR},null,null)
 	</insert>
 	
 	<update id="deleteQna">
