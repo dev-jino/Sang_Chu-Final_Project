@@ -95,35 +95,35 @@
 									<div id="page_num">
 										<span>
 											<c:if test="${pager.startPage > pager.blockSize }">
-												<a href="<c:url value="/mypage_list?status=${status }&pageNum=1"/>">&lt;&lt;</a>
+												<a href="<c:url value="/mypage_buy?pageNum=1"/>">&lt;&lt;</a>
 												&nbsp;
-												<a href="<c:url value="/mypage_list?status=${status }&pageNum=${pager.prevPage }"/>">&lt;</a>
+												<a href="<c:url value="/mypage_buy?pageNum=${pager.prevPage }"/>">&lt;</a>
 											</c:if>
 											<c:if test="${pager.startPage <= pager.blockSize }">
-												<a href="<c:url value="/mypage_list?status=${status }&pageNum=1"/>">&lt;&lt;</a>
+												<a href="<c:url value="/mypage_buy?pageNum=1"/>">&lt;&lt;</a>
 												&nbsp;
-												<a href="<c:url value="/mypage_list?status=${status }&pageNum=1"/>">&lt;</a>
+												<a href="<c:url value="/mypage_buy?pageNum=1"/>">&lt;</a>
 											</c:if>
 										</span>
 	
 									 	&nbsp;
 									 	<span>
-										 	<c:forEach var="index" begin="1" end="${pager.endPage }">
-										 		<a href="<c:url value="/mypage_list?status=${status }&pageNum=${index }"/>">&nbsp;&nbsp;${index }&nbsp;&nbsp;</a>
+										 	<c:forEach var="index" begin="${page.startRow}" end="${pager.endRow}">
+										 		<a href="<c:url value="/mypage_buy?pageNum=${index+1}"/>">&nbsp;&nbsp;${index+1}&nbsp;&nbsp;</a>
 										 	</c:forEach>
 									 	</span>
 									 	&nbsp;
 									 
 										<span>
 											<c:if test="${pager.endPage != pager.totalPage }">
-												<a href="<c:url value="/mypage_list?status=${status }&pageNum=${pager.nextPage }"/>">&gt;</a>
+												<a href="<c:url value="/mypage_buy?pageNum=${pager.nextPage }"/>">&gt;</a>
 												&nbsp;
-												<a href="<c:url value="/mypage_list?status=${status }&pageNum=${pager.totalPage }"/>">&gt;&gt;</a>
+												<a href="<c:url value="/mypage_buy?pageNum=${pager.totalPage }"/>">&gt;&gt;</a>
 											</c:if>
 											<c:if test="${pager.endPage == pager.totalPage }">
-												<a href="<c:url value="/mypage_list?status=${status }&pageNum=${pager.totalPage }"/>">&gt;</a>
+												<a href="<c:url value="/mypage_buy?pageNum=${pager.totalPage }"/>">&gt;</a>
 												&nbsp;
-												<a href="<c:url value="/mypage_list?status=${status }&pageNum=${pager.totalPage }"/>">&gt;&gt;</a>
+												<a href="<c:url value="/mypage_buy?pageNum=${pager.totalPage }"/>">&gt;&gt;</a>
 											</c:if>
 										</span>
 									</div>

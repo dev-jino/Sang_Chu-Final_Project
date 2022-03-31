@@ -88,8 +88,8 @@
 														<c:if test="${status eq 3 && product.memberId eq loginMember.id }" >
 															<div>
 																<form method="post" onsubmit="alert('상품판매를 완료하였습니다');">
-																<input type="hidden" name="idx" value="${product.idx }">
-																<input type="hidden" name="price" value="${product.price }">																
+																<input type="hidden" name="idx" value="${product.idx}">
+																<input type="hidden" name="price" value="${product.price}">																
 																<button type="submit" id="okBtn" class="search_icon_box related_item_icon profile_libs_page">판매하기</button>
 																</form>
 															</div>

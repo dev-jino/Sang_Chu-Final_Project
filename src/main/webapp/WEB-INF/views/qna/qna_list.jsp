@@ -128,7 +128,7 @@
 									
 									<div style="text-align: center;"><span>
 								<c:choose>
-								<c:when test="${pager.startPage > 5}">		
+								<c:when test="${pager.startRow > 5}">		
 									<a href="?pageNum=${pager.prevPage}">이전</a>&nbsp;&nbsp;
 								</c:when>
 								<c:otherwise>
@@ -140,7 +140,7 @@
                 				
                 				</c:forEach>  
 									<c:choose>
-								<c:when test="${pager.endPage > 5}">		
+								<c:when test="${pager.endRow > 5}">		
 									<a href="?pageNum=${pager.nextPage}">다음</a>&nbsp;&nbsp;
 								</c:when>
 								<c:otherwise>
