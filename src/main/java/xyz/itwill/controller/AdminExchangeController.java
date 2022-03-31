@@ -3,6 +3,8 @@ package xyz.itwill.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import xyz.itwill.dto.Coin;
+import xyz.itwill.dto.Member;
 import xyz.itwill.exception.UserinfoNotFoundException;
 import xyz.itwill.service.CoinService;
 import xyz.itwill.service.MemberService;
@@ -43,8 +46,8 @@ public class AdminExchangeController {
 	}
 	
 	@RequestMapping(value = "/admin_exchange", method = RequestMethod.POST)
-	public String AdminExchange(@ModelAttribute Coin coin, Model model) throws UserinfoNotFoundException {
-		
+	public String AdminExchange(@ModelAttribute Coin coin, Model model, HttpSession session) throws UserinfoNotFoundException {
+		Member loginMember = (Member)session.getAttribute("loginMember");
 		coinService.modifyCoinStatus(coin);
 		
 		if (coin.getStatus() == 9) {
@@ -53,6 +56,8 @@ public class AdminExchangeController {
 			memberMap.put("coin", coin.getExCoin());
 			memberService.modifyMemberCoin(memberMap);
 		}
+		
+		session.setAttribute("loginMember", loginMember);
 		
 		return "redirect:/admin_exchange";
 	}

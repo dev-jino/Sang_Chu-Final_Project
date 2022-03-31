@@ -19,6 +19,7 @@ import xyz.itwill.dto.Member;
 import xyz.itwill.dto.Order;
 import xyz.itwill.service.CommentService;
 import xyz.itwill.service.FavoriteService;
+import xyz.itwill.service.MemberService;
 import xyz.itwill.service.OrderService;
 import xyz.itwill.service.ProductService;
 import xyz.itwill.util.Pager;
@@ -36,6 +37,9 @@ public class ProductController {
 	
 	@Autowired
 	private FavoriteService favoriteService;
+	
+	@Autowired
+	private MemberService memberSerivce;
 	
 	@RequestMapping(value = "/product_list" ,method = RequestMethod.GET)
 	public String Product(@RequestParam(defaultValue = "1")int pageNum , @RequestParam(defaultValue = "") String category1,@RequestParam(defaultValue = "") String category2,@RequestParam(defaultValue = "") String searchKeyword ,Model model) {
@@ -253,6 +257,7 @@ public class ProductController {
 		coinMap.put("price", price);
 		productService.coinMinus1(coinMap);
 		
+		session.setAttribute("loginMember", loginMember);
 		
 		return "redirect:/product_detail?idx="+idx;
 	}
