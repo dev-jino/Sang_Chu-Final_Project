@@ -38,7 +38,6 @@
      
      
       <section class="left_main">
-      <div class="tab_area biz_area item_tab_area"><div class="tab_type_box"></div><div class="sort_filter biz_sort"><label for="sortTitle">최신순</label><select><option value="">최신순</option><option value="lowprice">판매중</option><option value="near">판매완료</option></select></div></div>
       
       
       
@@ -53,7 +52,7 @@
 			<img src="${pageContext.request.contextPath}/img/product/${product.img}" width="230">
 		</a>
 	</div>
-	<strong class="name"><a href="${pageContext.request.contextPath}/product_detail" class=""><span class="title displaynone"><span style="font-size:20px;color:#000;" data-i18n=PRODUCT.PRD_INFO_PRODUCT_NAME>상품명</span> :</span> <span style="font-size:20px;color:#000;">${product.title}</span></a></strong>
+	<strong class="name"><a href="${pageContext.request.contextPath}/product_detail?idx=${product.idx}" class=""><span class="title displaynone"><span style="font-size:20px;color:#000;" data-i18n=PRODUCT.PRD_INFO_PRODUCT_NAME>상품명</span> :</span> <span style="font-size:20px;color:#000;">${product.title}</span></a></strong>
 	<ul class="xans-element- xans-product xans-product-listitem spec"><li class=" xans-record-">
 	<strong class="title displaynone"><span style="font-size:20px;color:#000;" data-i18n=PRODUCT.PRD_INFO_PRODUCT_PRICE>판매가</span> :</strong> <span style="font-size:20px;color:#000;">${product.price}원</span><span id="span_product_tax_type_text" style=""> </span></li>
 	<!-- <div class="item_title" ><span style="font-size:20px;color:#555555;">조명팔아요~!</span></div> -->
