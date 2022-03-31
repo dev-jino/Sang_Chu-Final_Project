@@ -105,10 +105,10 @@
 												<option value="기타">기타</option>
 											</select>
 										</div>
-										<div class="item_select_box item_select_margin">
+										<div class="item_select_box item_select_margin" style="display: none">
 											<select name="category2" id="sale_form_category2">
 												<option value="" hidden="">하위 카테고리</option>
-												<option value="기타">기타</option>
+												<option value="기타" selected="selected">기타</option>
 											</select>
 										</div>
 									</dd>
