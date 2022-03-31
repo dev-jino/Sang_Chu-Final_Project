@@ -27,6 +27,11 @@ public class MemberController {
 	@Autowired
 	private MemberService memberSerivce;
 	
+	@RequestMapping("/user_error")
+	public String adminAuthError() {
+		return "member/user_error";
+	}
+	
 	//·Î±×ÀÎ
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String Login() {

@@ -29,33 +29,33 @@ public class AdminAuthInterceptor implements HandlerInterceptor {
 		Member loginUserinfo=(Member)session.getAttribute("loginMember");
 		
 		if(loginUserinfo==null || loginUserinfo.getStatus()!=9) {
-			//request.getRequestDispatcher("userinfo/user_error.jsp").forward(request, response);
-			//return false;
+			request.getRequestDispatcher("user_error").forward(request, response);
+			return false;
 			
-			throw new Exception();
+//			throw new Exception();
 		}
 		
 		return true;
 	}
 	
-	//postHandle : 요청 처리 메소드의 명령이 정상적으로 실행된 후에 실행될 명령을 작성하는 메소드
-	// => 요청 처리 메소드의 명령 실행시 예외가 발생된 경우 postHandle 메소드의 명령 미실행
-	// => 요청 처리 메소드의 반환값(ModelAndView 객체)을 조작할 경우 사용하는 메소드
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
-		HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
-	}
-	
-	//afterCompletion : 요청 처리 메소드의 명령 실행시 예외가 발생된 후에 실행될 명령을 작성하는 메소드
-	// => 예외 처리를 목적을 사용하는 메소드
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		// TODO Auto-generated method stub
-		HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
-	}
+//	//postHandle : 요청 처리 메소드의 명령이 정상적으로 실행된 후에 실행될 명령을 작성하는 메소드
+//	// => 요청 처리 메소드의 명령 실행시 예외가 발생된 경우 postHandle 메소드의 명령 미실행
+//	// => 요청 처리 메소드의 반환값(ModelAndView 객체)을 조작할 경우 사용하는 메소드
+//	@Override
+//	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+//			ModelAndView modelAndView) throws Exception {
+//		// TODO Auto-generated method stub
+//		HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
+//	}
+//	
+//	//afterCompletion : 요청 처리 메소드의 명령 실행시 예외가 발생된 후에 실행될 명령을 작성하는 메소드
+//	// => 예외 처리를 목적을 사용하는 메소드
+//	@Override
+//	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+//			throws Exception {
+//		// TODO Auto-generated method stub
+//		HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
+//	}
 }
 
 

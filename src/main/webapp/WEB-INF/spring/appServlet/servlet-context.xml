@@ -109,7 +109,7 @@
 	
 	<!-- Interceptor 클래스를 Spring Bean으로 등록 -->
 	<beans:bean class="xyz.itwill.util.AdminAuthInterceptor" id="adminAuthInterceptor"/>
-	<beans:bean class="xyz.itwill.util.LoginAuthIntercetor" id="loginAuthIntercetor"/>
+	<beans:bean class="xyz.itwill.util.LoginAuthInterceptor" id="loginAuthInterceptor"/>
 	
 	<!-- interceptors : 인터셉터를 설정하기 위한 상위 엘리먼트 -->
 	<interceptors>
@@ -120,7 +120,7 @@
 			<!-- <mapping path="/userinfo/join"/> -->
 			<!-- <mapping path="/userinfo/modify"/> -->
 			<!-- <mapping path="/userinfo/remove"/> -->
-			<mapping path="/admin/"/>
+			<mapping path="/admin*"/>
 			<!-- ref : 클라이언트 요청에 의해 동작될 Interceptor SpringBean을 등록하는 엘리먼트 -->
 			<!-- bean 속성 : Interceptor 클래스의 Spring BeanName을 속성값으로 설정 -->
 			<beans:ref bean="adminAuthInterceptor"/>
@@ -134,15 +134,9 @@
 			<!-- exclude-mapping : 인터셉터가 동작되지 않는 요청 URL 주소의 패턴을 설정하는 엘리먼트 -->
 			<!-- <exclude-mapping path="/userinfo/login"/>  -->
 			
-			<!-- <mapping path="/userinfo/list"/>	 -->		
-			<!-- <mapping path="/userinfo/view"/> -->
-			<mapping path="/faq/"/>
-			<mapping path="/favorite/"/>
-			<mapping path="/member/"/>
-			<mapping path="/mypage/"/>
-			<mapping path="/sale/"/>			
+			<mapping path="/sale"/>			
 						
-			<beans:ref bean="loginAuthIntercetor"/>
+			<beans:ref bean="loginAuthInterceptor"/>
 		</interceptor>
 	</interceptors>
 	
