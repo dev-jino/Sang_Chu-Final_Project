@@ -131,10 +131,10 @@
 		order by idx desc) poj) where rn between #{startRow} and #{endRow}
 	</select>
 	
-	<!-- 상품테이블&주문테이블 조인하여 모든 컬럼 검색 -->
-<!-- 	<select id="selectjoinPOList" resultMap="POJResultMap"> -->
-<!-- 		select * from product p left join "ORDER" o on p.idx = o.product_idx -->
-<!-- 	</select> -->
+<!-- 	상품테이블&주문테이블 조인하여 모든 컬럼 검색 -->
+	<select id="selectjoinPOList" resultMap="POJResultMap">
+		select * from product p left join "ORDER" o on p.idx = o.product_idx
+	</select>
 	
 	
 	<!-- 구매하기 버튼 누르면 buymember 컬럼에 구매자의 아이디 추가 -->

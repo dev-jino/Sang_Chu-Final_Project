@@ -221,11 +221,18 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/order_detail", method = RequestMethod.POST)
-	public String orderDetail(@ModelAttribute Order order, @RequestParam int idx, Model model) {
+	public String orderDetail(@ModelAttribute Order order, @RequestParam int idx, Model model, HttpSession session) {
+		Member loginMember = (Member)session.getAttribute("loginMember");
 		orderService.addOrder(order);
-		productService.modifyBuyProduct(idx);
 		
-		model.addAttribute("payInfo", productService.getJoinPOList());
+		
+		//구매하기 버튼을 누르면 해당 상품 컬럼에 구매자 이름 추가
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("buymember", loginMember.getId());
+		map.put("idx", idx);
+		
+		productService.modifyJoinBuyBtn(map);
+		
 		
 		return "redirect:/product_detail?idx="+idx;
 	}

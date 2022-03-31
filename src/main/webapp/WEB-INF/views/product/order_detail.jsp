@@ -63,7 +63,7 @@
 															class="image_wrapper image_wrapper_main_col_1 deal_image_wrapper">
 															<div class="image_outside">
 																<div class="image_centerbox" style="right: 100px; bottom: 100px;">
-																	<img src="<c:url value='/img/product/${product.img }'/>">
+																	<img src="<c:url value='/img/product/${productInfo.img }'/>">
 																</div>
 															</div>
 														</div>
