@@ -72,18 +72,18 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@Override
-	public int insertJoinBuyBtn(Product product) {
-		return sqlSession.getMapper(ProductMapper.class).insertJoinBuyBtn(product);
-	}
-
-	@Override
-	public int insertJoinPayBtn(Product product) {
-		return sqlSession.getMapper(ProductMapper.class).insertJoinPayBtn(product);
-	}
-
-	@Override
 	public List<ProductOrderJoin> selectJoinPOList() {
 		return sqlSession.getMapper(ProductMapper.class).selectJoinPOList();
+	}
+
+	@Override
+	public int updateJoinBuyBtn(Map<String, Object> map) {
+		return sqlSession.getMapper(ProductMapper.class).updateJoinBuyBtn(map);
+	}
+
+	@Override
+	public List<Product> selectBuyList(String buymember) {
+		return sqlSession.getMapper(ProductMapper.class).selectBuyList(buymember);
 	}
 	
 	

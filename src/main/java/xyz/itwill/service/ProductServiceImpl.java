@@ -71,22 +71,22 @@ public class ProductServiceImpl implements ProductService{
 		return productDAO.selectProductPagingList(map);
 	}
 
-	@Override
-	public void addJoinBuyBtn(Product product) {
-		productDAO.insertJoinBuyBtn(product);
-		
-	}
-
-	@Override
-	public void addJoinPayBtn(Product product) {
-		productDAO.insertJoinPayBtn(product);
-		
-	}
 
 	@Override
 	public List<ProductOrderJoin> getJoinPOList() {
 		return productDAO.selectJoinPOList();
 	}
 
+	@Override
+	public void modifyJoinBuyBtn(Map<String, Object> map) {
+		productDAO.updateJoinBuyBtn(map);
+	}
+
+	@Override
+	public List<Product> getBuyList(String buymember) {
+		return productDAO.selectBuyList(buymember);
+	}
+
+	
 	
 }

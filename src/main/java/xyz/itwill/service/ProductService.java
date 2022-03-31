@@ -20,6 +20,6 @@ public interface ProductService {
 	List<ProductOrderJoin> getProductPagingList(Map<String, Object> map);
 	
 	List<ProductOrderJoin> getJoinPOList();
-	void addJoinBuyBtn(Product product);
-	void addJoinPayBtn(Product product);
+	void modifyJoinBuyBtn(Map<String, Object> map);
+	List<Product> getBuyList(String buymember);
 }

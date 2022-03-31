@@ -20,6 +20,6 @@ public interface ProductDAO {
 	List<ProductOrderJoin> selectProductPagingList(Map<String, Object> map);
 	
 	List<ProductOrderJoin> selectJoinPOList();
-	int insertJoinBuyBtn(Product product);
-	int insertJoinPayBtn(Product product);
+	int updateJoinBuyBtn(Map<String, Object> map);
+	List<Product> selectBuyList(String buymember);
 }
