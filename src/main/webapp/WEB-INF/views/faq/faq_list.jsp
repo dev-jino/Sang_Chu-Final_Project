@@ -31,14 +31,14 @@
                                     <span>FAQ관리</span>
                                 </div>
 								<div class="faq_wrapper">
-									<div class="search_wrapper" id="searchWrapper" name="searchBox">
-										<label class="search_label">
-											<img src="img/site/faq_search.png" alt="검색 아이콘" />
-										</label>
-										<input type="text" class="w_10" id="senderName" maxLength="30" 
-											placeholder="질문 키워드를 입력하세요." value="" />
-										<hr/>
-									</div>
+<!-- 									<div class="search_wrapper" id="searchWrapper" name="searchBox"> -->
+<!-- 										<label class="search_label"> -->
+<!-- 											<img src="img/site/faq_search.png" alt="검색 아이콘" /> -->
+<!-- 										</label> -->
+<!-- 										<input type="text" class="w_10" id="senderName" maxLength="30"  -->
+<!-- 											placeholder="질문 키워드를 입력하세요." value="" /> -->
+<!-- 										<hr/> -->
+<!-- 									</div> -->
 									<div>
 										<div class="hide">
 											<span></span>에 대한 총 검색 결과 총 <span>0<!-- -->개</span>
