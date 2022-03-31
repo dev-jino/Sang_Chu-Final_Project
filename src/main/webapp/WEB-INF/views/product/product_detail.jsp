@@ -301,7 +301,7 @@
 																<c:if test="${comment.status == 9 }">삭제된 댓글입니다.</c:if>
 																</div>
 																<div class="cmt_bottom" id="cmt_button_${comment.comIdx }" onclick="openCmt('${comment.comIdx }')">답글</div>
-																<c:if test="${loginMember.id == comment.memberId }">
+																<c:if test="${loginMember.id == comment.memberId && comment.status != 9}">
 																<div class="cmt_bottom">&nbsp;|&nbsp;</div>
 																<form id="commentDeleteForm_${comment.comIdx }" method="post">
 																<input type="hidden" name="comIdx" value="${comment.comIdx }">
@@ -357,7 +357,7 @@
 																			<c:if test="${comment.status != 9 }">${comment.content }</c:if>
 																			<c:if test="${comment.status == 9 }">삭제된 댓글입니다.</c:if>
 																			</div>
-																			<c:if test="${loginMember.id == comment.memberId }">
+																			<c:if test="${loginMember.id == comment.memberId && comment.status != 9 }">
 																			<form id="commentDeleteForm_${comment.comIdx }" method="post">
 																			<input type="hidden" name="comIdx" value="${comment.comIdx }">
 																			<input type="hidden" name="status" value="9">
