@@ -597,5 +597,6 @@ function modifyCmt(idx) {
 
 function favoriteSubmit() {
 	favoriteImg.submit();
+	alert("찜 상품으로 추가하였습니다.");
 }
 </script>

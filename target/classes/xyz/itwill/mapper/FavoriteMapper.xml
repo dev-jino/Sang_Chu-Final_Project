@@ -41,7 +41,7 @@
 	
 	<!-- 페이징 처리 -->
 	<select id="selectFavoritePaging" resultMap="PJFResultMap">
-		select * from (select rownum rn, favorite.* from (select * from product p right join favorite f on p.idx = f.product_idx where p.member_id=#{memberId} order by p.idx desc) favorite) where rn between #{startRow} and #{endRow}
+		select * from (select rownum rn, favorite.* from (select * from product p left join favorite f on p.idx = f.product_idx where p.idx=f.product_idx and f.member_id=#{memberId} order by f.fidx desc) favorite) where rn between #{startRow} and #{endRow}
 	</select>
 	
 	<!-- 회원의 상품 찜목록 총 개수 -->

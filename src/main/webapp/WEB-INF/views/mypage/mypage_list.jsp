@@ -119,7 +119,7 @@
 									 	&nbsp;
 									 	<span>
 										 	<c:forEach var="index" begin="1" end="${pager.endPage }">
-										 		<a href="<c:url value="/mypage_list?status=${status }&pageNum=${index }"/>">${index }</a>
+										 		<a href="<c:url value="/mypage_list?status=${status }&pageNum=${index }"/>">&nbsp;&nbsp;${index }&nbsp;&nbsp;</a>
 										 	</c:forEach>
 									 	</span>
 									 	&nbsp;
