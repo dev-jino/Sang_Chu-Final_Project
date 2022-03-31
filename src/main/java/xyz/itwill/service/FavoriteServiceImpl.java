@@ -21,6 +21,11 @@ public class FavoriteServiceImpl implements FavoriteService {
 		favoriteDAO.insertFavorite(favorite);
 		
 	}
+	
+	@Override
+	public void removeFavorite(Favorite favorite) {
+		favoriteDAO.deleteFavorite(favorite);
+	}
 
 	@Override
 	public Favorite getFavorite(String memberId) {
@@ -42,6 +47,13 @@ public class FavoriteServiceImpl implements FavoriteService {
 	public int getCountFavorite(String memberId) {
 		return favoriteDAO.selectCountFavorite(memberId);
 	}
+
+	@Override
+	public int getCountProductFavorite(Map<String, Object> map) {
+		return favoriteDAO.selectCountProductFavorite(map);
+	}
+
+
 	
 	
 }

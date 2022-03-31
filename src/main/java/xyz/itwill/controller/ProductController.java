@@ -182,15 +182,20 @@ public class ProductController {
 	
 	
 	@RequestMapping(value = "/product_detail", method = RequestMethod.GET)
-	public String ProductDetail(Model model, @RequestParam int idx) {
+	public String ProductDetail(Model model, @RequestParam int idx, HttpSession session) {
+		Map<String, Object> fmap = new HashMap<String, Object>();
+		Member member = (Member)session.getAttribute("loginMember");
+		fmap.put("memberId", member.getId());
+		fmap.put("productIdx", idx);
 		model.addAttribute("productInfo", productService.getProduct(idx));
 		model.addAttribute("commentList", commentService.getCommentProductIdx(idx));
 		model.addAttribute("commentCount", commentService.getCommentCount(idx));
+		model.addAttribute("favoriteTf", favoriteService.getCountProductFavorite(fmap));
 		return "product/product_detail";
 	}
 
 	@RequestMapping(value = "/product_detail", method = RequestMethod.POST)
-	public String ProductDetail(@ModelAttribute Favorite favorite ,@ModelAttribute Comment comment, Model model, @RequestParam int idx, @RequestParam(defaultValue = "0") int pStatus) {
+	public String ProductDetail(@ModelAttribute Favorite favorite ,@ModelAttribute Comment comment, Model model, @RequestParam int idx, @RequestParam(defaultValue = "0") int pStatus, HttpSession session) {
 		if (comment.getStatus() == 1) {
 			commentService.addComment(comment);
 		} else if (comment.getStatus() == 2) {
@@ -200,13 +205,23 @@ public class ProductController {
 		} else if (pStatus == 9) {
 			productService.removeAdminProduct(idx);
 			return "redirect:/product_list";
+		} else if (pStatus == 8) {
+			model.addAttribute("pStatus", pStatus);
+			favoriteService.addFavorite(favorite);
+		} else if (pStatus == 7) {
+			model.addAttribute("pStatus", pStatus);
+			favoriteService.removeFavorite(favorite);
 		}
-		
+		Map<String, Object> fmap = new HashMap<String, Object>();
+		Member member = (Member)session.getAttribute("loginMember");
+		fmap.put("memberId", member.getId());
+		fmap.put("productIdx", idx);
 		model.addAttribute("productInfo", productService.getProduct(idx));
 		model.addAttribute("commentList", commentService.getCommentProductIdx(idx));
 		model.addAttribute("commentCount", commentService.getCommentCount(idx));
+		model.addAttribute("favoriteTf", favoriteService.getCountProductFavorite(fmap));
 		
-		favoriteService.addFavorite(favorite);
+//		favoriteService.addFavorite(favorite);
 		
 		return "product/product_detail";
 		

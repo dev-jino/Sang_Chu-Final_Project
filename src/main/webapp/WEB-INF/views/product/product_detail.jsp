@@ -190,15 +190,30 @@
 											<div class="item_sns item_detail_sns">
 												<div class="item_hello_box">
 													<div class="item_hello_box_talk">
+													<c:if test="${favoriteTf == 0 }">
 														<div class="wish_img_box" id="wish_img_box">
 															<form name="favoriteImg" method="post" action="<c:url value="/product_detail"/>">
 															<input type="hidden" name="idx" value="${productInfo.idx }" >
 															<input type="hidden" name="productIdx" value="${productInfo.idx }" >
 															<input type="hidden" name="memberId" value="${loginMember.id}">
+															<input type="hidden" name="pStatus" value="8">
 															<img src="<%=request.getContextPath()%>/img/site/heart.png"
 																alt="찜하기이미지" class="wish_icon" id="wish_icon" onclick="favoriteSubmit()"/>
 															</form>
 														</div>
+													</c:if>
+													<c:if test="${favoriteTf == 1 }">
+														<div class="wish_img_box" id="wish_img_box">
+															<form name="favoriteImg" method="post" action="<c:url value="/product_detail"/>">
+															<input type="hidden" name="idx" value="${productInfo.idx }" >
+															<input type="hidden" name="productIdx" value="${productInfo.idx }" >
+															<input type="hidden" name="memberId" value="${loginMember.id}">
+															<input type="hidden" name="pStatus" value="7">
+															<img src="<%=request.getContextPath()%>/img/site/filled_heart.png"
+																alt="찜하기이미지" class="wish_icon" id="wish_icon" onclick="favoriteSubmit()"/>
+															</form>
+														</div>
+													</c:if>
 
 														<!-- <button type="button" class="hello_talk_btn canpayment_hello_talk_btn">충전하기</button></div> -->
 
@@ -304,6 +319,7 @@
 																<input type="hidden" name="comIdx" value="${comment.comIdx }">
 																<textarea placeholder="수정할 댓글을 입력해주세요." name="content" id="modify_${comment.comIdx }"></textarea>
 																<input type="hidden" name="status" value="2">
+																<input type="hidden" name="memberId" value="${loginMember.id }">
 															</form>
 															<button class="cmt_bottom" type="submit" form="commentModifyForm_${comment.comIdx }">댓글수정</button>
 														</div>
@@ -358,6 +374,7 @@
 																		<input type="hidden" name="comIdx" value="${comment.comIdx }">
 																		<textarea placeholder="수정할 댓글을 입력해주세요." name="content" id="modify_${comment.comIdx }"></textarea>
 																		<input type="hidden" name="status" value="2">
+																		<input type="hidden" name="memberId" value="${loginMember.id }">
 																	</form>
 														
 																	<button class="cmt_bottom" type="submit" form="commentModifyForm_${comment.comIdx }">댓글수정</button>
@@ -385,20 +402,20 @@
 </main>
 
 <script type="text/javascript">
-document.getElementById('wish_img_box').onclick = function() {
+// document.getElementById('wish_img_box').onclick = function() {
 	
-	var current_img = document.getElementById('wish_icon').getAttribute('src');
-	var start_num = current_img.indexOf("site");
-	var end_num = current_img.indexOf(".png");
+// 	var current_img = document.getElementById('wish_icon').getAttribute('src');
+// 	var start_num = current_img.indexOf("site");
+// 	var end_num = current_img.indexOf(".png");
 
-	if (current_img.substring(start_num+5, end_num) == "heart") {
-		document.getElementById('wish_icon').setAttribute('src', '<%=request.getContextPath()%>/img/site/filled_heart.png');
-	} else {
-		document.getElementById('wish_icon').setAttribute('src', '<%=request.getContextPath()%>/img/site/heart.png');
-	}
+// 	if (current_img.substring(start_num+5, end_num) == "heart") {
+<%-- 		document.getElementById('wish_icon').setAttribute('src', '<%=request.getContextPath()%>/img/site/filled_heart.png'); --%>
+// 	} else {
+<%-- 		document.getElementById('wish_icon').setAttribute('src', '<%=request.getContextPath()%>/img/site/heart.png'); --%>
+// 	}
 	
 	
-}
+// }
 
 
 /* const style1 = document.getElementById('img1'); //.style;
@@ -600,6 +617,10 @@ function modifyCmt(idx) {
 
 function favoriteSubmit() {
 	favoriteImg.submit();
+	if (${favoriteTf == 0}) {
 	alert("찜 상품으로 추가하였습니다.");
+	} else {
+	alert("찜 상품이 삭제되었습니다.");
+	}
 }
 </script>

@@ -87,7 +87,7 @@
 																		<input type="text" name="pageNum" value="${pager.pageNum }" hidden="hidden">
 																		<select class="status" name="status" onchange="this.form.submit()">
 																			<option value="0" 
-																				<c:if test="${member.status == 0 }">selected = "selected"</c:if>>삭제회원</option>			
+																				<c:if test="${member.status == 2 }">selected = "selected"</c:if>>삭제회원</option>			
 																			<option value="1" 
 																				<c:if test="${member.status == 1 }">selected = "selected"</c:if>>일반회원</option>			
 																			<option value="9" 

@@ -8,8 +8,10 @@ import xyz.itwill.dto.ProductFavoriteJoin;
 
 public interface FavoriteService {
 	void addFavorite(Favorite favorite);
+	void removeFavorite(Favorite favorite);
 	Favorite getFavorite(String memberId);
 	List<ProductFavoriteJoin> getFavoriteList(String memberId);
 	List<ProductFavoriteJoin> getFavoritePaging(Map<String, Object> map);
 	int getCountFavorite(String memberId);
+	int getCountProductFavorite(Map<String, Object> map);
 }

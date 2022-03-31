@@ -53,4 +53,8 @@
 	<delete id="deleteFavorite">
 		delete favorite where product_idx=#{productIdx} and member_id=#{memberId} 
 	</delete>
+	
+	<select id="selectCountProductFavorite" resultType="int">
+		select count(*) from favorite where product_idx = #{productIdx} and member_id = #{memberId}
+	</select>
 </mapper>

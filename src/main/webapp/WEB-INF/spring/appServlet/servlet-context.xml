@@ -134,6 +134,8 @@
 			<!-- exclude-mapping : 인터셉터가 동작되지 않는 요청 URL 주소의 패턴을 설정하는 엘리먼트 -->
 			<!-- <exclude-mapping path="/userinfo/login"/>  -->
 			
+			<mapping path="/order_detail"/>
+			<mapping path="/product_detail"/>
 			<mapping path="/sale"/>			
 						
 			<beans:ref bean="loginAuthInterceptor"/>
