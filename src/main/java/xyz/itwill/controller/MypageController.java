@@ -218,8 +218,10 @@ public class MypageController {
 	//보유중인 상추
 	@RequestMapping(value = "/mypage_pay", method = RequestMethod.GET)
 	public String mypagePay(Model model, HttpSession session) throws UserinfoNotFoundException {
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		
 		model.addAttribute("member", session.getAttribute("loginMember"));
-		session.setAttribute("loginMember", session.getAttribute("loginMember"));
+		session.setAttribute("loginMember", loginMember);
 		return "mypage/mypage_pay";
 	}
 	
