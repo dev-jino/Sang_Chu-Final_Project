@@ -20,18 +20,16 @@
       <li class=""></li>
       	<c:choose>
       		<c:when test="${category1==''}">
-      			<li class="">&lt;<span style="font-size: 20px"><strong>전체</strong></span>&gt;검색결과 총 ${total}개</li>
+      			<li style="font-size: 15px" class="">[<strong>전체</strong>]&nbsp;검색결과 총 <span>${total}개</span></li>
       		</c:when>
       	
-      	
       		<c:when test="${category1!=null}">
-      			<li class="">&lt;<span style="font-size: 20px"><strong>${category1}</strong></span>&gt;의검색결과 총 ${total}개</li>
+      			<li style="font-size: 15px" class="">[<strong>${category1}</strong>]&nbsp;검색결과 총 <span>${total}개</span></li>
       		</c:when>
       		
       		<c:when test="${searchKeyword!=null}">
-      			<li class="">&lt;<span style="font-size: 20px"><strong>${searchKeyword}</strong></span>&gt;의검색결과 총 ${total}개</li>
+      			<li style="font-size: 15px" class="">[<strong>${searchKeyword}</strong>]&nbsp;검색결과 총 <span>${total}개</span></li>
       		</c:when>
-      	
       	</c:choose>
     	  	
       	
