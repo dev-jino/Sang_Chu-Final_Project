@@ -83,7 +83,7 @@ public class MypageController {
 	
 	//판매하기 눌렀을 때 상품의 상태를 판매완료로 변경
 	@RequestMapping(value = "/mypage_list", method = RequestMethod.POST)
-	public String sellProductList(@RequestParam(defaultValue = "1") int status, @RequestParam int idx, HttpSession session) {
+	public String sellProductList(@RequestParam(defaultValue = "1") int status, @RequestParam int idx, HttpSession session, @RequestParam int price) {
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("idx", idx);
@@ -91,6 +91,12 @@ public class MypageController {
 		
 		//판매자의 대기 -> 판매완료 리스트로 가는 메소드
 		productService.modifyStatusProduct(map);
+		
+		Map<String, Object> coinMap = new HashMap<String, Object>();
+		coinMap.put("id", loginMember.getId());
+		coinMap.put("price", price);
+		
+		productService.coinPlus1(coinMap);
 
 		return "redirect:/mypage_list?status=3";
 	}

@@ -236,7 +236,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/order_detail", method = RequestMethod.POST)
-	public String orderDetail(@ModelAttribute Order order, @RequestParam int idx, Model model, HttpSession session) {
+	public String orderDetail(@ModelAttribute Order order, @RequestParam int idx, Model model, HttpSession session, @RequestParam int price) {
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		orderService.addOrder(order);
 		
@@ -247,6 +247,11 @@ public class ProductController {
 		map.put("idx", idx);
 		
 		productService.modifyJoinBuyBtn(map);
+		
+		Map<String, Object> coinMap = new HashMap<String, Object>();
+		coinMap.put("id", loginMember.getId());
+		coinMap.put("price", price);
+		productService.coinMinus1(coinMap);
 		
 		
 		return "redirect:/product_detail?idx="+idx;

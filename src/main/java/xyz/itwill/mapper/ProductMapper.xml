@@ -223,5 +223,11 @@
 		select count(*) from product where status=1
 	</select>
 	
+	<update id="coinPlus">
+		update member set coin = coin+#{price} where id = #{id}
+	</update>
+	<update id="coinMinus">
+		update member set coin = coin-#{price} where id = #{id}
+	</update>
 	
 </mapper>

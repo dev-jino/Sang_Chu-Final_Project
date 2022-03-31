@@ -126,5 +126,15 @@ public class ProductDAOImpl implements ProductDAO{
 		public int selectAllCount() {
 			return sqlSession.getMapper(ProductMapper.class).selectAllCount();
 			}
+
+		@Override
+		public int coinPlus(Map<String, Object> map) {
+			return sqlSession.getMapper(ProductMapper.class).coinPlus(map);
+		}
+
+		@Override
+		public int coinMinus(Map<String, Object> map) {
+			return sqlSession.getMapper(ProductMapper.class).coinMinus(map);
+		}
 	
 }

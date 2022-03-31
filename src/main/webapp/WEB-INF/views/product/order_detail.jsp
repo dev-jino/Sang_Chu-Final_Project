@@ -115,6 +115,7 @@
 													<form method="post">
 														<input type="hidden" name="productIdx" value="${productInfo.idx }">
 														<input type="hidden" name="memberId" value="${loginMember.id }">
+														<input type="hidden" name="price" value="${productInfo.price }">
 														<div><button type="submit" class="success_btn btn_disabled" id="success_btn">결제하기</button></div>
 													</form>
 												</div>

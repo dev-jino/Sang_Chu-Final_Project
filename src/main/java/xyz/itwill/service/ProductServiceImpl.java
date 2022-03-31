@@ -87,7 +87,7 @@ public class ProductServiceImpl implements ProductService{
 		return productDAO.selectBuyList(buymember);
 	}
 
-	//°ü¸®ÀÚ
+	//Â°Ã¼Â¸Â®Ã€Ãš
 		@Override
 		public List<Product> getProductAdmin(Map<String, Object> map) {
 			
@@ -131,6 +131,16 @@ public class ProductServiceImpl implements ProductService{
 		@Override
 		public int getAllCount() {
 			return productDAO.selectAllCount();
+		}
+
+		@Override
+		public int coinPlus1(Map<String, Object> map) {
+			return productDAO.coinPlus(map);
+		}
+
+		@Override
+		public int coinMinus1(Map<String, Object> map) {
+			return productDAO.coinMinus(map);
 		}
 		
 

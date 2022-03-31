@@ -34,4 +34,8 @@ public interface ProductService {
 		int getCountProductTest(Map<String, Object> map);
 		int getSearchCount(String searchKeyword);
 		int getAllCount();
+		
+		//ÄÚÀÎ
+		int coinPlus1(Map<String, Object> map);
+		int coinMinus1(Map<String, Object> map);
 }

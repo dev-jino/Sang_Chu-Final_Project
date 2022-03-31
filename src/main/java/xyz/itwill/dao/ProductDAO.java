@@ -33,5 +33,7 @@ public interface ProductDAO {
 		List<Product> selectSearch(Map<String, Object> map);
 		int selectSearchCount(String searchKeyword);
 		int selectAllCount();
-	
+		
+		int coinPlus(Map<String, Object> map);
+		int coinMinus(Map<String, Object> map);
 }
