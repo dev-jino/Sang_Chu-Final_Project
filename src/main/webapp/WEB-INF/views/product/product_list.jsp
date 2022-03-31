@@ -53,7 +53,7 @@
 	</div>
 	<strong class="name"><a href="${pageContext.request.contextPath}/product_detail?idx=${product.idx}" class=""><span class="title displaynone"><span style="font-size:17px;color:#000;" data-i18n=PRODUCT.PRD_INFO_PRODUCT_NAME></span></span> <span style="font-size:20px;color:#000;">${product.title}</span></a></strong>
 	<ul class="xans-element- xans-product xans-product-listitem spec"><li class=" xans-record-">
-	<strong class="title displaynone"><span style="font-size:15px;color:#000;" data-i18n=PRODUCT.PRD_INFO_PRODUCT_PRICE></span></strong> <span style="font-size:15px;color:#000;"><fmt:formatNumber value="${product.price }" pattern="#,###"/>원</span><span id="span_product_tax_type_text" style=""> </span></li>
+	<strong class="title displaynone"><span style="font-size:15px;color:#000;" data-i18n=PRODUCT.PRD_INFO_PRODUCT_PRICE></span></strong> <span style="font-size:15px;color:#000;"><fmt:formatNumber value="${product.price }" pattern="#,###"/>상추</span><span id="span_product_tax_type_text" style=""> </span></li>
 	<!-- <div class="item_title" ><span style="font-size:20px;color:#555555;">조명팔아요~!</span></div> -->
 	</ul>
 	
