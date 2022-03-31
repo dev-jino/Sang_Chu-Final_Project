@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import xyz.itwill.dao.ProductDAO;
 import xyz.itwill.dto.Product;
+import xyz.itwill.dto.ProductOrderJoin;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -25,8 +26,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public void modifyAdminProduct(Product product) {
-		productDAO.updateAdminProduct(product);
+	public void modifyStatusProduct(Map<String, Object> map) {
+		productDAO.updateStatusProduct(map);
 	}
 
 	@Override
@@ -52,6 +53,39 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public int getCountProduct(Map<String, Object> map) {
 		return productDAO.selectCountProduct(map);
+	}
+
+	@Override
+	public List<Product> getProductPaging(Map<String, Object> map) {
+		return productDAO.selectProductPaging(map);
+	}
+
+	@Override
+	public void modifyBuyProduct(int idx) {
+		productDAO.updateBuyProduct(idx);
+		
+	}
+
+	@Override
+	public List<ProductOrderJoin> getProductPagingList(Map<String, Object> map) {
+		return productDAO.selectProductPagingList(map);
+	}
+
+	@Override
+	public void addJoinBuyBtn(Product product) {
+		productDAO.insertJoinBuyBtn(product);
+		
+	}
+
+	@Override
+	public void addJoinPayBtn(Product product) {
+		productDAO.insertJoinPayBtn(product);
+		
+	}
+
+	@Override
+	public List<ProductOrderJoin> getJoinPOList() {
+		return productDAO.selectJoinPOList();
 	}
 
 	

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.itwill.mapper.OrderMapper">
+	<!-- 주문 추가 -->
+	<insert id="insertOrder">
+		<selectKey resultType="int" keyProperty="idx" order="BEFORE">
+			select order_idx.nextval from dual
+		</selectKey>
+		insert into "ORDER" values(#{idx},#{memberId},#{productIdx},sysdate,1)
+	</insert>
+	
+	
+	<update id="updateSellProduct" >
+		update "ORDER" set status=2 where product_idx=#{productIdx} 
+	</update>
+</mapper>

@@ -15,5 +15,6 @@ public interface QnaService {
 	int modifyAdminQnaAnswer(Qna qna);
 	int removeAdminQnaComment(int idx);
 	int modifyQnaFile(Qna qna);
-	 int modifyQna(Qna qna);
+	int modifyQna(Qna qna);
+	Qna getMyQna(String memberId);
 }

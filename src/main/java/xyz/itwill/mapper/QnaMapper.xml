@@ -33,6 +33,11 @@
 	</update>
 	
 	
+	<!-- 아이디를 전달받아 QnA 리스트 검색 -->
+	<select id="selectMyQna" resultType="Qna">
+		select * from qna where member_id=#{memberId} order by idx desc
+	</select>
+	
 	
 	<!-- 관리자 -->
 	<update id="updateAdminQnaAnswer">

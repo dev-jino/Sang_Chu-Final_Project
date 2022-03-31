@@ -68,6 +68,11 @@ public class QnaDAOImpl implements QnaDAO{
 		return sqlSession.getMapper(QnaMapper.class).updateQna(qna);
 	}
 
+	@Override
+	public Qna selectMyQna(String memberId) {
+		return sqlSession.getMapper(QnaMapper.class).selectMyQna(memberId);
+	}
+
 	
 	
 	

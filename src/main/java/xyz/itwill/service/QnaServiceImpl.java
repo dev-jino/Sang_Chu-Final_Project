@@ -67,6 +67,11 @@ public class QnaServiceImpl implements QnaService{
 		return qnaDAO.updateQna(qna);
 	}
 
+	@Override
+	public Qna getMyQna(String memberId) {
+		return qnaDAO.selectMyQna(memberId);
+	}
+
 	
 	
 	

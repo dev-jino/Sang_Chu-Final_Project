@@ -51,10 +51,15 @@
 	</update>
 	
 	<!-- 판매완료 버튼 누른 상품의 status=4(:판매완료)로 변경 -->
-	<update id="updateAdminProduct">
-		update product set status=4	where idx=#{idx}
+	<update id="updateStatusProduct">
+		update product set status=4	where idx=#{idx} and member_id=#{memberId}
 	</update>
 	
+	<!-- 구매자가 구매하기 버튼 누르면 판매자의 상품 상태를 거래중(3)으로 변경 -->
+	<update id="updateBuyProduct">
+		update product set status=3 where idx=#{idx}
+	</update>
+
 	
 	<!-- 상품 삭제(상품 상태를 9(삭제상품)로 변경) -->
 	<update id="deleteAdminProduct">
@@ -85,4 +90,53 @@
 	<select id="selectProductList" resultType="Product">
 		select * from product order by reg_date desc
 	</select>
+	
+	<!-- 상품 상태별 페이징 처리 -->
+	<select id="selectProductPaging" resultType="Product">
+		select * from (select rownum rn, product.* from (select * from product where status=#{status} and member_id=#{memberId} order by reg_date desc) product) where rn between #{startRow} and #{endRow}
+	</select>
+	
+	
+	<resultMap type="ProductOrderJoin" id="POJResultMap">
+		<association property="product" javaType="Product">
+			<id column="idx" property="idx"/>
+			<result column="member_id" property="memberId"/>
+			<result column="title" property="title"/>
+			<result column="price" property="price"/>
+			<result column="img" property="img"/>
+			<result column="status" property="status"/>
+		</association>
+		<association property="order" javaType="Order">
+			<id column="idx" property="idx"/>
+			<result column="member_id" property="memberId"/>
+			<result column="product_idx" property="productIdx"/>
+			<result column="status" property="status"/>
+		</association>
+	</resultMap>
+	
+	<select id="selectProductPagingList" resultMap="POJResultMap">
+		select * from (select rownum rn, poj.* from (select * from product p left join "ORDER" o on p.idx = o.product_idx where p.status=#{status} and p.member_id=#{memberId} order by p.idx desc) poj) where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 상품테이블&주문테이블 조인하여 모든 컬럼 검색 -->
+	<select id="selectjoinPOList" resultMap="POJResultMap">
+		select * from product p left join "ORDER" o on p.idx = o.product_idx
+	</select>
+	
+	
+	<!-- 구매하기 버튼 누르면 해당 상품을 구매자의 거래중 list로 추가(status=3) -->
+	<insert id="insertJoinBuyBtn">
+		<selectKey resultType="int" keyProperty="idx" order="BEFORE">
+			select product_idx.nextval from dual
+		</selectKey>
+		insert into product values(#{idx},#{memberId},#{title},#{price},#{img, jdbcType = VARCHAR},sysdate,3)
+	</insert>
+	
+	<!-- 판매자가 판매하기 버튼을 누르면 구매자의 구매상품 list로 추가(status=2) -->
+	<insert id="insertJoinPayBtn">
+		<selectKey resultType="int" keyProperty="idx" order="BEFORE">
+			select product_idx.nextval from dual
+		</selectKey>
+		insert into product values(#{idx},#{memberId},#{title},#{price},#{img, jdbcType = VARCHAR},sysdate,2)
+	</insert>
 </mapper>

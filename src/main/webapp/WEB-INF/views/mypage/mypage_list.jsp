@@ -63,22 +63,11 @@
 										<div class="my_specialist_name">
 											전체&nbsp;<span>${countProduct }개</span>
 										</div>
-										<div class="profile_right_search">
-											<div class="regist_search_category_profile">
-												<form>
-													<input type="text" placeholder="상품명 검색"
-														class="keyword_search" value=""><img
-														src="https://ccimage.hellomarket.com/web/2017/common/img_search_n.png"
-														alt="카테고리 검색 아이콘" class="keyword_image">
-												</form>
-											</div>
-										</div>
-
 									</div>
 									
 									<div class="tab_content">
 									<div>
-										<c:forEach var="product" items="${productStatusList }">
+										<c:forEach var="product" items="${productPaging }">
 											<ul style="position:relative; left:10px; bottom: 250px; list-style: none;">
 												<li class="main_col_3" style="float: left; width: 30%;">
 													<a class="card card_list" href="/item/173551272?viewPath=wish_list&amp;clickPath=member">
@@ -86,18 +75,18 @@
 														<div class="image_wrapper">
 															<div class="image_outside">
 																<div class="image_centerbox">
-																	<img src="https://ccimage.hellomarket.com/web/2018/main/img_default_thumbnail_495x495.png" data-src="https://ccimg.hellomarket.com/images/2022/item/03/23/19/5150850_5380833_1.jpg?size=s4" class="thumbnail_img" alt="구찌 남녀공용 메탈시계 YA142404"/>
+																	<img src="<c:url value="/img/site/${product.product.img }"/>" />
 																</div>
 															</div>
 														</div>
 														<div class="cont">
-															<div class="item_title related_item_icon">${product.title }</div>
-															<div class="item_price profile_price">${product.price }</div>
+															<div class="item_title related_item_icon">${product.product.title }</div>
+															<div class="item_price profile_price">${product.product.price }</div>
 														</div>
-														<c:if test="${status eq 3 }">
+														<c:if test="${status eq 3 && product.product.memberId eq loginMember.id }" >
 															<div>
 																<form method="post" onsubmit="alert('상품판매를 완료하였습니다');">
-																<input type="hidden" name="idx" value="${product.idx }">
+																<input type="hidden" name="idx" value="${product.product.idx }">
 																<button type="submit" id="okBtn" class="search_icon_box related_item_icon profile_libs_page">판매하기</button>
 																</form>
 															</div>
@@ -109,8 +98,42 @@
 										</c:forEach>
 									</div>
 										<div class="default_message">
-										<!-- 페이징 처리 -->
 										</div>
+									</div>
+									<div id="page_num">
+										<span>
+											<c:if test="${pager.startPage > pager.blockSize }">
+												<a href="<c:url value="/mypage_list?status=${status }&pageNum=1"/>">&lt;&lt;</a>
+												&nbsp;
+												<a href="<c:url value="/mypage_list?status=${status }&pageNum=${pager.prevPage }"/>">&lt;</a>
+											</c:if>
+											<c:if test="${pager.startPage <= pager.blockSize }">
+												<a href="<c:url value="/mypage_list?status=${status }&pageNum=1"/>">&lt;&lt;</a>
+												&nbsp;
+												<a href="<c:url value="/mypage_list?status=${status }&pageNum=1"/>">&lt;</a>
+											</c:if>
+										</span>
+	
+									 	&nbsp;
+									 	<span>
+										 	<c:forEach var="index" begin="1" end="${pager.endPage }">
+										 		<a href="<c:url value="/mypage_list?status=${status }&pageNum=${index }"/>">${index }</a>
+										 	</c:forEach>
+									 	</span>
+									 	&nbsp;
+									 
+										<span>
+											<c:if test="${pager.endPage != pager.totalPage }">
+												<a href="<c:url value="/mypage_list?status=${status }&pageNum=${pager.nextPage }"/>">&gt;</a>
+												&nbsp;
+												<a href="<c:url value="/mypage_list?status=${status }&pageNum=${pager.totalPage }"/>">&gt;&gt;</a>
+											</c:if>
+											<c:if test="${pager.endPage == pager.totalPage }">
+												<a href="<c:url value="/mypage_list?status=${status }&pageNum=${pager.totalPage }"/>">&gt;</a>
+												&nbsp;
+												<a href="<c:url value="/mypage_list?status=${status }&pageNum=${pager.totalPage }"/>">&gt;&gt;</a>
+											</c:if>
+										</span>
 									</div>
 									<br>
 								</div>

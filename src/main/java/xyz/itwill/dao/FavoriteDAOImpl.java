@@ -1,6 +1,7 @@
 package xyz.itwill.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,16 @@ public class FavoriteDAOImpl implements FavoriteDAO {
 	@Override
 	public List<ProductFavoriteJoin> selectFavoriteList(String memberId) {
 		return sqlSession.getMapper(FavoriteMapper.class).selectFavoriteList(memberId);
+	}
+
+	@Override
+	public List<Favorite> selectFavoritePaging(Map<String, Object> map) {
+		return sqlSession.getMapper(FavoriteMapper.class).selectFavoritePaging(map);
+	}
+
+	@Override
+	public int selectCountFavorite(String memberId) {
+		return sqlSession.getMapper(FavoriteMapper.class).selectCountFavorite(memberId);
 	}
 	
 	

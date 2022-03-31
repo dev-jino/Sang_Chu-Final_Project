@@ -1,6 +1,7 @@
 package xyz.itwill.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,16 @@ public class FavoriteServiceImpl implements FavoriteService {
 	public List<ProductFavoriteJoin> getFavoriteList(String memberId) {
 		return favoriteDAO.selectFavoriteList(memberId);
 		
+	}
+
+	@Override
+	public List<Favorite> getFavoritePaging(Map<String, Object> map) {
+		return favoriteDAO.selectFavoritePaging(map);
+	}
+
+	@Override
+	public int getCountFavorite(String memberId) {
+		return favoriteDAO.selectCountFavorite(memberId);
 	}
 	
 	

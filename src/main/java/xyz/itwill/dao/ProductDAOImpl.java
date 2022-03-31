@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import xyz.itwill.dto.Product;
+import xyz.itwill.dto.ProductOrderJoin;
 import xyz.itwill.mapper.ProductMapper;
 
 @Repository
@@ -26,8 +27,8 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@Override
-	public int updateAdminProduct(Product product) {
-		return sqlSession.getMapper(ProductMapper.class).updateAdminProduct(product);
+	public int updateStatusProduct(Map<String, Object> map) {
+		return sqlSession.getMapper(ProductMapper.class).updateStatusProduct(map);
 	}
 
 	@Override
@@ -53,6 +54,36 @@ public class ProductDAOImpl implements ProductDAO{
 	@Override
 	public int selectCountProduct(Map<String, Object> map) {
 		return sqlSession.getMapper(ProductMapper.class).selectCountProduct(map);
+	}
+
+	@Override
+	public List<Product> selectProductPaging(Map<String, Object> map) {
+		return sqlSession.getMapper(ProductMapper.class).selectProductPaging(map);
+	}
+
+	@Override
+	public int updateBuyProduct(int idx) {
+		return sqlSession.getMapper(ProductMapper.class).updateBuyProduct(idx);
+	}
+
+	@Override
+	public List<ProductOrderJoin> selectProductPagingList(Map<String, Object> map) {
+		return sqlSession.getMapper(ProductMapper.class).selectProductPagingList(map);
+	}
+
+	@Override
+	public int insertJoinBuyBtn(Product product) {
+		return sqlSession.getMapper(ProductMapper.class).insertJoinBuyBtn(product);
+	}
+
+	@Override
+	public int insertJoinPayBtn(Product product) {
+		return sqlSession.getMapper(ProductMapper.class).insertJoinPayBtn(product);
+	}
+
+	@Override
+	public List<ProductOrderJoin> selectJoinPOList() {
+		return sqlSession.getMapper(ProductMapper.class).selectJoinPOList();
 	}
 	
 	

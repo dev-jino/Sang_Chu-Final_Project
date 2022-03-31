@@ -13,15 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import oracle.net.aso.m;
 import xyz.itwill.dto.Coin;
 import xyz.itwill.dto.Member;
-import xyz.itwill.dto.Product;
 import xyz.itwill.exception.UserinfoNotFoundException;
 import xyz.itwill.service.CoinService;
 import xyz.itwill.service.FavoriteService;
 import xyz.itwill.service.MemberService;
+import xyz.itwill.service.OrderService;
 import xyz.itwill.service.ProductService;
+import xyz.itwill.service.QnaService;
+import xyz.itwill.util.Pager;
 
 
 //로그인 사용자만 사용할 수 있도록 인터셉터 사용해야함
@@ -38,33 +39,64 @@ public class MypageController {
 	
 	@Autowired
 	private FavoriteService favoriteService;
+	
+	@Autowired
+	private OrderService orderService;
+	
+	@Autowired
+	private QnaService qnaService;
 
 	
 	//회원의 주문 관련 상품 목록
 	@RequestMapping(value = "/mypage_list", method = RequestMethod.GET)
-	public String sellProductList(@RequestParam(defaultValue = "1") int status, Model model, HttpSession session) {
+	public String sellProductList(@RequestParam(defaultValue = "1") int status, @RequestParam(defaultValue = "1") int pageNum, Model model, HttpSession session) {
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("status", status);
 		map.put("memberId", loginMember.getId());
-		model.addAttribute("productStatusList", productService.getStatusProductList(map));
+//		model.addAttribute("productStatusList", productService.getStatusProductList(map));
 		model.addAttribute("status", status);
 
-		
 		//상품상태별 개수
 		model.addAttribute("countProduct", productService.getCountProduct(map));
+		
+		
+		//페이징 처리
+		int totalBoard = productService.getCountProduct(map);
+		int pageSize = 9;
+		int blockSize = 5;
+		
+		Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
+		
+		Map<String, Object> pagerMap = new HashMap<String, Object>();
+		pagerMap.put("status", status);
+		pagerMap.put("memberId", loginMember.getId());
+		pagerMap.put("startRow", pager.getStartRow());
+		pagerMap.put("endRow", pager.getEndRow());
+		
+		model.addAttribute("productPaging", productService.getProductPagingList(pagerMap));
+		model.addAttribute("pager", pager);
 		
 		return "mypage/mypage_list";
 	}
 	
+	
+	//판매하기 눌렀을 때 상품의 상태를 판매완료로 변경
 	@RequestMapping(value = "/mypage_list", method = RequestMethod.POST)
-	public String sellProductList(@RequestParam int idx, HttpSession session) {
+	public String sellProductList(@RequestParam(defaultValue = "1") int status, @RequestParam int idx, HttpSession session) {
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("idx", idx);
+		map.put("memberId", loginMember.getId());
 		
-		//판매하기 눌렀을 때 상품의 상태를 판매완료로 변경
-		productService.modifyAdminProduct(null);
+		//판매자의 대기 -> 판매완료 리스트로 가는 메소드
+		productService.modifyStatusProduct(map);
+		
+		//판매자가 판매완료 버튼 눌렀을 때 구매자의 구매완료 리스트에 뜨게해주는 메소드
+		orderService.modifySellProduct(idx);
 		
 		
-		return "redirect:/mypage_list";
+		return "redirect:/mypage_list?status=3";
 	}
 	
 	
@@ -73,19 +105,37 @@ public class MypageController {
 	
 	
 	//찜목록
-	@RequestMapping("/mypage_favorite")
-	public String mypageFavorite(Model model, HttpSession session) {
+	@RequestMapping(value = "/mypage_favorite", method = RequestMethod.GET)
+	public String mypageFavorite(@RequestParam(defaultValue = "1") int pageNum, Model model, HttpSession session) {
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		model.addAttribute("favoriteList", favoriteService.getFavoriteList(loginMember.getId()));
 		
+		
+		//페이징 처리
+		int totalBoard = favoriteService.getCountFavorite(loginMember.getId());
+		int pageSize = 9;
+		int blockSize = 5;
+		
+		Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
+		
+		Map<String, Object> pagerMap = new HashMap<String, Object>();
+		pagerMap.put("memberId", loginMember.getId());
+		pagerMap.put("startRow", pager.getStartRow());
+		pagerMap.put("endRow", pager.getEndRow());
+		
+		//이거 Mapper에서 Join해서 다시 만들어야함
+//		model.addAttribute("favoritePaging", favoriteService.getFavoritePaging(pagerMap));
+		model.addAttribute("pager", pager);
 		return "mypage/mypage_favorite";
 	}
 	
 	
 	
 	
+	
+	
 	//환전 신청
-	@RequestMapping("/mypage_exchange")
+	@RequestMapping(value = "/mypage_exchange", method = RequestMethod.GET)
 	public String mypageExchange(HttpSession session, Model model) {
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		model.addAttribute("coin", loginMember.getCoin());
@@ -141,7 +191,7 @@ public class MypageController {
 	
 	
 	//결제비밀번호 수정
-	@RequestMapping("/mypage_pay_password")
+	@RequestMapping(value = "/mypage_pay_password", method = RequestMethod.GET)
 	public String mypagePayPassword(HttpSession session, Model model) {
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		model.addAttribute("id",loginMember.getId());
@@ -158,7 +208,7 @@ public class MypageController {
 	
 	
 	//보유중인 상추
-	@RequestMapping("/mypage_pay")
+	@RequestMapping(value = "/mypage_pay", method = RequestMethod.GET)
 	public String mypagePay(Model model, HttpSession session) throws UserinfoNotFoundException {
 		model.addAttribute("member", session.getAttribute("loginMember"));
 		session.setAttribute("loginMember", session.getAttribute("loginMember"));
@@ -168,9 +218,12 @@ public class MypageController {
 	
 	
 	
-	
+	//회원의 QnA 리스트
 	@RequestMapping("/mypage_qna")
-	public String mypageQna() {
+	public String mypageQna(Model model, HttpSession session) {
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		model.addAttribute("qnaList", qnaService.getMyQna(loginMember.getId()));
+		
 		return "mypage/mypage_qna";
 	}
 	
@@ -178,7 +231,7 @@ public class MypageController {
 	
 	
 	//회원탈퇴
-	@RequestMapping("/delete_member")
+	@RequestMapping(value = "/delete_member", method = RequestMethod.GET)
 	public String deleteMember(HttpSession session) throws UserinfoNotFoundException {
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		memberSerivce.removeMember(loginMember.getId());

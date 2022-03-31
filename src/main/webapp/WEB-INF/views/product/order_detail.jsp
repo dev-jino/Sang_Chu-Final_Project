@@ -7,11 +7,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-          @media all and (max-width: 800px) {
-            img {
-              width: 100%;
-            }
-          }
+@media all and (max-width: 800px) {
+	img {
+		width: 100%;
+	}
+}
+
+#success_btn {
+	width: 600px;
+}
 </style>
 <link rel="stylesheet" href="test.css">
 
@@ -22,13 +26,10 @@
 			<div class="bar hide"></div>
 
 		<section class="content">
-			<h1>헬로마켓 - 100% 비대면 안전 결제 중고거래 마켓</h1>
-			<h2>헬로페이 결제 페이지</h2>
+
 			<div class="item_list_area">
 				<div class="breadcrumbs">
-					<ul>
-						<li><a href="/">HOME</a></li>
-					</ul>
+
 				</div>
 				<div class="main_area">
 					<div class="main_area_center">
@@ -76,9 +77,9 @@
 													</div></li>
 											</ul>
 										</div></li>
-									<li class="order_card last_order_card"><div
-											class="order_card_left">
-										<div class="order_card_right">
+									<li class="order_card last_order_card" style="position:relative; left: 16%;">
+									<div class="order_card_left" style="float: none; width: 300px;"> 
+										<div class="order_card_right" style="float:none; width: 600px; ">
 											<div class="title_box sub_last_title_box">최종결제금액</div>
 											<div class="final_order_wrapper">
 												<div class="final_order_price">
@@ -96,8 +97,8 @@
 												</div>
 												<div class="policy_area">
 													<div class="info">
-														<label class="feature_option feature_option_checkbox">
-															<div class="feature_option_checkbox_indicator"></div>
+														<label class="feature_option feature_option_checkbox" id="label">
+															<div class="feature_option_checkbox_indicator" id="check" ></div>
 														</label>
 													</div>
 													<div class="description">
@@ -112,20 +113,33 @@
 													</div>
 												</div>
 												<div class="success_btn_box">
-													<div class="success_btn btn_disabled">결제하기</div>
+													<form method="post">
+														<input type="hidden" name="productIdx" value="${productInfo.idx }">
+														<input type="hidden" name="memberId" value="${loginMember.id }">
+														<div><button type="submit" class="success_btn btn_disabled" id="success_btn">결제하기</button></div>
+													</form>
 												</div>
 											</div>
 										</div></li>
 
 								</ul>
 							</div>
-							<div class="marketseller_notice">(주)헬로마켓은 통신판매중개자로서 거래당사자가
-								아니며, 판매자가 등록한 상품정보 및 거래에 대해 (주)헬로마켓은 일체 책임을 지지 않습니다.</div>
+							<div class="marketseller_notice" style="text-align: center;">상추슈퍼는 통신판매중개자로서 거래당사자가
+								아니며, 판매자가 등록한 상품정보 및 거래에 대해 상추슈퍼는 일체 책임을 지지 않습니다.</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 	</div>
+	
+<script type="text/javascript">
+
+document.getElementById("label").onclick= function (){
+    document.getElementById("check").classList.toggle('checked');
+    document.getElementById("success_btn").classList.toggle('btn_disabled');
+}
+
+</script>
 </body>
 </html>
