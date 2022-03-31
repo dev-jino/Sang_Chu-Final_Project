@@ -14,16 +14,20 @@
 			
 		
 		<div class="btn_box">
+		<c:if test="${loginMember==null}">
 			<a class="btn_login_box" href="<c:url value="/login"/>"><button class="login_btn">로그인</button></a>
 			<a class="btn_signup_box" href="<c:url value="/join"/>"><button class="signup_btn">회원가입</button></a>
+			
+		</c:if>
 			<div class="notification_box"><a href="msearch.html"></a></div>
 			
 			
+				<c:if  test="${loginMember!=null}">
 			<div class="nick" id="nick">
 				<img src="img/site/user.png" width="36" height="36" alt="n16587153의 프로필 사진" class="profile_img">
-			
 				<span class="nick_title">${loginMember.nicname}님</span>
 			</div>
+				</c:if>
 			
 			
 			
@@ -54,7 +58,9 @@
 				<ul class="gnb_my_list">
 					<li class="gnb_my_list_first"><a style="display:block;" href="<c:url value="/mypage_list"/>">마이 페이지</a></li>
 					<li><a style="display:block;" href="<c:url value="/mypage_pay"/>">결제관리</a></li>
+					<c:if test="${loginMember.status==9}">
 					<li><a style="display:block;" href="<c:url value="/admin_member"/>">관리자 페이지</a></li>
+					</c:if>
 					<li class="gnb_my_list_last" onclick="location.href='${pageContext.request.contextPath}/logout'">로그아웃</li>
 				</ul>
 			</div>
