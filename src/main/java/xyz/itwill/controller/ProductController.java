@@ -43,13 +43,16 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/product_detail", method = RequestMethod.POST)
-	public String ProductDetail(@ModelAttribute Comment comment, Model model, @RequestParam int idx) {
+	public String ProductDetail(@ModelAttribute Comment comment, Model model, @RequestParam int idx, @RequestParam int pStatus) {
 		if (comment.getStatus() == 1) {
 			commentService.addComment(comment);
 		} else if (comment.getStatus() == 2) {
 			commentService.modifyComment(comment);
 		} else if (comment.getStatus() == 9) {
 			commentService.removeComment(comment);
+		} else if (pStatus == 9) {
+			productService.removeAdminProduct(idx);
+			return "redirect:/product_list";
 		}
 		
 		model.addAttribute("productInfo", productService.getProduct(idx));

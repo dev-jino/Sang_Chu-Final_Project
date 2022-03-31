@@ -192,6 +192,11 @@
 														<div class="item_hello_box_pay item_hello_box_chat_pay">
 															<button type="button" class="hello_pay_btn" onclick="location.href = '${pageContext.request.contextPath}/order_detail?idx=${productInfo.idx }'">구매 신청하기</button>
 														</div>
+														<form id="productDeleteForm_${productInfo.idx }" method="post">
+															<input type="hidden" name="idx" value="${productInfo.idx }">
+															<input type="hidden" name="pStatus" value="9">
+														</form>
+														<button class="cmt_bottom" type="submit" form="productDeleteForm_${productInfo.idx }">삭제</button>
 													</div>
 												</div>
 											</div>
