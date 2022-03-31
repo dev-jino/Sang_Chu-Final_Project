@@ -5,7 +5,7 @@
 <section class="header_top">
 	<div class="header_logo header_logo_s">
 		<div class="log_box">
-			<a href="<%=request.getContextPath()%>/">
+			<a href="${pageContext.request.contextPath}/">
 				<img src="img/site/title.png" class="logo" alt="상추슈퍼 로고"/>
 				<img src="img/site/title.png" class="mobile_logo" alt="상추슈퍼 로고"/></a>
 		</div>
@@ -59,18 +59,20 @@
 				</ul>
 			</div>
 		</div>
-		
+		<forM action="${pageContext.request.contextPath}/product_list" method="post">
 		<div class="header_search" id="tebas">
 			<div class="com_search_box">
 				<div>
 					<div>
 						<input type="text" class="com_search" id="com_search" style="border-bottom: 1px solid #9ea4aa" 
-							placeholder="어떤 상품을 찾고 계세요?" value="" />
+							placeholder="어떤 상품을 찾고 계세요?" value=""  name="searchKeyword"/>
 						<div class="search_icon_box search_engine_icon">
 							<div class="search_icon">
 								<div class="search_circle" style="border-color: #9ea4aa"></div>
 								<div class="search_rectangle" style="border-color: #9ea4aa; background-color: #9ea4aa"></div>
 							</div>
+							
+							
 						</div>
 						<div class="w_search_modal hide" id="w_search_modal">
 							<div>
@@ -93,7 +95,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div></forM>
 	</div>
 </section>
 <section class="header_cat">
@@ -106,13 +108,12 @@
 				<i class="arrow"></i><span for="cat_checkbox" class="selectbox">카테고리</span>
 				-->
 			<ul class="header_ul">
-				<li><a href="<c:url value="/product_list?category1='전체상품'"/>"">전체상품</a></li>
-<%-- 				<li><a href="<c:url value="/product_list"/>">가구·가전</a></li> --%>
-				<li><a href="<c:url value="/product_list?category1='가구·가전'"/>">가구·가전</a></li>
-				<li><a href="<c:url value="/product_list?category1='생활·식품'"/>">생활·식품</a></li>
-				<li><a href="<c:url value="/product_list?category1='게임·취미'"/>">게임·취미</a></li>
-				<li><a href="<c:url value="/product_list?category1='의류·잡화'"/>">의류·잡화</a></li>
-				<li><a href="<c:url value="/product_list?category1='기타'"/>">기타</a></li>
+				<li><a href="<c:url value="/product_list"/>">전체상품</a></li>
+				<li><a href="<c:url value="/product_list?category1=가구·가전"/>">가구·가전</a></li>
+				<li><a href="<c:url value="/product_list?category1=생활·식품"/>">생활·식품</a></li>
+				<li><a href="<c:url value="/product_list?category1=게임·취미"/>">게임·취미</a></li>
+				<li><a href="<c:url value="/product_list?category1=의류·잡화"/>">의류·잡화</a></li>
+				<li><a href="<c:url value="/product_list?category1=기타"/>">기타</a></li>
 			
 			
 			</ul>

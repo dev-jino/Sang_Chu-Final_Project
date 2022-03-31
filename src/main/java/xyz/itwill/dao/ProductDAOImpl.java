@@ -85,6 +85,46 @@ public class ProductDAOImpl implements ProductDAO{
 	public List<Product> selectBuyList(String buymember) {
 		return sqlSession.getMapper(ProductMapper.class).selectBuyList(buymember);
 	}
-	
+	//관리자
+		@Override
+		public List<Product> selectProductAdmin(Map<String, Object> map) {
+			return sqlSession.getMapper(ProductMapper.class).selectProductAdmin(map);
+		}
+
+		@Override
+		public int selectProductCountAdmin() {
+			return sqlSession.getMapper(ProductMapper.class).selectProductCountAdmin();
+		}
+
+
+		@Override
+		public int updateStatusAdmin(Map<String, Object> map) {
+			return sqlSession.getMapper(ProductMapper.class).updateStatusAdmin(map);
+		}
+		//리스트
+		@Override
+		public List<Product> selectListProductTest(Map<String, Object> map) {
+			return sqlSession.getMapper(ProductMapper.class).selectListProductTest(map);
+		}
+
+		@Override
+		public List<Product> selectSearch(Map<String, Object> map) {
+			return sqlSession.getMapper(ProductMapper.class).selectSearch(map);
+		}
+
+		@Override
+		public int selectCountProductTest(Map<String, Object> map) {
+			return sqlSession.getMapper(ProductMapper.class).selectCountProductTest(map);
+		}
+
+		@Override
+		public int selectSearchCount(String searchKeyword) {
+			return sqlSession.getMapper(ProductMapper.class).selectSearchCount(searchKeyword);
+		}
+
+		@Override
+		public int selectAllCount() {
+			return sqlSession.getMapper(ProductMapper.class).selectAllCount();
+			}
 	
 }

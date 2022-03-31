@@ -151,4 +151,77 @@
 	<select id="selectIngList" resultType="Product">
 		select * from product where status=3 and buymember=#{buymember}
 	</select>
+	<!--  상품관리 관리자 + 페이징 처리  -->
+	<select id ="selectProductAdmin" resultType ="Product">
+		select * from (select rownum rn,board.* from (select * from product order by idx desc)
+			board) where rn between #{startRow} and #{endRow} 
+	</select>
+	<select id ="selectProductCountAdmin" resultType = "int">
+		select count(*) from product
+	</select>
+	
+	<update id ="updateStatusAdmin">
+		update product set status =#{status} where idx=#{idx}
+	</update>
+	<!--
+	<select id="selectCategory1" resultType="Product">
+		select * from (select rownum rn,board.* from (select * from product order by idx desc)
+			board) where category1=#{category1} and rn between 1 and 5 ;
+	</select>
+	 <select id="selectCategory2" resultType="Product">
+		select * from (select rownum rn,board.* from (select * from product order by idx desc)
+			board) where category2=#{category2} and rn between 1 and 5 ;
+	</select>
+	-->
+	
+	<select id="selectSearch" resultType="Product">
+		select * from (select rownum rn,board.* from (select * from product where title like '%'||#{searchKeyword}||'%' order by idx desc)board) where rn between #{startRow} and #{endRow}
+	</select> 
+	
+	
+	<select id ="selectListProductTest" resultType="Product">
+		select * from (select rownum rn,board.* from (select * from product where status=1 
+			
+				<choose>
+					<when test="category1!=null and category2!=null">
+						 and category1=#{category1 , jdbcType = VARCHAR} and category2=#{category2, jdbcType = VARCHAR}  
+					</when>
+					<when test="category1!=null and category2==null">
+						 and category1=#{category1, jdbcType = VARCHAR}
+					</when>	
+					<when test="category2!= null and category1==null">
+						and category2=#{category2, jdbcType = VARCHAR}
+					</when>	
+					
+				</choose>
+			
+		order by idx desc)board) where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="selectSearchCount" resultType="int">
+		select count(*) from product where title like '%'||#{searchKeyword}||'%'
+	</select>
+	<select id ="selectCountProductTest" resultType="int">
+		select count(*) from product
+		<where>
+				<choose>
+					<when test="category1 != null">
+						category1=#{category1} and status= 1
+					</when>	
+					<when test="category2 != null">
+						catogory2=#{category2} and status = 1
+					</when >
+					<when test="category1 != null and category2 != null">
+						category1=#{category1} and catogory2=#{category2} and status =1
+					</when>	
+					
+				</choose>
+			</where>
+	</select>
+	
+	<select id="selectAllCount" resultType="int">
+		select count(*) from product where status=1
+	</select>
+	
+	
 </mapper>

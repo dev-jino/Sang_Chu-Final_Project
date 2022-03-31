@@ -87,6 +87,52 @@ public class ProductServiceImpl implements ProductService{
 		return productDAO.selectBuyList(buymember);
 	}
 
-	
+	//°ü¸®ÀÚ
+		@Override
+		public List<Product> getProductAdmin(Map<String, Object> map) {
+			
+			return productDAO.selectProductAdmin(map);
+		}
+		
+		@Override
+		public int getProductCountAdmin() {
+			
+			return productDAO.selectProductCountAdmin();
+		}
+
+		@Override
+		public int updateStatusAdmin(Map<String, Object> map) {
+			return productDAO.updateStatusAdmin(map);
+		}
+
+		@Override
+		public List<Product> getListProductTest(Map<String, Object> map) {
+			
+			return productDAO.selectListProductTest(map);
+		}
+
+		@Override
+		public List<Product> getSearch(Map<String, Object> map) {
+			return productDAO.selectSearch(map);
+		}
+
+		@Override
+		public int getCountProductTest(Map<String, Object> map) {
+		
+			return productDAO.selectCountProductTest(map);
+			
+		}
+
+		@Override
+		public int getSearchCount(String searchKeyword) {
+			return productDAO.selectSearchCount(searchKeyword);
+		}
+
+		@Override
+		public int getAllCount() {
+			return productDAO.selectAllCount();
+		}
+		
+
 	
 }

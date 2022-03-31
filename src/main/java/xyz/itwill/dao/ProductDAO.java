@@ -22,4 +22,16 @@ public interface ProductDAO {
 	List<ProductOrderJoin> selectJoinPOList();
 	int updateJoinBuyBtn(Map<String, Object> map);
 	List<Product> selectBuyList(String buymember);
+	//관리자
+		List<Product> selectProductAdmin(Map<String, Object> map);
+		int selectProductCountAdmin();
+		int updateStatusAdmin(Map<String, Object> map);
+		
+		//리스트
+		List<Product> selectListProductTest(Map<String, Object> map);
+		int selectCountProductTest(Map<String, Object> map);
+		List<Product> selectSearch(Map<String, Object> map);
+		int selectSearchCount(String searchKeyword);
+		int selectAllCount();
+	
 }
