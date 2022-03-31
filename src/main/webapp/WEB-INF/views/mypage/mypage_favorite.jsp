@@ -70,8 +70,8 @@
 													<div class="card_box">
 														<div class="image_wrapper">
 															<div class="image_outside">
-																<div class="image_centerbox">
-																	<img src="<c:url value="/img/product/${favorite.product.img }"/>"/>
+																<div class="image_centerbox" style="bottom:300px; left:-222px;">
+																	<img src="<c:url value="/img/product/${favorite.product.img }"/>" style="width: 222px; height: 222px;"/>
 																</div>
 															</div>
 														</div>

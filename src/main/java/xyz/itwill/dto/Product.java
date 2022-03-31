@@ -37,6 +37,7 @@ public class Product {
 	private String img5;
 	private String regDate;
 	private int status;
+	private String buymember;
 	
 	private MultipartFile[] imgFile;
 	

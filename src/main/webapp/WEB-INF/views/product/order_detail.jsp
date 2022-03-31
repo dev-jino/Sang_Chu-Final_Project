@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,8 +62,8 @@
 														<div
 															class="image_wrapper image_wrapper_main_col_1 deal_image_wrapper">
 															<div class="image_outside">
-																<div class="image_centerbox">
-																	<img src="<c:url value="/img/product/${product.img }"/>"/>
+																<div class="image_centerbox" style="right: 100px; bottom: 100px;">
+																	<img src="<c:url value='/img/product/${product.img }'/>">
 																</div>
 															</div>
 														</div>
