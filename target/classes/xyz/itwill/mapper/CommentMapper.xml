@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.itwill.mapper.CommentMapper">
+	<insert id="insertComment">
+		<selectKey resultType="int" keyProperty="comIdx" order="BEFORE">
+			select comment_idx.nextval from dual
+		</selectKey>
+		insert into "COMMENT" values(#{comIdx}, #{memberId}, #{productIdx}, #{content}, sysdate,
+		 <if test="refGroup == 0">
+		 #{comIdx},
+		 </if>
+		 <if test="refGroup != 0">
+		 #{refGroup},
+		 </if>
+		 #{refStep}, #{refLevel}, #{status})
+	</insert>
+
+	<update id="updateComment">
+		update "COMMENT" set content=#{content} where com_idx=#{comIdx}
+	</update>
+	
+	<update id="deleteComment">
+		update "COMMENT" set status=#{status} where com_idx=#{comIdx}
+	</update>
+
+	<select id="selectCommentProductIdx" resultType="Comment">
+		select * from "COMMENT" where product_idx = #{productIdx} order by ref_group, com_idx
+	</select>
+	
+	<select id="selectCommentCount" resultType="int">
+		select count(*) from "COMMENT" where product_idx = #{productIdx}
+	</select>
+</mapper>

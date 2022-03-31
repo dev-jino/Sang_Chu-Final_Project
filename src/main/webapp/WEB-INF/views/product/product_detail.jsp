@@ -235,56 +235,125 @@
 
 											<section class="input_custorm">
 												<div class="cm_in_box">
-													<textarea type="text" disabled=""
-														placeholder="로그인이 필요한 기능입니다." class="input_txt"></textarea>
+												
+													<form id="commentForm" method="post" onsubmit="return checkComment();">
+													<input type="hidden" name="memberId" value="${loginMember.id }">
+													<input type="hidden" name="productIdx" value="${productInfo.idx }">
+													<input type="hidden" name="status" value="1">
+<%-- 													<input type="hidden" name="refGroup" value="${comment.idx }"> --%>
+													<textarea placeholder="댓글을 입력해주세요." class="input_txt" name="content" id="commentContent"></textarea>
+													</form>
+													
 												</div>
 												<div class="cms_btn_box">
-													<div class="comment_send_btn">댓글등록</div>
+													<button class="comment_send_btn" type="submit" form="commentForm">댓글등록</button>
 												</div>
 											</section>
 											
 											<section class="comment_list_box">
 												<ul class="comment_list">
+												
 													<li class="comment_al_list">
+													<c:forEach var="comment" items="${commentList }">
+
+														<c:if test="${comment.refLevel == 0 }">
 														<div class="cmt_dtl">
-															<a href="/s/@14272998?tab=item">
+															<a href="">
 																<img src="<c:url value="/img/site/user.png"/>" class="cmt_img">
 															</a>
 															<div class="cmt_info">
 																<div class="cmt_top">
 																	<div class="nick">
-																		<a class="link" href="/s/@14272998?tab=item">n14272998</a>
+																		<a class="link" href="">${comment.memberId }</a>
 																	</div>
-																	<div class="date">2021. 2. 5.</div>
+																	<div class="date">${comment.regDate }</div>
 																</div>
-																<div class="cmt_content">지역이어디신가요?</div>
-																<div class="cmt_bottom">답글</div>
+																<div class="cmt_content">
+																<c:if test="${comment.status != 9 }">${comment.content }</c:if>
+																<c:if test="${comment.status == 9 }">삭제된 댓글입니다.</c:if>
+																</div>
+																<div class="cmt_bottom" id="cmt_button_${comment.comIdx }" onclick="openCmt('${comment.comIdx }')">답글</div>
+																<c:if test="${loginMember.id == comment.memberId }">
+																<div class="cmt_bottom">&nbsp;|&nbsp;</div>
+																<form id="commentDeleteForm_${comment.comIdx }" method="post">
+																<input type="hidden" name="comIdx" value="${comment.comIdx }">
+																<input type="hidden" name="status" value="9">
+																</form>
+																<button class="cmt_bottom" type="submit" form="commentDeleteForm_${comment.comIdx }">삭제</button>
+																<div class="cmt_bottom">&nbsp;|&nbsp;</div>
+																<div class="cmt_bottom" onclick="modifyCmt('${comment.comIdx }')">수정</div>
+																</c:if>
 															</div>
 														</div>
-														<ul class="cmt_sub_list">
+														<!-- -------------------------------------------------------------------------------------- -->
+														<div class="answer_area" style="display: none" id="modify_comment_${comment.comIdx }">
+															<form id="commentModifyForm_${comment.comIdx }" method="post" onsubmit="return checkModifyComment('${comment.comIdx }');">
+																<input type="hidden" name="comIdx" value="${comment.comIdx }">
+																<textarea placeholder="수정할 댓글을 입력해주세요." name="content" id="modify_${comment.comIdx }"></textarea>
+																<input type="hidden" name="status" value="2">
+															</form>
+															<button class="cmt_bottom" type="submit" form="commentModifyForm_${comment.comIdx }">댓글수정</button>
+														</div>
+														<!-- -------------------------------------------------------------------------------------- -->
+														<div class="answer_area" style="display: none" id="cmt_${comment.comIdx }">
+															<form id="commentForm2_${comment.comIdx }" method="post" onsubmit="return checkComment2('${comment.comIdx }');">
+															<input type="hidden" name="memberId" value="${loginMember.id }">
+															<input type="hidden" name="productIdx" value="${productInfo.idx }">
+															<input type="hidden" name="refGroup" value="${comment.comIdx }">
+															<input type="hidden" name="refStep" value="${comment.refStep+1 }">
+															<input type="hidden" name="refLevel" value="${comment.refLevel+1 }">
+															<input type="hidden" name="status" value="1">
+															
+															<textarea placeholder="답글을 입력해주세요." name="content" id="commentContent2_${comment.comIdx }"></textarea>
+															</form>
+															<button class="cmt_bottom" type="submit" form="commentForm2_${comment.comIdx }">댓글입력</button>
+														</div>
+														</c:if>
+														<c:if test="${comment.refLevel != 0 }">
+															<ul class="cmt_sub_list">
 															<li class="comment_al_list">
 																<div class="cmt_dtl">
 																	<img src="<c:url value="/img/site/reply-all.png"/>" alt="대댓글 이미지" class="cmt_deth_ico">
-																		<a href="/s/@16002539?tab=item">
+																		<a href="">
 																			<img src="<c:url value="/img/site/user.png"/>" alt="회원 이미지" class="cmt_img">
 																		</a>
 																		<div class="cmt_info">
 																			<div class="cmt_top">
 																				<div class="nick">
-																					<a class="link" href="/s/@16002539?tab=item">벤상점</a>
+																					<a class="link" href="">${comment.memberId }</a>
 																				</div>
-																				<div class="date">2021. 2. 5.</div>
+																				<div class="date">${comment.regDate }</div>
 																			</div>
-																			<div class="cmt_content">서울 입니다 3494 4022 제번호로 연락주세요^^</div>
+																			<div class="cmt_content">
+																			<c:if test="${comment.status != 9 }">${comment.content }</c:if>
+																			<c:if test="${comment.status == 9 }">삭제된 댓글입니다.</c:if>
+																			</div>
+																			<c:if test="${loginMember.id == comment.memberId }">
+																			<form id="commentDeleteForm_${comment.comIdx }" method="post">
+																			<input type="hidden" name="comIdx" value="${comment.comIdx }">
+																			<input type="hidden" name="status" value="9">
+																			</form>
+																			<button class="cmt_bottom" type="submit" form="commentDeleteForm_${comment.comIdx }">삭제</button>
+																			<div class="cmt_bottom">&nbsp;|&nbsp;</div>
+																			<div class="cmt_bottom" onclick="modifyCmt('${comment.comIdx }')">수정</div>
+																			</c:if>
 																		</div>
 																</div>
+																<!-- -------------------------------------------------------------------------------------- -->
+																<div class="answer_area" style="display: none" id="modify_comment_${comment.comIdx }">
+																	<form id="commentModifyForm_${comment.comIdx }" method="post" onsubmit="return checkModifyComment('${comment.comIdx }');">
+																		<input type="hidden" name="comIdx" value="${comment.comIdx }">
+																		<textarea placeholder="수정할 댓글을 입력해주세요." name="content" id="modify_${comment.comIdx }"></textarea>
+																		<input type="hidden" name="status" value="2">
+																	</form>
+														
+																	<button class="cmt_bottom" type="submit" form="commentModifyForm_${comment.comIdx }">댓글수정</button>
+																</div>
 															</li>
-														</ul>
-														<div class="answer_area">
-															<textarea placeholder="댓글을 입력해주세요."></textarea>
-															<div class="cmt_bottom">댓글입력</div>
-<!-- 															<img src="https://ccimage.hellomarket.com/web/button/btn_input_comment_normal.png" alt="댓글등록" class="comment_btn"> -->
-														</div>
+															</ul>
+														</c:if>
+														
+													</c:forEach>
 													</li>
 												</ul>
 											</section>
@@ -462,6 +531,57 @@ document.getElementById('thum_6').onclick = function(){
 	document.getElementById('imgimg4').style.zIndex = 1;
 	document.getElementById('imgimg5').style.zIndex = 0;
 	document.getElementById('imgimg6').style.zIndex = 5;
+}
+
+function checkComment() {
+	var commentContent1 = document.getElementById('commentContent');
+	if (commentContent1.value == '') {
+		alert('댓글을 입력해주세요.');
+		return false;
+	}
+	return true;
+}
+
+function checkComment2(idx) {
+	var commentContent2 = document.getElementById('commentContent2_'+idx);
+	if (commentContent2.value == '') {
+		alert('댓글을 입력해주세요.');
+		return false;
+	}
+	return true;
+}
+
+function checkModifyComment(idx) {
+	var commentModifyContent = document.getElementById('modify_'+idx);
+	if (commentModifyContent.value == '') {
+		alert('댓글을 입력해주세요.');
+		return false;
+	}
+	return true;
+}
+
+function openCmt(idx) {
+	var now = document.getElementById("cmt_" + idx);
+	if (now.style.display == "none") {
+		now.style.display = "block";
+		if (document.getElementById("modify_comment_" + idx).style.display == "block") {
+			document.getElementById("modify_comment_" + idx).style.display = "none";
+		}
+	} else {
+		now.style.display = "none";
+	}
+}
+
+function modifyCmt(idx) {
+	var now = document.getElementById("modify_comment_" + idx);
+	if (now.style.display == "none") {
+		now.style.display = "block";
+		if (document.getElementById("cmt_" + idx).style.display == "block") {
+			document.getElementById("cmt_" + idx).style.display = "none";
+		}
+	} else {
+		now.style.display = "none";
+	}
 }
 
 </script>
