@@ -14,28 +14,28 @@
       <div class="main">
       
       <div class="left">
-      <div class="category_filter"><div class="category_title"><div class="category_title_txt">가구/가전</div></div>
-      <div class="category_sub"><span><ul class="category_sub_list">
-     
-      <li class=""></li>
-      	<c:choose>
-      		<c:when test="${category1==''}">
-      			<li style="font-size: 15px" class="">[<strong>전체</strong>]&nbsp;검색결과 총 <span>${total}개</span></li>
-      		</c:when>
-      	
-      		<c:when test="${category1!=null}">
-      			<li style="font-size: 15px" class="">[<strong>${category1}</strong>]&nbsp;검색결과 총 <span>${total}개</span></li>
-      		</c:when>
-      		
-      		<c:when test="${searchKeyword!=null}">
-      			<li style="font-size: 15px" class="">[<strong>${searchKeyword}</strong>]&nbsp;검색결과 총 <span>${total}개</span></li>
-      		</c:when>
-      	</c:choose>
-    	  	
-      	
-      </ul></span></div></div></div>
-     
-     
+      <div class="category_filter">
+      	<div class="category_title">
+      		<div class="category_title_txt">
+      		<c:choose>
+	      		<c:when test="${category1==''}">
+	      			전체
+	      		</c:when>
+	      		<c:when test="${category1!=null}">
+	      			${category1}
+	      		</c:when>
+	      		<c:when test="${searchKeyword!=null}">
+	      			${searchKeyword}
+	      		</c:when>
+      		</c:choose>
+      		</div>
+      	</div>
+      	<ul class="category_sub_list"></ul>
+		<div class="category_sub" style="font-size: 18px;">
+			<span>검색결과 총 ${total}개</span>
+		</div>
+      </ul></div></div>
+
       <section class="left_main">
       
       
