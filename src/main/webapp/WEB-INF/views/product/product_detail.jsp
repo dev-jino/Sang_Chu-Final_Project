@@ -19,13 +19,14 @@
 	<div class="item_list_area">
 		<div class="item_list_area_box">
 			<div class="breadcrumbs">
-				<ul>
-					<li><a href="../">HOME</a></li>
-					<li><a href="../search2b8d.html?category=HCA0000">&gt; <!-- -->가구/가전
-					</a></li>
-					<li><a href="../searcha502.html?category=HCA0002">&gt; <!-- -->가구
-					</a></li>
-				</ul>
+<!-- 				<ul> -->
+<!-- 					<li>HOME</li> -->
+<%-- 					<li>&gt; <!-- -->#{productInfo.category1 } --%>
+<!-- 					</a></li> -->
+<!-- 					<li><a href="../searcha502.html?category=HCA0002">&gt;가구 -->
+<!-- 					</a></li> -->
+<!-- 				</ul> -->
+			<br>
 			</div>
 			<div class="main_area">
 				<div class="main_area_center">
@@ -168,7 +169,7 @@
 														</tr>
 														<tr>
 															<td class="title">가격</td>
-															<td class="description"><fmt:formatNumber value="${productInfo.price }" pattern="#,###"/>원</td>
+															<td class="description"><fmt:formatNumber value="${productInfo.price }" pattern="#,###"/>상추</td>
 														</tr>
 													</tbody>
 												</table>
@@ -218,7 +219,13 @@
 														<!-- <button type="button" class="hello_talk_btn canpayment_hello_talk_btn">충전하기</button></div> -->
 
 														<div class="item_hello_box_pay item_hello_box_chat_pay">
+														<c:if test="${productInfo.status != 1 }">
+															<button type="button" class="hello_pay_btn btn_disabled" disabled style="background-color : gray;" onclick="location.href = '${pageContext.request.contextPath}/order_detail?idx=${productInfo.idx }'">구매 신청하기</button>
+														</c:if>
+														<c:if test="${productInfo.status == 1 }">
 															<button type="button" class="hello_pay_btn" onclick="location.href = '${pageContext.request.contextPath}/order_detail?idx=${productInfo.idx }'">구매 신청하기</button>
+														</c:if>
+														
 														</div>
 													</div>
 												</div>
