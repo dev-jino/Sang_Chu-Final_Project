@@ -58,12 +58,15 @@
 	                                                <th class="faq_detail_th">*제   목</th>
 	                                                <td colspan="5" class="faq_detail_td">${qa.title}</td>
 	                                            </tr>
+	                                            <c:if test='${qa.upImg ne null}'>
 	                                            <tr class="faq_detail_tr">
-	                                                <td colspan="6" class="table_td_content"><img src="${pageContext.request.contextPath}/img/qna/ace.png" style=" width:300px; margin-left: 200px;"></td>
+	                                                <td colspan="6" class="table_td_content">
+	                                                <img src="${pageContext.request.contextPath}/img/qna/ace.png" style=" width:300px; margin-left: 200px;">
 	                                                
-	                                                
-                                        
+	                                                </td>
+	                                            
 	                                            </tr>
+	                                            </c:if>
 	                                           <tr class="faq_detail_tr"><td class="table_td_content">${fn:replace(qa.content,replaceChar,"<br/>")}</td></tr>
                                             </tbody>
                                         </table>
