@@ -10,7 +10,7 @@
 	<div class="withdraw_title" style="height: 300px;">
 		<br>
 		<br>
-		<p style="text-align:center; font-size: 25px;">상추마켓에서 성공적으로 탈퇴되었습니다.</p>
+		<p style="text-align:center; font-size: 25px;">상추슈퍼에서 성공적으로 탈퇴되었습니다.</p>
 	</div>
 </body>
 </html>

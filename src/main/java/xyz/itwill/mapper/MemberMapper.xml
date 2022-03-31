@@ -30,9 +30,9 @@
 		where id=#{id}
 	</update>
 	
-	<delete id="deleteMember">
-		delete from Member where id=#{id}
-	</delete>
+	<update id="deleteMember">
+		update member set status=2 where id=#{id}
+	</update>
 	
 	<select id="selectMember" resultType="Member">
 		select * from Member where id=#{id}

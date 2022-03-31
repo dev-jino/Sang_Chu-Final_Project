@@ -192,19 +192,19 @@ public class MypageController {
 	
 	
 	
-	//결제비밀번호 수정
-	@RequestMapping(value = "/mypage_pay_password", method = RequestMethod.GET)
-	public String mypagePayPassword(HttpSession session, Model model) {
-		Member loginMember = (Member)session.getAttribute("loginMember");
-		model.addAttribute("id",loginMember.getId());
-		return "mypage/mypage_pay_password";
-	}
-	
-	@RequestMapping(value = "/mypage_pay_password", method = RequestMethod.POST)
-	public String mypagePayPassword(@ModelAttribute Member member) {
-		memberSerivce.modifyPayPw(member);
-		return "redirect:/mypage_pay_password";
-	}
+//	//결제비밀번호 수정
+//	@RequestMapping(value = "/mypage_pay_password", method = RequestMethod.GET)
+//	public String mypagePayPassword(HttpSession session, Model model) {
+//		Member loginMember = (Member)session.getAttribute("loginMember");
+//		model.addAttribute("id",loginMember.getId());
+//		return "mypage/mypage_pay_password";
+//	}
+//	
+//	@RequestMapping(value = "/mypage_pay_password", method = RequestMethod.POST)
+//	public String mypagePayPassword(@ModelAttribute Member member) {
+//		memberSerivce.modifyPayPw(member);
+//		return "redirect:/mypage_pay_password";
+//	}
 	
 	
 	
@@ -225,6 +225,7 @@ public class MypageController {
 	public String deleteMember(HttpSession session) throws UserinfoNotFoundException {
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		memberSerivce.removeMember(loginMember.getId());
+		session.invalidate();
 		return "mypage/delete_member";
 	}
 	

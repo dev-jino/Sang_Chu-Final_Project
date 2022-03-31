@@ -100,7 +100,7 @@
 										<br>
 										<br>
 										<div class="profile_edit_bye">
-											<button class="" type="submit" id="info_update_btn" onclick="">변경</button>
+											<button class="" type="submit" id="info_update_btn" onclick="updateCheck()">변경</button>
 										</div>
 										<br><br><br><br>
 										<br>
