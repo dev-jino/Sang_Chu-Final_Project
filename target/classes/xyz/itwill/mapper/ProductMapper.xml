@@ -78,8 +78,14 @@
 	
 	<!-- 회원의 상품 상태별 총 개수 -->
 	<select id="selectCountProduct" resultType="int">
-		select count(*) from product where status=#{status} and member_id=#{memberId}
-	</select>
+        select count(*) from product where 
+        <if test="status == 3">
+            status=#{status} and (member_id=#{memberId} or buymember=#{memberId}) 
+        </if>
+        <if test="status != 3">
+            status=#{status} and member_id=#{memberId} 
+        </if>
+    </select>
 	
 	<!-- 카테고리별 상품 출력 -->
 	<select id="selectCategoryProductList" resultType="Product">

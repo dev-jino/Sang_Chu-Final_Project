@@ -101,6 +101,10 @@
 										</c:forEach>
 									</div>
 										<div class="default_message">
+										<div class="cat_box">
+											<div class="my_specialist_name">
+												전체&nbsp;<span>${countProduct }개</span>
+											</div>
 										</div>
 									</div>
 									<div id="page_num">
