@@ -80,7 +80,7 @@
 							
 							
 						</div>
-						<div class="w_search_modal hide" id="w_search_modal">
+						<!-- <div class="w_search_modal hide" id="w_search_modal">
 							<div>
 								<div class="search_related">
 									<ul>
@@ -97,7 +97,7 @@
 							<div class="search_close" id="search_close">
 								<div>닫기</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

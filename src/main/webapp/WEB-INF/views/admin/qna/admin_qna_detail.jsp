@@ -61,7 +61,7 @@
 	                                            <c:if test='${qa.upImg ne null}'>
 	                                            <tr class="faq_detail_tr">
 	                                                <td colspan="6" class="table_td_content">
-	                                                <img src="${pageContext.request.contextPath}/img/qna/ace.png" style=" width:300px; margin-left: 200px;">
+	                                                <img src="${pageContext.request.contextPath}/img/qna/${qa.upImg}" style=" width:300px; margin-left: 200px;">
 	                                                
 	                                                </td>
 	                                            

@@ -92,7 +92,7 @@
 												<div>비밀번호</div>
 												<div>
 													<div>
-														<input type="password" value="${member.password }" class="input_box" />
+														<input type="password" value="" class="input_box" />
 													</div>
 												</div>
 											</li>

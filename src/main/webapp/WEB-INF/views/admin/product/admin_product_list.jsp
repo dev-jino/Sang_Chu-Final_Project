@@ -57,7 +57,7 @@
 											<td class="faq_list_td" width="15%"><a href="${pageContext.request.contextPath}/product_detail?idx=${product.idx}">${product.title}</a></td>
 											<td class="faq_list_td" width="40%">
 												<a href="${pageContext.request.contextPath}/product_detail?idx=${product.idx}">
-												<img id="admin_product_img" src="${pageContext.request.contextPath}/img/site/${product.img}">
+												<img id="admin_product_img" src="${pageContext.request.contextPath}/img/site/product/${product.img}">
 												</a>
 											</td>
 											<td class="faq_list_td" width="10%">${product.memberId }</td>

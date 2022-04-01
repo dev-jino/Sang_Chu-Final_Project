@@ -48,7 +48,7 @@
       
 	<div>
 		<a href="${pageContext.request.contextPath}/product_detail?idx=${product.idx}">
-			<img src="${pageContext.request.contextPath}/img/product/${product.img}" width="230">
+			<img src="${pageContext.request.contextPath}/img/product/${product.img}" width="230" height="230">
 		</a>
 	</div>
 	<strong class="name"><a href="${pageContext.request.contextPath}/product_detail?idx=${product.idx}" class=""><span class="title displaynone"><span style="font-size:17px;color:#000;" data-i18n=PRODUCT.PRD_INFO_PRODUCT_NAME></span></span> <span style="font-size:20px;color:#000;">${product.title}</span></a></strong>
