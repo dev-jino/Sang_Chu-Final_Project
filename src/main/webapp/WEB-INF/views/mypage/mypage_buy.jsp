@@ -92,41 +92,41 @@
 										<div class="default_message">
 										</div>
 									</div>
-									<div id="page_num">
-										<span>
-											<c:if test="${pager.startPage > pager.blockSize }">
-												<a href="<c:url value="/mypage_buy?pageNum=1"/>">&lt;&lt;</a>
-												&nbsp;
-												<a href="<c:url value="/mypage_buy?pageNum=${pager.prevPage }"/>">&lt;</a>
-											</c:if>
-											<c:if test="${pager.startPage <= pager.blockSize }">
-												<a href="<c:url value="/mypage_buy?pageNum=1"/>">&lt;&lt;</a>
-												&nbsp;
-												<a href="<c:url value="/mypage_buy?pageNum=1"/>">&lt;</a>
-											</c:if>
-										</span>
+<!-- 									<div id="page_num"> -->
+<!-- 										<span> -->
+<%-- 											<c:if test="${pager.startPage > pager.blockSize }"> --%>
+<%-- 												<a href="<c:url value="/mypage_buy?pageNum=1"/>">&lt;&lt;</a> --%>
+<!-- 												&nbsp; -->
+<%-- 												<a href="<c:url value="/mypage_buy?pageNum=${pager.prevPage }"/>">&lt;</a> --%>
+<%-- 											</c:if> --%>
+<%-- 											<c:if test="${pager.startPage <= pager.blockSize }"> --%>
+<%-- 												<a href="<c:url value="/mypage_buy?pageNum=1"/>">&lt;&lt;</a> --%>
+<!-- 												&nbsp; -->
+<%-- 												<a href="<c:url value="/mypage_buy?pageNum=1"/>">&lt;</a> --%>
+<%-- 											</c:if> --%>
+<!-- 										</span> -->
 	
-									 	&nbsp;
-									 	<span>
-										 	<c:forEach var="index" begin="${page.startRow}" end="${pager.endRow}">
-										 		<a href="<c:url value="/mypage_buy?pageNum=${index+1}"/>">&nbsp;&nbsp;${index+1}&nbsp;&nbsp;</a>
-										 	</c:forEach>
-									 	</span>
-									 	&nbsp;
+<!-- 									 	&nbsp; -->
+<!-- 									 	<span> -->
+<%-- 										 	<c:forEach var="index" begin="${page.startRow}" end="${pager.endRow}"> --%>
+<%-- 										 		<a href="<c:url value="/mypage_buy?pageNum=${index+1}"/>">&nbsp;&nbsp;${index+1}&nbsp;&nbsp;</a> --%>
+<%-- 										 	</c:forEach> --%>
+<!-- 									 	</span> -->
+<!-- 									 	&nbsp; -->
 									 
-										<span>
-											<c:if test="${pager.endPage != pager.totalPage }">
-												<a href="<c:url value="/mypage_buy?pageNum=${pager.nextPage }"/>">&gt;</a>
-												&nbsp;
-												<a href="<c:url value="/mypage_buy?pageNum=${pager.totalPage }"/>">&gt;&gt;</a>
-											</c:if>
-											<c:if test="${pager.endPage == pager.totalPage }">
-												<a href="<c:url value="/mypage_buy?pageNum=${pager.totalPage }"/>">&gt;</a>
-												&nbsp;
-												<a href="<c:url value="/mypage_buy?pageNum=${pager.totalPage }"/>">&gt;&gt;</a>
-											</c:if>
-										</span>
-									</div>
+<!-- 										<span> -->
+<%-- 											<c:if test="${pager.endPage != pager.totalPage }"> --%>
+<%-- 												<a href="<c:url value="/mypage_buy?pageNum=${pager.nextPage }"/>">&gt;</a> --%>
+<!-- 												&nbsp; -->
+<%-- 												<a href="<c:url value="/mypage_buy?pageNum=${pager.totalPage }"/>">&gt;&gt;</a> --%>
+<%-- 											</c:if> --%>
+<%-- 											<c:if test="${pager.endPage == pager.totalPage }"> --%>
+<%-- 												<a href="<c:url value="/mypage_buy?pageNum=${pager.totalPage }"/>">&gt;</a> --%>
+<!-- 												&nbsp; -->
+<%-- 												<a href="<c:url value="/mypage_buy?pageNum=${pager.totalPage }"/>">&gt;&gt;</a> --%>
+<%-- 											</c:if> --%>
+<!-- 										</span> -->
+<!-- 									</div> -->
 									<br>
 								</div>
 							</section>
