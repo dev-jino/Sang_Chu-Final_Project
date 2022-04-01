@@ -107,7 +107,7 @@
 										<br>
 									</form>
 										<div class="profile_edit_bye">
-											<span><a href="<c:url value="/delete_member"/>" onclick="deleteCheck()">회원탈퇴</a>></span>
+											<span><a onclick="deleteCheck()">회원탈퇴</a>></span>
 										</div>
 									</div>
 								</div>
@@ -120,9 +120,12 @@
 	</div>
 <script type="text/javascript">
 function deleteCheck() {
-	alert("정말로 상추슈퍼에서 탈퇴하시겠습니까?");
+    if(confirm("정말로 상추슈퍼에서 탈퇴하시겠습니까?")==true) {
+        location.href="<c:url value="/delete_member"/>";
+    } else {
+        return;
+    }
 }
-
 
 function updateCheck() {
 	alert("성공적으로 변경되었습니다.");
