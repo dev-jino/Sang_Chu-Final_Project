@@ -14,8 +14,8 @@
 
 <title>상추마켓 : 아이디 찾기</title>
 
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/id.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/id.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member.css">
 </head>
 
 

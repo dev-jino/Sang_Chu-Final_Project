@@ -1,18 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html><html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>상추마켓 : 회원가입</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/id.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/id.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member.css">
 </head>
 <body>
 <div class="logo_wrap_join">
-	<a href="<%=request.getContextPath() %>/index.jsp">
-		<img src="<%=request.getContextPath()%>/img/site/title.png">
+	<a href="${pageContext.request.contextPath }/index.jsp">
+		<img src="${pageContext.request.contextPath }/img/site/title.png">
 	</a>
 </div>
 <div id="__next"><div class="sign_box auth_common_box"> <!-- <div class="title"><span class="title_text">회원가입</span></div> -->
@@ -108,9 +110,7 @@ function userCreate() {
 		f.payPw.focus();
 		return false;
 	}
- 	//f.method = "post";
- 	//f.action = "<c:url value='/login'/>";
-	//f.submit(); 
+ 	
 }
 
 

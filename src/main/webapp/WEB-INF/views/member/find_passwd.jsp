@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>상추마켓 : 비밀번호 재설정</title>
 
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/id.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/id.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member.css">
 </head>
 
 <body><div id="__next"><div class="password_search_box auth_common_box">
