@@ -35,6 +35,7 @@
 <div class="phone_title">결제 비밀번호</div>
 <div class="phone_area"><input type="password" name="payPw" class="msg" placeholder="출금 비밀번호를 설정해 주세요." /></div>
 
+
 <br>
 <div class="bottom login_btn"><button class="login_btn" type="submit" form="f2">회원가입</button></div>
 <button type="button" class="signup_btn" onclick="location.href='${pageContext.request.contextPath}/login'">취소</button>

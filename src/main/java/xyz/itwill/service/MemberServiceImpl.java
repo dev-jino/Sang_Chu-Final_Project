@@ -70,7 +70,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void loginAuth(Member member) throws LoginAuthFailException {
 		Member authMember=memberDAO.selectMember(member.getId());
-		if(authMember==null) {
+		if(authMember==null||authMember.getStatus()==2) {
 			throw new LoginAuthFailException("아이디의 회원정보가 존재하지 않습니다.", member.getId());	
 		}
 		if(!BCrypt.checkpw(member.getPassword(), authMember.getPassword())) {

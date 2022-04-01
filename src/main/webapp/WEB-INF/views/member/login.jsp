@@ -24,6 +24,8 @@
 
 <!-- <div class="login_checkbox_area"><label class="feature_option feature_option_checkbox login_id_option">아이디 저장<div class="feature_option_checkbox_indicator"></div></label><label class="feature_option feature_option_checkbox">로그인 상태유지<div class="feature_option_checkbox_indicator"></div></label></div>  -->
 <div class="checkbox_area"><div></div></div>
+<div style="color: red; text-align: center;">${message }</div>
+<br>
 <button type="submit" class="signup_btn" id="login2">로그인</button>
 </form>
 <div class="login_find_area pc_login_area"><span class="re_password"><a class="re_password_btn" onclick="location.href='${pageContext.request.contextPath}/find_id'">아이디찾기</a></span>
@@ -39,6 +41,9 @@
 <span class="sign_span">처음이신가요?</span>
 <span>
 <button class="sign_text_btn" onclick="location.href='${pageContext.request.contextPath}/join'">회원가입</button></span></div></div></div>
+
+
+	
 
 <script type="text/javascript">
 function loginChek() {
