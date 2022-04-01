@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="logo_wrap_join">
-	<a href="${pageContext.request.contextPath }/index.jsp">
+	<a href="${pageContext.request.contextPath }/">
 		<img src="${pageContext.request.contextPath }/img/site/title.png">
 	</a>
 </div>
@@ -34,8 +34,8 @@
 <div class="phone_area"><input type="tel" name="phone" class="msg" placeholder="숫자만 입력" ></div>
 <div class="phone_title">계좌번호</div>
 <div class="phone_area"><input type="tel" name="account" class="msg" placeholder="계좌번호를 입력해 주세요." /></div>
-<div class="phone_title">결제 비밀번호</div>
-<div class="phone_area"><input type="password" name="payPw" class="msg" placeholder="출금 비밀번호를 설정해 주세요." /></div>
+
+<div class="phone_area"><input type="hidden" name="payPw" class="msg" placeholder="출금 비밀번호를 설정해 주세요." value="123"/></div>
 
 
 <br>
@@ -105,11 +105,11 @@ function userCreate() {
 		f.account.focus();
 		return false;
 	}
-	if ( f.payPw.value == "" ) {
-		alert("사용하실 계좌비밀번호를 입력하십시요.");
-		f.payPw.focus();
-		return false;
-	}
+//	if ( f.payPw.value == "" ) {
+//		alert("사용하실 계좌비밀번호를 입력하십시요.");
+// 		f.payPw.focus();
+// 		return false;
+// 	}
  	
 }
 
