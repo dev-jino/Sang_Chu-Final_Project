@@ -18,7 +18,7 @@
 	<!-- => 라이브러리 버전을 효율적으로 관리 -->
 	<!-- => 하위 엘리먼트의 이름을 ${엘리먼트명} 형식으로 표현하여 엘리먼트의 내용을 값으로 제공 -->
 	<properties>
-		<org.springframework-version>5.3.16</org.springframework-version>
+		<org.springframework-version>5.3.31</org.springframework-version>
 		<org.aspectj-version>1.9.8</org.aspectj-version>
 		<org.slf4j-version>1.7.36</org.slf4j-version>
 	</properties>
